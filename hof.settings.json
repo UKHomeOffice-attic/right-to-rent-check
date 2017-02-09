@@ -1,0 +1,9 @@
+{
+  "routes": [
+    "./apps/default-app"
+  ],
+  "session": {
+    "name": "right-to-rent-check.hof.sid",
+    "secret": "2be1421606e60973844d95c57df65e2898f1eb8ec81aac283be373d468c31f517da1bf5d23f8b06ef69577d1e096aae212ddcdbe2143237e3bb00cdc81d84b23"
+  }
+}

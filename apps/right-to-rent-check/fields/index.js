@@ -1,8 +1,15 @@
 'use strict';
 
 module.exports = {
-  name: {
-    mixin: 'input-text',
-    validate: 'required'
+  'living-status': {
+    mixin: 'radio-group',
+    validate: 'required',
+    legend: {
+      className: 'visuallyhidden'
+    },
+    options: [
+      'yes',
+      'no'
+    ]
   }
 };

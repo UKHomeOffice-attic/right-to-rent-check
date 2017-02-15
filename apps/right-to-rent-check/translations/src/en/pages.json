@@ -1,5 +1,11 @@
 {
   "request-property": {
     "header": "Does the person already live in the property?"
+  },
+  "request-tenancy-start": {
+    "header": "Placeholder page"
+  },
+  "request-current-property-address": {
+    "header": "Placeholder page"
   }
 }

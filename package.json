@@ -3,7 +3,7 @@
   "scripts": {
     "start": "npm-run-all --parallel watch:app watch:scss",
     "watch:app": "nodemon -x 'npm run build:translate && node app.js' --ignore 'apps/**/translations/en/'",
-    "watch:js": "nodemon --watch assets/js -e js -x 'npm run browserify'",
+    "watch:js": "nodemon --watch assets/js -e js -x 'npm run build:js'",
     "watch:scss": "nodemon -e scss -x 'npm run build:sass'",
     "build:translate": "hof-transpiler ./apps/**/translations/src -w --shared ./node_modules/hof-template-partials/translations",
     "test": "npm run test:lint",
@@ -11,12 +11,10 @@
     "build": "npm run build:js && npm run build:sass && npm run build:translate",
     "build:js": "mkdir -p ./public/js && browserify ./assets/js/index.js > ./public/js/bundle.js",
     "build:sass": "mkdir -p ./public/css && npm-sass ./assets/scss/app.scss > ./public/css/app.css",
-    "browserify": "browserify ./assets/js/index.js > ./public/js/bundle.js",
     "prepublish": "npm run build",
     "prestart": "npm run build:translate"
   },
   "dependencies": {
-    "browsify": "0.0.4",
     "hof-bootstrap": "^9.0.0",
     "hof-confirm-controller": "^1.0.1",
     "hof-controllers": "^6.0.1",

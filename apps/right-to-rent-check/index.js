@@ -13,6 +13,19 @@ module.exports = {
     },
     '/request-property': {
       fields: ['living-status'],
+      next: '/request-tenancy-start',
+      forks: [{
+        target: '/request-current-property-address',
+        condition: {
+          field: 'living-status',
+          value: 'no'
+        }
+      }]
+    },
+    '/request-tenancy-start': {
+      next: '/confirm'
+    },
+    '/request-current-property-address': {
       next: '/confirm'
     },
     '/confirm': {

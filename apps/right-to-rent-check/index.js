@@ -1,6 +1,7 @@
 'use strict';
 
 const controllers = require('hof-controllers');
+const dateComponent = require('hof-component-date');
 
 module.exports = {
   name: 'right-to-rent-check',
@@ -23,9 +24,20 @@ module.exports = {
       }]
     },
     '/request-tenancy-start': {
-      next: '/confirm'
+      next: '/request-n-tenant-name'
     },
     '/request-current-property-address': {
+      next: '/request-current-property-address-select'
+    },
+    '/request-current-property-address-select': {
+      next: '/request-n-tenant-name'
+    },
+    '/request-n-tenant-name': {
+      fields: [
+        'tenant-name',
+        'tenant-country',
+        'date-field'
+      ],
       next: '/confirm'
     },
     '/confirm': {

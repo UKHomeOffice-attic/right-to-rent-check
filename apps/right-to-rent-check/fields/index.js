@@ -25,5 +25,5 @@ module.exports = {
   },
   'tenant-dob': dateComponent('tenant-dob', {
     validate: ['required', 'date', 'before']
-  }),
+  })
 };

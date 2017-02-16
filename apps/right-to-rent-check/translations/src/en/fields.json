@@ -10,6 +10,10 @@
       }
     }
   },
+  "tenancy-start": {
+    "legend": "When did the tenancy start?",
+    "hint": "For example, 10 3 2016"
+  },
   "tenant-name": {
     "label": "Prospective tenant's full name"
   },

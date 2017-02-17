@@ -1,12 +1,12 @@
 {
   "living-status": {
     "options": {
-    	"yes": {
-    		"label": "Yes"
-    	},
-    	"no": {
-    		"label": "No"
-    	}
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "No"
+      }
     }
   }
 }

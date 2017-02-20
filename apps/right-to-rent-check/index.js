@@ -1,6 +1,5 @@
 'use strict';
 
-const controllers = require('hof-controllers');
 const dateComponent = require('hof-component-date');
 
 module.exports = {
@@ -8,10 +7,6 @@ module.exports = {
   baseUrl: '/right-to-rent-check',
   params: '/:action?/:id?',
   steps: {
-    '/': {
-      controller: controllers.start,
-      next: '/request-property'
-    },
     '/request-property': {
       fields: ['living-status'],
       next: '/request-tenancy-start',
@@ -24,24 +19,26 @@ module.exports = {
       }]
     },
     '/request-tenancy-start': {
-      next: '/request-n-tenant-name'
+      next: '/tenant-details'
     },
     '/request-current-property-address': {
       next: '/request-current-property-address-select'
     },
     '/request-current-property-address-select': {
-      next: '/request-n-tenant-name'
+      next: '/tenant-details'
     },
-    '/request-n-tenant-name': {
+    '/tenant-details': {
       fields: [
         'tenant-name',
-        'tenant-country',
-        'date-field'
+        'tenant-dob',
+        'tenant-country'
       ],
+      next: '/tenant-additional-details'
+    },
+    '/tenant-additional-details': {
       next: '/confirm'
     },
     '/confirm': {
-      controller: require('hof-confirm-controller'),
       next: '/complete'
     },
     '/complete': {}

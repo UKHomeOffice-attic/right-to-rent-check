@@ -7,5 +7,11 @@
   },
   "request-current-property-address": {
     "header": "Placeholder page"
+  },
+  "tenant-details": {
+    "header": "What are the prospective tenant’s details?"
+  },
+  "tenant-additional-details": {
+    "header": "Placeholder page"
   }
 }

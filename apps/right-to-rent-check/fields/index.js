@@ -23,7 +23,7 @@ module.exports = {
     className: ['typeahead', 'js-hidden'],
     options: [''].concat(require('homeoffice-countries').allCountries)
   },
-  'date-field': dateComponent('date-field', {
-      validate: ['required', 'before']
-  })
+  'tenant-dob': dateComponent('tenant-dob', {
+    validate: ['required', 'date', 'before']
+  }),
 };

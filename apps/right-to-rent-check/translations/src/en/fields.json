@@ -9,18 +9,25 @@
     	}
     }
   },
-  "tenant-dob": {
-      "label": "What is your date of birth?",
-      "hint": "For example, 2 11 2016",
-      "summary": "Date of issue of Notice of Letting to a Disqualified Person"
-   },
-  "tenant-dob-day": {
-    "label": "Day"
+  "tenant-name": {
+    "label": "Prospective tenant's full name"
   },
-  "tenant-dob-month": {
-    "label": "Month"
-   },
-  "tenant-dob-year": {
-  "label": "Year"
+  "tenant-dob": {
+    "legend": "Date of Birth",
+    "hint": "test",
+    "parts": {
+      "day": {
+        "label": "Day"
+      },
+      "month": {
+        "label": "Month"
+      },
+      "year": {
+        "label": "Year"
+      }
+    }
+  },
+  "tenant-country": {
+    "label": "Country of nationality"
   }
 }

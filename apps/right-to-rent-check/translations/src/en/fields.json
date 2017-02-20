@@ -1,5 +1,33 @@
 {
-  "name": {
-    "label": "Name"
+  "living-status": {
+    "options": {
+    	"yes": {
+    		"label": "Yes"
+    	},
+    	"no": {
+    		"label": "No"
+    	}
+    }
+  },
+  "tenant-name": {
+    "label": "Prospective tenant's full name"
+  },
+  "tenant-dob": {
+    "legend": "Date of Birth",
+    "hint": "test",
+    "parts": {
+      "day": {
+        "label": "Day"
+      },
+      "month": {
+        "label": "Month"
+      },
+      "year": {
+        "label": "Year"
+      }
+    }
+  },
+  "tenant-country": {
+    "label": "Country of nationality"
   }
 }

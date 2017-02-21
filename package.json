@@ -1,8 +1,9 @@
 {
   "license": "MIT",
   "scripts": {
-    "start": "npm-run-all --parallel watch:app watch:scss",
-    "watch:app": "nodemon -x 'npm run build:translate && node app.js' --ignore 'apps/**/translations/en/'",
+    "start": "node app.js",
+    "start:dev": "npm-run-all --parallel watch:app watch:scss watch:js",
+    "watch:app": "nodemon -x 'npm start'",
     "watch:js": "nodemon --watch assets/js -e js -x 'npm run build:js'",
     "watch:scss": "nodemon -e scss -x 'npm run build:sass'",
     "build:translate": "hof-transpiler ./apps/**/translations/src -w --shared ./node_modules/hof-template-partials/translations",

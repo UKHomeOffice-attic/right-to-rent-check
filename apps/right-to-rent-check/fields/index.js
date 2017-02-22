@@ -13,6 +13,12 @@ module.exports = {
       'no'
     ]
   },
+  'tenancy-start': dateComponent('tenancy-start', {
+    validate: ['required', 'date', 'before'],
+    legend: {
+      className: 'visuallyhidden'
+    }
+  }),
   'tenant-name': {
     mixin: 'input-text',
     validate: 'required'

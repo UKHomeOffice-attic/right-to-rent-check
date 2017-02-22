@@ -1,5 +1,6 @@
 {
   "living-status": {
+    "legend": "Does the person already live in the property?",
     "options": {
       "yes": {
         "label": "Yes"
@@ -14,18 +15,7 @@
   },
   "tenant-dob": {
     "legend": "Date of Birth",
-    "hint": "For example, 12 3 1980",
-    "parts": {
-      "day": {
-        "label": "Day"
-      },
-      "month": {
-        "label": "Month"
-      },
-      "year": {
-        "label": "Year"
-      }
-    }
+    "hint": "For example, 12 3 1980"
   },
   "tenant-country": {
     "label": "Country of nationality"

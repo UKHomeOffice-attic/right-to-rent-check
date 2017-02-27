@@ -1,5 +1,12 @@
 {
-  "name": {
-    "label": "Name"
+  "living-status": {
+    "options": {
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "No"
+      }
+    }
   }
 }

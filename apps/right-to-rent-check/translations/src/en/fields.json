@@ -1,5 +1,23 @@
 {
-  "name": {
-    "label": "Name"
+  "living-status": {
+    "legend": "Does the person already live in the property?",
+    "options": {
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "No"
+      }
+    }
+  },
+  "tenant-name": {
+    "label": "Prospective tenant's full name"
+  },
+  "tenant-dob": {
+    "legend": "Date of Birth",
+    "hint": "For example, 12 3 1980"
+  },
+  "tenant-country": {
+    "label": "Country of nationality"
   }
 }

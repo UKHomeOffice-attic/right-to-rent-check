@@ -1,12 +1,12 @@
-# Right to Rent Check
+# Right to Rent Check [![Docker Repository on Quay](https://quay.io/repository/ukhomeofficedigital/rent-check/status "Docker Repository on Quay")](https://quay.io/repository/ukhomeofficedigital/rent-check)
 
 ## Running the app
 
-you can run the app locally with 
+you can run the app locally with
 
 `npm start`
 
-Note: this will need a local redis instance running. 
+Note: this will need a local redis instance running.
 
 You can then access your service in a browser at http://localhost:8080.
 

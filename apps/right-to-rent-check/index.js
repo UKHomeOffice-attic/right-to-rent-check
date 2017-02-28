@@ -9,7 +9,7 @@ module.exports = {
   steps: {
     '/request-property': {
       fields: ['living-status'],
-      next: '/request-tenancy-start',
+      next: '/tenancy-start',
       forks: [{
         target: '/request-current-property-address',
         condition: {
@@ -18,7 +18,8 @@ module.exports = {
         }
       }]
     },
-    '/request-tenancy-start': {
+    '/tenancy-start': {
+      fields: ['tenancy-start'],
       next: '/tenant-details'
     },
     '/request-current-property-address': {

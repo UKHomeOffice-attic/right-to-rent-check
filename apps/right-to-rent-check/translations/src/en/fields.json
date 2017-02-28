@@ -14,7 +14,7 @@
     "label": "Prospective tenant's full name"
   },
   "tenant-dob": {
-    "legend": "Date of Birth",
+    "legend": "Date of birth",
     "hint": "For example, 12 3 1980"
   },
   "tenant-country": {

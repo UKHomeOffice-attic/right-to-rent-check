@@ -2,14 +2,13 @@
 
 module.exports = {
   name: 'right-to-rent-check',
-  baseUrl: '/right-to-rent-check',
   params: '/:action?/:id?',
   steps: {
-    '/request-property': {
+    '/property': {
       fields: ['living-status'],
       next: '/tenancy-start',
       forks: [{
-        target: '/request-current-property-address',
+        target: '/current-property-address',
         condition: {
           field: 'living-status',
           value: 'no'
@@ -20,10 +19,10 @@ module.exports = {
       fields: ['tenancy-start'],
       next: '/tenant-details'
     },
-    '/request-current-property-address': {
-      next: '/request-current-property-address-select'
+    '/current-property-address': {
+      next: '/current-property-address-select'
     },
-    '/request-current-property-address-select': {
+    '/current-property-address-select': {
       next: '/tenant-details'
     },
     '/tenant-details': {

@@ -45,6 +45,17 @@
   "landlord-name-agent": {
     "label": "What's the landlord’s full name?"
   },
+  "representative": {
+    "legend": "Are you the landlord or an agent acting on behalf of the landlord?",
+    "options": {
+      "landlord": {
+        "label": "Landlord"
+      },
+      "agent": {
+        "label": "Agent"
+      }
+    }
+  },
   "landlord-name": {
     "label": "Full name"
   },

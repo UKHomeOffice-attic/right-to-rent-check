@@ -18,7 +18,11 @@ Scenario('I see the correct fields on the page', (
   I.seeElements([
     propertyPage.fields.yes,
     propertyPage.fields.no
+<<<<<<< HEAD
   ]);
+=======
+  ])
+>>>>>>> Landlord Agent page
 });
 
 Scenario('I see errors if I submit a form without selecting anything', (

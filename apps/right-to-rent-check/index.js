@@ -1,7 +1,5 @@
 'use strict';
 
-const dateComponent = require('hof-component-date');
-
 module.exports = {
   name: 'right-to-rent-check',
   baseUrl: '/right-to-rent-check',

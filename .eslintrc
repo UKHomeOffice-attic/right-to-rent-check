@@ -1,0 +1,9 @@
+extends:
+- "homeoffice/config/default"
+
+rules:
+  consistent-return: off
+  no-underscore-dangle: off
+
+env:
+  es6: true

@@ -8,13 +8,15 @@
     "watch:scss": "nodemon -e scss -x 'npm run build:sass'",
     "watch:translations": "nodemon --watch apps/**/translations/src -x 'npm run build:translate'",
     "build:translate": "hof-transpiler ./apps/**/translations/src -w",
-    "test": "npm run test:lint",
+    "test": "npm-run-all test:lint test:acceptance",
     "test:lint": "eslint .",
+    "test:acceptance": "funkie so-acceptance --steps",
     "build": "npm run build:js && npm run build:sass && npm run build:translate",
     "build:js": "mkdir -p ./public/js && browserify ./assets/js/index.js > ./public/js/bundle.js",
     "build:sass": "mkdir -p ./public/css && npm-sass ./assets/scss/app.scss > ./public/css/app.css",
     "prepublish": "npm run build",
-    "prestart": "npm run build:translate"
+    "prestart": "npm run build:translate",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "hof-bootstrap": "^10.3.0",
@@ -33,8 +35,11 @@
     "browserify": "^13.3.0",
     "eslint": "^3.14.0",
     "eslint-config-homeoffice": "^2.1.0",
+    "funkie": "0.0.5",
+    "funkie-phantom": "0.0.1",
     "nodemon": "^1.11.0",
-    "npm-run-all": "^4.0.1"
+    "npm-run-all": "^4.0.1",
+    "so-acceptance": "^4.2.5"
   },
   "name": "right-to-rent-check",
   "version": "1.0.0",

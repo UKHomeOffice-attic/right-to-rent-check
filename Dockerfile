@@ -11,3 +11,4 @@ COPY package.json /app/package.json
 RUN npm cache clean
 RUN npm --loglevel warn install --production --no-optional
 COPY . /app
+RUN npm --loglevel warn run postinstall

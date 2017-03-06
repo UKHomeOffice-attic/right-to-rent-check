@@ -8,14 +8,15 @@
     "watch:scss": "nodemon -e scss -x 'npm run build:sass'",
     "watch:translations": "nodemon --watch apps/**/translations/src -x 'npm run build:translate'",
     "build:translate": "hof-transpiler ./apps/**/translations/src -w",
-    "test": "npm-run-all test:acceptance test:lint",
+    "test": "npm-run-all test:lint test:acceptance",
     "test:lint": "eslint .",
     "test:acceptance": "funkie so-acceptance --steps",
     "build": "npm run build:js && npm run build:sass && npm run build:translate",
     "build:js": "mkdir -p ./public/js && browserify ./assets/js/index.js > ./public/js/bundle.js",
     "build:sass": "mkdir -p ./public/css && npm-sass ./assets/scss/app.scss > ./public/css/app.css",
     "prepublish": "npm run build",
-    "prestart": "npm run build:translate"
+    "prestart": "npm run build:translate",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "hof-bootstrap": "^10.3.0",

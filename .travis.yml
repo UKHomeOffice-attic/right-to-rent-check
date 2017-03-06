@@ -11,8 +11,7 @@ services:
 before_install:
   - if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
   - npm cache clean
-  - docker build --tag travis .
-  - docker run -d --net=host -e NODE_ENV=ci -e DISABLE_CSP=true travis
 
 script:
+  - npm run build
   - npm test

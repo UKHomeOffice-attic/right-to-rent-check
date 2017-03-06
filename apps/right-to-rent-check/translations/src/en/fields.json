@@ -23,5 +23,23 @@
   },
   "tenant-country": {
     "label": "Country of nationality"
+  },
+  "agent-name": {
+    "label": "Your full name",
+    "summary": "Name"
+  },
+  "agent-company": {
+    "label": "Your company name",
+    "summary": "Company name"
+  },
+  "agent-email-address": {
+    "label": "Your email address",
+    "hint": "We will use this to let you know the outcome of the check",
+    "summary": "Email address"
+  },
+  "agent-phone-number": {
+    "label": "Your phone number",
+    "hint": "We may use this number to contact you with queries",
+    "summary": "Phone number"
   }
 }

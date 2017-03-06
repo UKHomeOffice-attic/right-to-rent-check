@@ -11,6 +11,8 @@ module.exports = {
   include: {
     propertyPage: pagesPath('property.js'),
     tenancyStartPage: pagesPath('tenancy-start.js'),
+    agentDetailsPage: pagesPath('agent-details.js'),
+    landlordNamePage: pagesPath('landlord-name.js'),
     currentPropertyAddressPage: pagesPath('current-property-address.js')
   }
 };

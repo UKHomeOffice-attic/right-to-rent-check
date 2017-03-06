@@ -34,6 +34,27 @@ module.exports = {
       next: '/tenant-additional-details'
     },
     '/tenant-additional-details': {
+      next: '/tenant-another'
+    },
+    '/tenant-another': {
+      next: '/landlord-agent'
+    },
+    '/landlord-agent': {
+      next: '/agent-details'
+    },
+    '/landlord-details': {
+      next: '/confirm'
+    },
+    '/agent-details': {
+      fields: [
+        'agent-company',
+        'agent-name',
+        'agent-email-address',
+        'agent-phone-number'
+      ],
+      next: '/landlord-name'
+    },
+    '/landlord-name': {
       next: '/confirm'
     },
     '/confirm': {

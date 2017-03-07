@@ -46,6 +46,6 @@ module.exports = {
   },
   'agent-phone-number': {
     mixin: 'input-text',
-    validate: ['required']
+    validate: 'required'
   }
 };

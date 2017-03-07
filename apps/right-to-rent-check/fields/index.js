@@ -31,5 +31,21 @@ module.exports = {
   },
   'tenant-dob': dateComponent('tenant-dob', {
     validate: ['required', 'date', 'before']
-  })
+  }),
+  'agent-company': {
+    mixin: 'input-text',
+    validate: 'required'
+  },
+  'agent-name': {
+    mixin: 'input-text',
+    validate: 'required'
+  },
+  'agent-email-address': {
+    mixin: 'input-text',
+    validate: ['required', 'email']
+  },
+  'agent-phone-number': {
+    mixin: 'input-text',
+    validate: 'required'
+  }
 };

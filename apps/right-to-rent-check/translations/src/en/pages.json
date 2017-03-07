@@ -5,10 +5,37 @@
   "request-current-property-address": {
     "header": "Placeholder page"
   },
+  "current-property-address": {
+    "header": "Placeholder page"
+  },
+  "current-property-address-select": {
+    "header": "Placeholder page"
+  },
   "tenant-details": {
     "header": "What are the person's details?"
   },
   "tenant-additional-details": {
+    "header": "Placeholder page"
+  },
+  "tenant-another": {
+    "header": "Placeholder page"
+  },
+  "landlord-agent": {
+    "header": "Placeholder page"
+  },
+  "landlord-details": {
+    "header": "Placeholder page"
+  },
+  "agent-details": {
+    "header": "What are your contact details?"
+  },
+  "landlord-name": {
+    "header": "Placeholder page"
+  },
+  "confirm": {
+    "header": "Placeholder page"
+  },
+  "complete": {
     "header": "Placeholder page"
   }
 }

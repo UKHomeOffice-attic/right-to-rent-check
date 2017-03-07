@@ -14,6 +14,7 @@ module.exports = {
     agentDetailsPage: pagesPath('agent-details.js'),
     landlordNamePage: pagesPath('landlord-name.js'),
     currentPropertyAddressPage: pagesPath('current-property-address.js'),
-    tenantDetailsPage: pagesPath('tenant-details.js')
+    tenantDetailsPage: pagesPath('tenant-details.js'),
+    landlordAddressPage: pagesPath('landlord-address.js')
   }
 };

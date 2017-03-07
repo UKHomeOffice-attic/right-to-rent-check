@@ -47,5 +47,10 @@ module.exports = {
   'agent-phone-number': {
     mixin: 'input-text',
     validate: 'required'
+  },
+  'landlord-name': {
+    mixin: 'input-text',
+    validate: 'required',
+    labelClassName: 'visuallyhidden'
   }
 };

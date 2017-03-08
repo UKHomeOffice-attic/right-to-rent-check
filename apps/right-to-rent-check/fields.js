@@ -52,5 +52,20 @@ module.exports = {
     mixin: 'input-text',
     validate: 'required',
     labelClassName: 'visuallyhidden'
+  },
+  'landlord-name': {
+    mixin: 'input-text',
+    validate: 'required'
+  },
+  'landlord-company': {
+    mixin: 'input-text'
+  },
+  'landlord-email-address': {
+    mixin: 'input-text',
+    validate: ['required', 'email']
+  },
+  'landlord-phone-number': {
+    mixin: 'input-phone',
+    validate: ['required']
   }
 };

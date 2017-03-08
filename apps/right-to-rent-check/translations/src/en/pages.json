@@ -2,11 +2,8 @@
   "request-tenancy-start": {
     "header": "Placeholder page"
   },
-  "request-current-property-address": {
-    "header": "Placeholder page"
-  },
   "current-property-address": {
-    "header": "Placeholder page"
+    "header": "What's the person's current address?"
   },
   "current-property-address-select": {
     "header": "Placeholder page"

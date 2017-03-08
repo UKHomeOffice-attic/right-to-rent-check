@@ -1,5 +1,7 @@
 'use strict';
 
+const AddressLookup = require('hof-behaviour-address-lookup');
+
 module.exports = {
   name: 'right-to-rent-check',
   params: '/:action?/:id?',
@@ -17,12 +19,12 @@ module.exports = {
     },
     '/tenancy-start': {
       fields: ['tenancy-start'],
-      next: '/tenant-details'
+      next: '/current-property-address'
     },
     '/current-property-address': {
-      next: '/current-property-address-select'
-    },
-    '/current-property-address-select': {
+      behaviours: AddressLookup({
+        addressKey: 'current-address'
+      }),
       next: '/tenant-details'
     },
     '/tenant-details': {

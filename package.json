@@ -8,7 +8,7 @@
     "watch:scss": "nodemon -e scss -x 'npm run build:sass'",
     "watch:translations": "nodemon --watch apps/**/translations/src -x 'npm run build:translate'",
     "build:translate": "hof-transpiler ./apps/**/translations/src -w",
-    "test": "npm-run-all test:lint test:acceptance",
+    "test": "npm-run-all test:lint",
     "test:lint": "eslint .",
     "test:acceptance": "funkie so-acceptance --steps",
     "build": "npm run build:js && npm run build:sass && npm run build:translate",

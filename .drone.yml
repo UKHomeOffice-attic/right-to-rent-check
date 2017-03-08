@@ -4,7 +4,7 @@ pipeline:
     commands:
       - npm --loglevel warn install -g npm@3
       - npm --loglevel warn install
-      - npm run test:ci
+      - npm run test
 
   build_5:
     image: node:5

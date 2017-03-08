@@ -18,6 +18,7 @@ module.exports = {
     I.click(this.fields.yes);
     I.submitForm();
   },
+
   selectNoAndSubmit() {
     I.click(this.fields.no);
     I.submitForm();

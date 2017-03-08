@@ -2,13 +2,13 @@
 
 const steps = require('../../');
 
-Feature('property step')
+Feature('property step');
 
 Before((
   I,
   propertyPage
 ) => {
-  I.visitPage(propertyPage, steps)
+  I.visitPage(propertyPage, steps);
 });
 
 Scenario('I see the correct fields on the page', (
@@ -18,7 +18,7 @@ Scenario('I see the correct fields on the page', (
   I.seeElements([
     propertyPage.fields.yes,
     propertyPage.fields.no
-    ])
+  ]);
 });
 
 Scenario('I see errors if I submit a form without selecting anything', (
@@ -26,7 +26,7 @@ Scenario('I see errors if I submit a form without selecting anything', (
   propertyPage
 ) => {
   I.submitForm();
-  I.seeErrors(propertyPage.livingStatusGroup)
+  I.seeErrors(propertyPage.livingStatusGroup);
 });
 
 Scenario('I am taken to tenancy start step if I select Yes', (
@@ -35,7 +35,7 @@ Scenario('I am taken to tenancy start step if I select Yes', (
   tenancyStartPage
 ) => {
   propertyPage.selectYesAndSubmit();
-  I.seeInCurrentUrl(tenancyStartPage.url)
+  I.seeInCurrentUrl(tenancyStartPage.url);
 });
 
 Scenario('I am taken to current property step if I select No', (
@@ -44,5 +44,5 @@ Scenario('I am taken to current property step if I select No', (
   currentPropertyAddressPage
 ) => {
   propertyPage.selectNoAndSubmit();
-  I.seeInCurrentUrl(currentPropertyAddressPage.url)
+  I.seeInCurrentUrl(currentPropertyAddressPage.url);
 });

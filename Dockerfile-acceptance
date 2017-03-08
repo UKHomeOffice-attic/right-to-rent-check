@@ -1,0 +1,13 @@
+FROM quay.io/ukhomeofficedigital/nodejs-base:v4.4.2
+
+WORKDIR /test
+
+COPY package.json package.json
+COPY codecept.conf.js codecept.conf.js
+COPY config.js config.js
+COPY apps apps/
+COPY test.sh test.sh
+
+RUN npm --loglevel warn install --ignore-scripts
+
+CMD /test/test.sh

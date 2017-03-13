@@ -1,5 +1,5 @@
 #!/bin/bash
 
-npm run hof-transpile
+npm run build:translate
 
 npm run test:acceptance

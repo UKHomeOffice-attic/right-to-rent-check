@@ -33,5 +33,14 @@
   },
   "landlord-name-agent": {
     "required": "Enter the landlord's full name"
+  },
+  "landlord-name": {
+    "required": "Enter the landlord's full name"
+  },
+  "landlord-email-address": {
+    "required": "Enter the landlord's email address"
+  },
+  "landlord-phone-number": {
+    "required": "Enter the landlord's phone number"
   }
 }

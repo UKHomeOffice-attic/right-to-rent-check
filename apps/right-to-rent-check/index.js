@@ -57,6 +57,12 @@ module.exports = {
       next: '/landlord-name'
     },
     '/landlord-name': {
+      fields: [
+        'landlord-name'
+      ],
+      next: '/landlord-address'
+    },
+    '/landlord-address': {
       next: '/confirm'
     },
     '/confirm': {

@@ -1,0 +1,37 @@
+{
+  "living-status": {
+    "required": "Select an option"
+  },
+  "tenancy-start": {
+    "required": "Enter a date",
+    "before": "Date cannot be in the future",
+    "date": "Enter a valid date"
+  },
+  "tenant-name": {
+    "required": "Enter the prospective tenant's name"
+  },
+  "tenant-country": {
+    "required": "Enter the prospective tenant's country of nationality"
+  },
+  "tenant-dob": {
+    "required": "Enter a date",
+    "before": "Date cannot be in the future",
+    "date": "Enter a valid date"
+  },
+  "agent-company": {
+    "required": "Enter your company name"
+  },
+  "agent-name": {
+    "required": "Enter your full name"
+  },
+  "agent-email-address": {
+    "required": "Enter your email address",
+    "email": "Enter a valid email address"
+  },
+  "agent-phone-number": {
+    "required": "Enter your phone number"
+  },
+  "landlord-name-agent": {
+    "required": "Enter the landlord's full name"
+  }
+}

@@ -48,7 +48,7 @@ module.exports = {
     mixin: 'input-text',
     validate: 'required'
   },
-  'landlord-name': {
+  'landlord-name-agent': {
     mixin: 'input-text',
     validate: 'required',
     labelClassName: 'visuallyhidden'

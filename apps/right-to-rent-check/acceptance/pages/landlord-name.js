@@ -4,7 +4,7 @@ module.exports = {
   url: 'landlord-name',
 
   fields: {
-    name: '#landlord-name'
+    name: '#landlord-name-agent'
   },
 
   content: {

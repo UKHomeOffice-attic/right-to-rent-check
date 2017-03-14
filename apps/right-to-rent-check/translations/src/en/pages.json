@@ -17,6 +17,9 @@
   "tenant-another": {
     "header": "Placeholder page"
   },
+  "property-address": {
+    "header": "What's the rental property address?"
+  },
   "landlord-agent": {
     "header": "Placeholder page"
   },

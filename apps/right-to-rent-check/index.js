@@ -19,7 +19,7 @@ module.exports = {
     },
     '/tenancy-start': {
       fields: ['tenancy-start'],
-      next: '/current-property-address'
+      next: '/tenant-details'
     },
     '/current-property-address': {
       behaviours: AddressLookup({
@@ -39,6 +39,12 @@ module.exports = {
       next: '/tenant-another'
     },
     '/tenant-another': {
+      next: '/property-address'
+    },
+    '/property-address': {
+      behaviours: AddressLookup({
+        addressKey: 'property-address'
+      }),
       next: '/landlord-agent'
     },
     '/landlord-agent': {

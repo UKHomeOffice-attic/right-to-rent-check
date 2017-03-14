@@ -34,6 +34,9 @@
   "landlord-name-agent": {
     "required": "Enter the landlord's full name"
   },
+  "representative": {
+    "required": "Select an option"
+  },
   "landlord-name": {
     "required": "Enter the landlord's full name"
   },

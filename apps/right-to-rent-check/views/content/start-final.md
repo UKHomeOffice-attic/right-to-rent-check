@@ -1,0 +1,1 @@
+Please note you need to inform the tenant you will share their details in order to perform a check.

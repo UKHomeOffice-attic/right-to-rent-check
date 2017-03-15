@@ -24,7 +24,7 @@
     "hof-component-date": "^1.0.0",
     "hof-confirm-controller": "^1.0.1",
     "hof-controllers": "^6.0.1",
-    "hof-frontend-toolkit": "^1.0.1",
+    "hof-frontend-toolkit": "^1.1.0",
     "hof-template-partials": "^3.4.0",
     "hof-transpiler": "^0.2.2",
     "homeoffice-countries": "^0.1.0",

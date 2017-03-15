@@ -6,6 +6,9 @@ module.exports = {
   name: 'right-to-rent-check',
   params: '/:action?/:id?',
   steps: {
+    '/start': {
+      next: '/property'
+    },
     '/property': {
       fields: ['living-status'],
       next: '/tenancy-start',

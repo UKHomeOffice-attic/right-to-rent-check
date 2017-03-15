@@ -19,7 +19,7 @@ pipeline:
     commands:
       - docker build -t app .
     when:
-      event: pull_request
+      event: push
 
   build_app:
     image: docker:1.11
@@ -37,7 +37,7 @@ pipeline:
     commands:
       - docker build -f Dockerfile-acceptance -t acceptance .
     when:
-      event: pull_request
+      event: push
 
   build_acceptance:
     image: docker:1.11
@@ -56,7 +56,7 @@ pipeline:
       - docker run --env NODE_ENV=ci --env DISABLE_CSP=true --env POSTCODE_AUTH=${POSTCODE_AUTH} -d --net host app
       - docker run --rm --net host acceptance
     when:
-      event: pull_request
+      event: push
 
   test_acceptance:
     image: docker:1.11

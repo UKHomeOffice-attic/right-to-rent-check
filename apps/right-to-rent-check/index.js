@@ -1,6 +1,7 @@
 'use strict';
 
 const AddressLookup = require('hof-behaviour-address-lookup');
+const config = require('../../config');
 
 module.exports = {
   name: 'right-to-rent-check',
@@ -29,7 +30,10 @@ module.exports = {
     },
     '/current-property-address': {
       behaviours: AddressLookup({
-        addressKey: 'current-address'
+        addressKey: 'current-address',
+        apiSettings: {
+          hostname: config.postcode.hostname
+        }
       }),
       next: '/tenant-details'
     },
@@ -49,7 +53,10 @@ module.exports = {
     },
     '/property-address': {
       behaviours: AddressLookup({
-        addressKey: 'property-address'
+        addressKey: 'property-address',
+        apiSettings: {
+          hostname: config.postcode.hostname
+        }
       }),
       next: '/landlord-agent'
     },

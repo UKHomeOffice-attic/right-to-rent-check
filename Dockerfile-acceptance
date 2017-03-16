@@ -3,6 +3,7 @@ FROM node:6
 WORKDIR /test
 
 COPY package.json package.json
+COPY config.js config.js
 COPY codecept.conf.js codecept.conf.js
 COPY apps apps/
 COPY test.sh test.sh

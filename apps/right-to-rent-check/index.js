@@ -7,7 +7,10 @@ module.exports = {
   params: '/:action?/:id?',
   steps: {
     '/start': {
-      next: '/property'
+      next: '/check-you-can-use'
+    },
+    '/check-you-can-use': {
+      next: 'property'
     },
     '/property': {
       fields: ['living-status'],

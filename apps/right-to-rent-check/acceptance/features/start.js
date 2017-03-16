@@ -11,10 +11,10 @@ Before((
   I.visitPage(startPage, steps);
 });
 
-Scenario('I am taken to the property step when I click continue', (
+Scenario('I am taken to the check you can use step when I click continue', (
   I,
-  propertyPage
+  checkYouCanUsePage
 ) => {
   I.submitForm();
-  I.seeInCurrentUrl(propertyPage.url);
+  I.seeInCurrentUrl(checkYouCanUsePage.url);
 });

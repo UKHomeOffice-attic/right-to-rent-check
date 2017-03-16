@@ -18,17 +18,6 @@ pipeline:
       - DOCKER_HOST=tcp://127.0.0.1:2375
     commands:
       - docker build --no-cache -t app .
-    when:
-      event: push
-
-  build_app:
-    image: docker:1.11
-    environment:
-      - DOCKER_HOST=tcp://127.0.0.1:2375
-    commands:
-      - docker build --no-cache -t app .
-    when:
-      branch: master
 
   build_acceptance:
     image: docker:1.11
@@ -36,17 +25,6 @@ pipeline:
       - DOCKER_HOST=tcp://127.0.0.1:2375
     commands:
       - docker build --no-cache -f Dockerfile-acceptance -t acceptance .
-    when:
-      event: push
-
-  build_acceptance:
-    image: docker:1.11
-    environment:
-      - DOCKER_HOST=tcp://127.0.0.1:2375
-    commands:
-      - docker build --no-cache -f Dockerfile-acceptance -t acceptance .
-    when:
-      branch: master
 
   test_acceptance:
     image: docker:1.11
@@ -55,18 +33,6 @@ pipeline:
     commands:
       - docker run -e NODE_ENV=ci -e DISABLE_CSP=true -e POSTCODE_AUTH=${POSTCODE_AUTH} -d --net host app
       - docker run --rm --net host acceptance
-    when:
-      event: push
-
-  test_acceptance:
-    image: docker:1.11
-    environment:
-      - DOCKER_HOST=tcp://127.0.0.1:2375
-    commands:
-      - docker run -e NODE_ENV=ci -e DISABLE_CSP=true -e POSTCODE_AUTH=${POSTCODE_AUTH} -d --net host app
-      - docker run --rm --net host acceptance
-    when:
-      branch: master
 
   image_to_quay:
     image: docker:1.11

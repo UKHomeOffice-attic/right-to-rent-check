@@ -13,6 +13,4 @@ if (process.env.MOCK_POSTCODE === 'true') {
   settings.middleware = [require('./mock-postcode')];
 }
 
-console.log(settings)
-
 module.exports = bootstrap(settings);

@@ -44,5 +44,20 @@
   },
   "landlord-name-agent": {
     "label": "What's the landlord’s full name?"
+  },
+  "landlord-name": {
+    "label": "Full name"
+  },
+  "landlord-company": {
+    "label": "Rental company name",
+    "hint": "If you don't have one, leave this blank"
+  },
+  "landlord-email-address": {
+    "label": "Email address",
+    "hint": "We will use this to let you know the outcome of the check"
+  },
+  "landlord-phone-number": {
+    "label": "Your phone number",
+    "hint": "We may use this number to contact you with queries"
   }
 }

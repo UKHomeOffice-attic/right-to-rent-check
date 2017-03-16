@@ -42,9 +42,15 @@ module.exports = {
       next: '/landlord-agent'
     },
     '/landlord-agent': {
-      next: '/agent-details'
+      next: '/landlord-details'
     },
     '/landlord-details': {
+      fields: [
+        'landlord-name',
+        'landlord-company',
+        'landlord-email-address',
+        'landlord-phone-number'
+      ],
       next: '/confirm'
     },
     '/agent-details': {

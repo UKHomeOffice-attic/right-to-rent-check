@@ -8,7 +8,7 @@ module.exports = {
   params: '/:action?/:id?',
   steps: {
     '/start': {
-      next: '/check-you-can-use'
+      next: 'check-you-can-use'
     },
     '/check-you-can-use': {
       next: 'property'

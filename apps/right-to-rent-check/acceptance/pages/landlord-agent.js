@@ -11,5 +11,6 @@ module.exports = {
   fields: {
     landlord: '#representative-landlord',
     agent: '#representative-agent'
-  }
+  },
+  representativeGroup: '#representative-group'
 };

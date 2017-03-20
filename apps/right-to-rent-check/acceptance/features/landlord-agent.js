@@ -35,8 +35,8 @@ Scenario('I see errors when I submit form after leaving both buttons unselected'
   I,
   landlordAgentPage
 ) => {
-  I.seeElements([
-    landlordAgentPage.fields.landlord,
-    landlordAgentPage.fields.agent,
+  I.submitForm();
+  I.seeErrors([
+    landlordAgentPage.representativeGroup
   ]);
 });

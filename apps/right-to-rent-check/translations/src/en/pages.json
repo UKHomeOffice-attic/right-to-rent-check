@@ -38,6 +38,9 @@
   "landlord-name": {
     "header": "Placeholder page"
   },
+  "landlord-address": {
+    "header": "What’s the landlord’s postal address?"
+  },
   "confirm": {
     "header": "Placeholder page"
   },

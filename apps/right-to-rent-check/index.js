@@ -1,11 +1,12 @@
 'use strict';
 
 const AddressLookup = require('hof-behaviour-address-lookup');
+const UsePrevious = require('./behaviours/use-previous');
+const NoAddress = require('./behaviours/no-address');
 const config = require('../../config');
 
 module.exports = {
   name: 'right-to-rent-check',
-  params: '/:action?/:id?',
   steps: {
     '/start': {
       next: '/check-you-can-use'
@@ -80,7 +81,7 @@ module.exports = {
         'landlord-email-address',
         'landlord-phone-number'
       ],
-      next: '/confirm'
+      next: '/landlord-address'
     },
     '/agent-details': {
       fields: [
@@ -98,6 +99,30 @@ module.exports = {
       next: '/landlord-address'
     },
     '/landlord-address': {
+      behaviours: [
+        AddressLookup({
+          addressKey: 'landlord-address',
+          apiSettings: {
+            hostname: config.postcode.hostname
+          }
+        }),
+        UsePrevious({
+          useWhen: {
+            field: 'representative',
+            value: 'landlord'
+          },
+          previousAddress: 'property-address'
+        }),
+        NoAddress({
+          fieldConfig: {
+            useWhen: {
+              field: 'representative',
+              value: 'agent'
+            },
+            className: 'label'
+          }
+        })
+      ],
       next: '/confirm'
     },
     '/confirm': {

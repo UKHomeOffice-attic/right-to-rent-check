@@ -70,5 +70,11 @@
   "landlord-phone-number": {
     "label": "Your phone number",
     "hint": "We may use this number to contact you with queries"
+  },
+  "no-address": {
+    "label": "Tick here if you do not have a postal address for the landlord and click continue"
+  },
+  "use-previous-address": {
+    "label": "Use the address of the rental property I provided earlier"
   }
 }

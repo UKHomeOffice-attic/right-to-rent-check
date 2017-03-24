@@ -11,4 +11,4 @@ RUN npm --loglevel warn install --production
 COPY . /app
 RUN npm --loglevel warn run postinstall
 
-CMD node /app/app.js
+CMD /app/run.sh

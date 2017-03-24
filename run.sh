@@ -7,4 +7,4 @@ fi
 
 cp -r /app/public/* /public/
 
-su nodejs -c 'exec node index.js'
+node index.js

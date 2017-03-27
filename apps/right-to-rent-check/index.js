@@ -1,11 +1,11 @@
 'use strict';
 
 const AddressLookup = require('hof-behaviour-address-lookup');
+const LoopBehaviour = require('hof-behaviour-loop');
 const config = require('../../config');
 
 module.exports = {
   name: 'right-to-rent-check',
-  params: '/:action?/:id?',
   steps: {
     '/start': {
       next: '/check-you-can-use'
@@ -38,17 +38,22 @@ module.exports = {
       next: '/tenant-details'
     },
     '/tenant-details': {
-      fields: [
-        'tenant-name',
-        'tenant-dob',
-        'tenant-country'
-      ],
-      next: '/tenant-additional-details'
-    },
-    '/tenant-additional-details': {
-      next: '/tenant-another'
-    },
-    '/tenant-another': {
+      behaviours: LoopBehaviour({
+        aggregateTo: 'tenants',
+        substeps: {
+          'details': {
+            fields: [
+              'tenant-name',
+              'tenant-dob',
+              'tenant-country'
+            ],
+            next: 'additional-details'
+          },
+          'additional-details': {
+            next: 'add-another'
+          }
+        }
+      }),
       next: '/property-address'
     },
     '/property-address': {

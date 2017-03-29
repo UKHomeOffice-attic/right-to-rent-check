@@ -11,22 +11,30 @@ module.exports = {
       next: '/check-you-can-use'
     },
     '/check-you-can-use': {
-      next: 'property'
+      next: '/property-address'
     },
-    '/property': {
+    '/property-address': {
+      behaviours: AddressLookup({
+        addressKey: 'property-address',
+        apiSettings: {
+          hostname: config.postcode.hostname
+        }
+      }),
+      next: '/person-in-property'
+    },
+    '/person-in-property': {
       fields: ['living-status'],
       next: '/tenancy-start',
       forks: [{
-        target: '/current-property-address',
+        target: '/person-location',
         condition: {
           field: 'living-status',
           value: 'no'
         }
-      }]
+      }],
     },
-    '/tenancy-start': {
-      fields: ['tenancy-start'],
-      next: '/tenant-details'
+    '/person-location': {
+      next: '/current-property-address'
     },
     '/current-property-address': {
       behaviours: AddressLookup({
@@ -35,6 +43,10 @@ module.exports = {
           hostname: config.postcode.hostname
         }
       }),
+      next: '/tenant-details'
+    },
+    '/tenancy-start': {
+      fields: ['tenancy-start'],
       next: '/tenant-details'
     },
     '/tenant-details': {
@@ -49,15 +61,6 @@ module.exports = {
       next: '/tenant-another'
     },
     '/tenant-another': {
-      next: '/property-address'
-    },
-    '/property-address': {
-      behaviours: AddressLookup({
-        addressKey: 'property-address',
-        apiSettings: {
-          hostname: config.postcode.hostname
-        }
-      }),
       next: '/landlord-agent'
     },
     '/landlord-agent': {

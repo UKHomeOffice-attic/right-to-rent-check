@@ -7,7 +7,7 @@ module.exports = {
     I = require('so-acceptance/steps.js')();
   },
 
-  url: 'property',
+  url: 'person-in-property',
   fields: {
     yes: '#living-status-yes',
     no: '#living-status-no'

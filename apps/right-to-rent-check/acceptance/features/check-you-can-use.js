@@ -13,8 +13,8 @@ Before((
 
 Scenario('I go to the property page after I click continue', (
   I,
-  propertyPage
+  propertyAddressPage
 ) => {
   I.submitForm();
-  I.seeInCurrentUrl(propertyPage.url);
+  I.seeInCurrentUrl(propertyAddressPage.url);
 });

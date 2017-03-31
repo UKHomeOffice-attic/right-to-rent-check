@@ -2,7 +2,7 @@
 
 const steps = require('../../');
 
-Feature('property step');
+Feature('current property address step');
 
 Before((
   I,

@@ -39,12 +39,12 @@ Scenario('I see an error if I submit the manual step without entering an address
 Scenario('I am taken to the landlord/agent page if I enter an address manually', (
   I,
   propertyAddressPage,
-  landlordAgentPage
+  personInPropertyPage
 ) => {
   I.click(propertyAddressPage.id.manualLink);
   I.fillField(propertyAddressPage.id.address, propertyAddressPage.content.address);
   I.submitForm();
-  I.seeInCurrentUrl(landlordAgentPage.url);
+  I.seeInCurrentUrl(personInPropertyPage.url);
 });
 
 Scenario('I see an error if I enter an invalid postcode', (
@@ -94,10 +94,10 @@ Scenario('I am taken to the postcode step if I click change', (
 Scenario('I am taken to the landlord/agent step if I select an address', (
   I,
   propertyAddressPage,
-  landlordAgentPage
+  personInPropertyPage
 ) => {
   propertyAddressPage.enterValidPostcode();
   I.selectOption(propertyAddressPage.id.select, propertyAddressPage.content.select);
   I.submitForm();
-  I.seeInCurrentUrl(landlordAgentPage.url);
+  I.seeInCurrentUrl(personInPropertyPage.url);
 });

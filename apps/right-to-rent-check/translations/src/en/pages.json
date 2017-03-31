@@ -5,6 +5,12 @@
   "check-you-can-use": {
     "header": "Placeholder page"
   },
+  "person-in-property": {
+    "intro": "You can add more people later if you need to."
+  },
+  "person-location": {
+    "header": "Placeholder page"
+  },
   "request-tenancy-start": {
     "header": "Placeholder page"
   },

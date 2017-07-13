@@ -64,7 +64,17 @@ module.exports = {
       next: '/landlord-agent'
     },
     '/landlord-agent': {
-      next: '/landlord-details'
+      fields: [
+        'representative'
+      ],
+      next: '/landlord-details',
+      forks: [{
+        target: '/agent-details',
+        condition: {
+          field: 'representative',
+          value: 'agent'
+        }
+      }]
     },
     '/landlord-details': {
       fields: [

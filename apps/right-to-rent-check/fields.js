@@ -53,6 +53,17 @@ module.exports = {
     validate: 'required',
     labelClassName: 'visuallyhidden'
   },
+  'representative': {
+    mixin: 'radio-group',
+    validate: 'required',
+    legend: {
+      className: 'visuallyhidden'
+    },
+    options: [
+      'landlord',
+      'agent'
+    ]
+  },
   'landlord-name': {
     mixin: 'input-text',
     validate: 'required'

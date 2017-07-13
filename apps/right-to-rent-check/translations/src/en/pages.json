@@ -2,9 +2,6 @@
   "start": {
     "custom-header": "Request a Home Office right to rent check"
   },
-  "check-you-can-use": {
-    "header": "Placeholder page"
-  },
   "person-in-property": {
     "intro": "You can add more people later if you need to."
   },

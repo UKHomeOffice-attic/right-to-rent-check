@@ -1,7 +1,7 @@
 'use strict';
 
 /* eslint no-process-env: 0*/
-const bootstrap = require('hof-bootstrap');
+const hof = require('hof');
 
 const settings = require('./hof.settings.json');
 
@@ -13,4 +13,4 @@ if (process.env.MOCK_POSTCODE === 'true') {
   settings.middleware = [require('./mock-postcode')];
 }
 
-module.exports = bootstrap(settings);
+module.exports = hof(settings);

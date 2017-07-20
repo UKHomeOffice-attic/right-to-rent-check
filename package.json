@@ -29,7 +29,7 @@
     "hof-transpiler": "^0.2.2",
     "homeoffice-countries": "^0.1.0",
     "jquery": "^3.1.1",
-    "npm-sass": "^1.3.0",
+    "npm-sass": "^2.2.1",
     "typeahead-aria": "^1.0.4"
   },
   "devDependencies": {

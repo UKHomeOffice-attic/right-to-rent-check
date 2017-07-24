@@ -65,3 +65,8 @@ h1 {
 .phase-banner {
   @include phase-banner(beta);
 }
+
+.form-group label h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}

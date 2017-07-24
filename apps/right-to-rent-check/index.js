@@ -6,6 +6,7 @@ const config = require('../../config');
 module.exports = {
   name: 'right-to-rent-check',
   params: '/:action?/:id?',
+  behaviours: [require('./behaviours/filter-fields')],
   steps: {
     '/start': {
       next: '/check-you-can-use'
@@ -58,6 +59,13 @@ module.exports = {
       next: '/tenant-additional-details'
     },
     '/tenant-additional-details': {
+      fields: [
+        'tenant-additional-details',
+        'tenant-reference-number',
+        'tenant-passport-number',
+        'tenant-brp-number',
+        'tenant-recorded-delivery-number'
+      ],
       next: '/tenant-another'
     },
     '/tenant-another': {

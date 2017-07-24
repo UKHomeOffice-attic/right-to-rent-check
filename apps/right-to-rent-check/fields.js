@@ -32,6 +32,62 @@ module.exports = {
   'tenant-dob': dateComponent('tenant-dob', {
     validate: ['required', 'date', 'before']
   }),
+  'tenant-additional-details': {
+    mixin: 'checkbox-group',
+    legend: {
+      className: 'visuallyhidden'
+    },
+    options: [
+      {
+        value: 'reference-number',
+        toggle: 'tenant-reference-number',
+        child: 'input-text'
+      },
+      {
+        value: 'passport-number',
+        toggle: 'tenant-passport-number',
+        child: 'input-text'
+      },
+      {
+        value: 'brp-number',
+        toggle: 'tenant-brp-number',
+        child: 'input-text'
+      },
+      {
+        value: 'recorded-delivery-number',
+        toggle: 'tenant-recorded-delivery-number',
+        child: 'input-text'
+      }
+    ]
+  },
+  'tenant-reference-number': {
+    validate: 'required',
+    dependent: {
+      field: 'tenant-additional-details',
+      value: 'reference-number'
+    }
+  },
+  'tenant-passport-number': {
+    validate: 'required',
+    dependent: {
+      field: 'tenant-additional-details',
+      value: 'passport-number'
+    }
+  },
+  'tenant-brp-number': {
+    validate: 'required',
+    dependent: {
+      field: 'tenant-additional-details',
+      value: 'brp-number'
+    }
+  },
+  'tenant-recorded-delivery-number': {
+    validate: 'required',
+    dependent: {
+      field: 'tenant-additional-details',
+      value: 'recorded-delivery-number'
+    }
+  },
   'agent-company': {
     mixin: 'input-text',
     validate: 'required'

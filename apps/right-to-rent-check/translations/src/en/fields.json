@@ -24,6 +24,37 @@
   "tenant-country": {
     "label": "Country of nationality"
   },
+  "tenant-additional-details": {
+    "legend": "Additional details",
+    "options": {
+      "reference-number": {
+        "label": "<h3>Home Office reference number</h3>If the person has applied for a visa with the Home Office, they will be issued with a reference number. This could be an application or appeal number, an Application Registration Card (ARC) number or a case ID number."
+      },
+      "passport-number": {
+        "label": "<h3>Passport number</h3>"
+      },
+      "brp-number": {
+        "label": "<h3>Biometric residence permit number</h3>A biometric residence permit is an identification card that proves the holder has the right to live, work or study in the UK. You can still provide this number if the card has expired."
+      },
+      "recorded-delivery-number": {
+        "label": "<h3>Recorded delivery number of {{values.tenant-name}}'s latest application to the Home Office</h3>"
+      }
+    }
+  },
+  "tenant-reference-number": {
+    "label": "Home Office reference number"
+  },
+  "tenant-passport-number": {
+    "label": "Passport number"
+  },
+  "tenant-brp-number": {
+    "label": "Biometric residence permit number",
+    "hint": "It's on the top right corner. For example 'RS1234567'."
+  },
+  "tenant-recorded-delivery-number": {
+    "label": "Recorded delivery number",
+    "hint": "For example, 'AB123456789GB'."
+  },
   "agent-name": {
     "label": "Your full name",
     "summary": "Name"

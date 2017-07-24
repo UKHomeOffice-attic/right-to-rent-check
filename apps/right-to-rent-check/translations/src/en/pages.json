@@ -21,7 +21,7 @@
     "header": "What are the person's details?"
   },
   "tenant-additional-details": {
-    "header": "Placeholder page"
+    "header": "What additional information can you provide for {{values.tenant-name}}?"
   },
   "tenant-another": {
     "header": "Placeholder page"

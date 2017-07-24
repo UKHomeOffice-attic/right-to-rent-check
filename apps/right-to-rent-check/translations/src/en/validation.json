@@ -18,6 +18,18 @@
     "before": "Date cannot be in the future",
     "date": "Enter a valid date"
   },
+  "tenant-reference-number": {
+    "required": "Enter the Home Office reference number"
+  },
+  "tenant-passport-number": {
+    "required": "Enter the passport number"
+  },
+  "tenant-brp-number": {
+    "required": "Enter the biometric residence permit number"
+  },
+  "tenant-recorded-delivery-number": {
+    "required": "Enter the recorded delivery number"
+  },
   "agent-company": {
     "required": "Enter your company name"
   },

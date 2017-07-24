@@ -18,7 +18,7 @@
     "hof": "^13.0.0",
     "hof-behaviour-address-lookup": "^1.1.0",
     "hof-build": "^1.3.4",
-    "hof-component-date": "^1.0.0",
+    "hof-component-date": "^1.4.0",
     "hof-frontend-toolkit": "^2.1.0",
     "hof-theme-govuk": "^4.0.0",
     "homeoffice-countries": "^0.1.0",

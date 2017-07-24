@@ -11,6 +11,7 @@ const tenants = require('./behaviours/tenants')([
   'tenant-brp-number',
   'tenant-recorded-delivery-number'
 ]);
+const checkWMidlandsPostcode = require('./behaviours/check-west-midlands-postcode');
 const config = require('../../config');
 
 module.exports = {
@@ -51,6 +52,7 @@ module.exports = {
       next: '/current-property-address'
     },
     '/tenancy-start': {
+      behaviours: [checkWMidlandsPostcode],
       fields: ['tenancy-start'],
       next: '/check-confirmed'
     },

@@ -88,6 +88,17 @@ module.exports = {
       value: 'recorded-delivery-number'
     }
   },
+  'tenant-add-another': {
+    mixin: 'radio-group',
+    validate: 'required',
+    legend: {
+      className: 'visuallyhidden'
+    },
+    options: [
+      'yes',
+      'no'
+    ]
+  },
   'agent-company': {
     mixin: 'input-text',
     validate: 'required'

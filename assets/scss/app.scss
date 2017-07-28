@@ -62,11 +62,19 @@ h1 {
   }
 }
 
-.phase-banner {
-  @include phase-banner(beta);
-}
-
 .form-group label h3 {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+table.tenant-details {
+  border-top: 1px #aaa solid;
+  border-collapse: separate;
+  padding: 15px 0;
+  th, td {
+    border: none;
+  }
+  th {
+    font-weight: 600;
+  }
 }

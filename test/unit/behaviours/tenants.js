@@ -20,10 +20,55 @@ describe('behaviours/tenants', () => {
 
   });
 
-  describe('saveValues', () => {
+  describe('locals', () => {
 
     class Base {
-      saveValues() {}
+      locals() {}
+    }
+    let sessionModel;
+    let controller;
+    let Tenants;
+    let req;
+    let res;
+    const superLocals = {
+      foo: 'bar'
+    };
+
+    beforeEach(() => {
+      sessionModel = {
+        get: sinon.stub()
+      };
+      res = reqres.res();
+      req = reqres.req({sessionModel});
+      sinon.stub(Base.prototype, 'locals').returns(superLocals);
+      Tenants = Behaviour()(Base);
+      controller = new Tenants();
+    });
+
+    afterEach(() => {
+      Base.prototype.locals.restore();
+    });
+
+    it('returns locals extended from super with tenants', () => {
+
+      const tenants = [{
+        'tenant-name': 'john smith',
+        'tenant-age': '24'
+      }];
+
+      req.sessionModel.get.withArgs('tenants').returns(tenants);
+
+      expect(controller.locals(req, res)).to.deep.equal(Object.assign(superLocals, {
+        tenants: tenants
+      }));
+
+    });
+  });
+
+  describe('getValues', () => {
+
+    class Base {
+      getValues() {}
     }
     let fields;
     let sessionModel;
@@ -31,101 +76,47 @@ describe('behaviours/tenants', () => {
     let Tenants;
     let req;
     let res;
+    let values = {};
+    let superGetValues;
 
     beforeEach(() => {
       fields = [
         'tenant-name',
-        'tenant-age',
-        'tenant-address'
+        'tenant-age'
       ];
       sessionModel = {
         get: sinon.stub(),
         set: sinon.stub(),
       };
       res = reqres.res();
-      sinon.stub(Base.prototype, 'saveValues').yields();
+      req = reqres.req({sessionModel});
+      superGetValues = sinon.stub(Base.prototype, 'getValues');
       Tenants = Behaviour(fields)(Base);
       controller = new Tenants();
     });
 
     afterEach(() => {
-      Base.prototype.saveValues.restore();
+      Base.prototype.getValues.restore();
     });
 
-    it('saves a collection of tenants to the sessionModel', (done) => {
+    it('modifies the values with the tenants collection', (done) => {
 
-      req = reqres.req({
-        sessionModel,
-        body: {
-          'tenant-name': 'john smith',
-          'tenant-age': '24'
-        }
-      });
+      values = {
+        'tenant-name': 'john smith',
+        'tenant-age': '24',
+        'foo': 'bar'
+      };
+
+      superGetValues.yields(null, values);
 
       const tenants = [{
         'tenant-name': 'john smith',
         'tenant-age': '24'
       }];
 
-      controller.saveValues(req, res, (err) => {
+      controller.getValues(req, res, (err) => {
         expect(err).not.to.exist;
-        expect(req.sessionModel.set).to.have.been.calledOnce;
-        expect(req.sessionModel.set.args[0][0]).to.equal('tenants');
-        expect(req.sessionModel.set.args[0][1]).to.deep.equal(tenants);
-        done();
-      });
-
-    });
-
-    it('calls super.saveValues with the request and response objects', (done) => {
-
-      req = reqres.req({
-        sessionModel,
-        body: {
-          'tenant-name': 'john smith',
-          'tenant-age': '24'
-        }
-      });
-
-      controller.saveValues(req, res, (err) => {
-        expect(err).not.to.exist;
-        expect(Base.prototype.saveValues).to.have.been.calledWith(
-          req,
-          res,
-          sinon.match.func
-        );
-        done();
-      });
-
-    });
-
-    it('updates existing tenants', (done) => {
-
-      sessionModel.get.returns([{
-        'tenant-name': 'John Smith',
-        'tenant-age': '42'
-      }]);
-
-      req = reqres.req({
-        sessionModel,
-        body: {
-          'tenant-name': 'John Smith',
-          'tenant-age': '42',
-          'tenant-address': 'London'
-        }
-      });
-
-      const tenants = [{
-        'tenant-name': 'John Smith',
-        'tenant-age': '42',
-        'tenant-address': 'London'
-      }];
-
-      controller.saveValues(req, res, (err) => {
-        expect(err).not.to.exist;
-        expect(req.sessionModel.set).to.have.been.calledOnce;
-        expect(req.sessionModel.set.args[0][0]).to.equal('tenants');
-        expect(req.sessionModel.set.args[0][1]).to.deep.equal(tenants);
+        expect(req.sessionModel.set).to.have.been.calledWith('tenants', tenants);
         done();
       });
 
@@ -133,66 +124,31 @@ describe('behaviours/tenants', () => {
 
     it('adds new tenants', (done) => {
 
-      sessionModel.get.returns([{
-        'tenant-name': 'John Smith',
-        'tenant-age': '42'
+      req.sessionModel.get.withArgs('tenants').returns([{
+        'tenant-name': 'John Smythe',
+        'tenant-age': '42',
+        'uuid': '123456789'
       }]);
 
-      req = reqres.req({
-        sessionModel,
-        body: {
-          'tenant-name': 'Karen Smith',
-          'tenant-age': '43'
-        }
-      });
+      values = {
+        'tenant-name': 'John Smith',
+        'tenant-age': '24'
+      };
+
+      superGetValues.yields(null, values);
 
       const tenants = [{
+        'tenant-name': 'John Smythe',
         'tenant-age': '42',
-        'tenant-name': 'John Smith'
+        'uuid': '123456789'
       }, {
-        'tenant-age': '43',
-        'tenant-name': 'Karen Smith'
+        'tenant-name': 'John Smith',
+        'tenant-age': '24'
       }];
 
-      controller.saveValues(req, res, (err) => {
+      controller.getValues(req, res, (err) => {
         expect(err).not.to.exist;
-        expect(req.sessionModel.set).to.have.been.calledOnce;
-        expect(req.sessionModel.set.args[0][0]).to.equal('tenants');
-        expect(req.sessionModel.set.args[0][1]).to.deep.equal(tenants);
-        done();
-      });
-
-    });
-
-    it('adds configured fields', (done) => {
-
-      fields = [
-        'tenant-name',
-        'tenant-age',
-      ];
-
-      Tenants = Behaviour(fields)(Base);
-      controller = new Tenants();
-
-      req = reqres.req({
-        sessionModel,
-        body: {
-          'tenant-name': 'Karen Smith',
-          'tenant-age': '43',
-          'not-a-field': true
-        }
-      });
-
-      const tenants = [{
-        'tenant-name': 'Karen Smith',
-          'tenant-age': '43',
-      }];
-
-      controller.saveValues(req, res, (err) => {
-        expect(err).not.to.exist;
-        expect(req.sessionModel.set).to.have.been.calledOnce;
-        expect(req.sessionModel.set.args[0][0]).to.equal('tenants');
-        expect(req.sessionModel.set.args[0][1]).to.deep.equal(tenants);
+        expect(req.sessionModel.set).to.have.been.calledWith('tenants', tenants);
         done();
       });
 

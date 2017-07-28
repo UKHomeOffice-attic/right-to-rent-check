@@ -60,7 +60,6 @@ module.exports = {
       next: '/tenant-details'
     },
     '/tenant-details': {
-      behaviours: [tenants],
       fields: [
         'tenant-name',
         'tenant-dob',
@@ -69,7 +68,6 @@ module.exports = {
       next: '/tenant-additional-details'
     },
     '/tenant-additional-details': {
-      behaviours: [tenants],
       fields: [
         'tenant-name',
         'tenant-dob',

@@ -1,9 +1,12 @@
 {
   "property-address-postcode": {
-    "required": "Please enter your postcode"
+    "required": "Enter a postcode"
   },
   "property-address": {
-    "required": "Please enter your address"
+    "required": "Enter an address"
+  },
+  "property-address-select": {
+    "required": "Select an option"
   },
   "living-status": {
     "required": "Select an option"
@@ -12,6 +15,15 @@
     "required": "Enter a date",
     "before": "Date cannot be in the future",
     "date": "Enter a valid date"
+  },
+  "current-address-postcode": {
+    "required": "Enter a postcode"
+  },
+  "current-address-select": {
+    "required": "Select an option"
+  },
+  "current-address": {
+    "required": "Enter an address"
   },
   "tenant-name": {
     "required": "Enter the prospective tenant's name"

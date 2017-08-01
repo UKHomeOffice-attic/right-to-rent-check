@@ -1,6 +1,15 @@
 'use strict';
 
 const AddressLookup = require('hof-behaviour-address-lookup');
+const tenants = require('./behaviours/tenants')([
+  'tenant-name',
+  'tenant-dob',
+  'tenant-country',
+  'tenant-reference-number',
+  'tenant-passport-number',
+  'tenant-brp-number',
+  'tenant-recorded-delivery-number'
+]);
 const config = require('../../config');
 
 module.exports = {
@@ -60,6 +69,9 @@ module.exports = {
     },
     '/tenant-additional-details': {
       fields: [
+        'tenant-name',
+        'tenant-dob',
+        'tenant-country',
         'tenant-additional-details',
         'tenant-reference-number',
         'tenant-passport-number',
@@ -69,7 +81,18 @@ module.exports = {
       next: '/tenant-another'
     },
     '/tenant-another': {
-      next: '/landlord-agent'
+      behaviours: [tenants],
+      fields: [
+        'tenant-add-another',
+      ],
+      next: '/landlord-agent',
+      forks: [{
+        target: '/tenant-details',
+        condition: {
+          field: 'tenant-add-another',
+          value: 'yes'
+        }
+      }]
     },
     '/landlord-agent': {
       fields: [

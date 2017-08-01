@@ -1,4 +1,10 @@
 {
+  "property-address-postcode": {
+    "required": "Please enter your postcode"
+  },
+  "property-address": {
+    "required": "Please enter your address"
+  },
   "living-status": {
     "required": "Select an option"
   },
@@ -29,6 +35,9 @@
   },
   "tenant-recorded-delivery-number": {
     "required": "Enter the recorded delivery number"
+  },
+  "tenant-add-another": {
+    "required": "Select an option"
   },
   "agent-company": {
     "required": "Enter your company name"

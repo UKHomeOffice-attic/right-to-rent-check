@@ -24,7 +24,21 @@
     "header": "What additional information can you provide for {{values.tenant-name}}?"
   },
   "tenant-another": {
-    "header": "Placeholder page"
+    "header": "Is there another person on the same tenancy you'd like to request a check for?",
+    "tables": {
+      "headers": {
+        "name": "Name",
+        "dob": "Date of birth",
+        "country": "Country of nationality",
+        "reference": "Home Office reference number",
+        "passport": "Passport number",
+        "brp": "Biometric Residence Permit number",
+        "recorded-delivery": "Recorded delivery number of latest application"
+      },
+      "values": {
+        "undefined": "Not provided"
+      }
+    }
   },
   "property-address": {
     "header": "What's the rental property address?"

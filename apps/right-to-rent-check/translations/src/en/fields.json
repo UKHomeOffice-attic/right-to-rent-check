@@ -55,6 +55,16 @@
     "label": "Recorded delivery number",
     "hint": "For example, 'AB123456789GB'."
   },
+  "tenant-add-another": {
+    "options": {
+      "yes": {
+        "label": "Yes I want to add another tenant"
+      },
+      "no": {
+        "label": "No I do not want to add another"
+      }
+    }
+  },
   "agent-name": {
     "label": "Your full name",
     "summary": "Name"

@@ -12,30 +12,37 @@
           <tr>
             <th>{{#t}}pages.tenant-another.tables.headers.name{{/t}}</th>
             <td>{{tenant-name}}</td>
+            <td><a href="/tenant-another/edit/{{tenant-uuid}}?field=tenant-name">Change</td>
           </tr>
           <tr>
             <th>{{#t}}pages.tenant-another.tables.headers.dob{{/t}}</th>
             <td>{{tenant-dob}}</td>
+            <td><a href="/tenant-another/edit/{{tenant-uuid}}?field=tenant-dob">Change</td>
           </tr>
           <tr>
             <th>{{#t}}pages.tenant-another.tables.headers.country{{/t}}</th>
             <td>{{tenant-country}}</td>
+            <td><a href="/tenant-another/edit/{{tenant-uuid}}?field=tenant-country">Change</td>
           </tr>
           <tr>
             <th>{{#t}}pages.tenant-another.tables.headers.reference{{/t}}</th>
             <td>{{tenant-reference-number}}{{^tenant-reference-number}}{{#t}}pages.tenant-another.tables.values.undefined{{/t}}{{/tenant-reference-number}}</td>
+            <td><a href="/tenant-another/edit/{{tenant-uuid}}?field=tenant-reference-number">Change</td>
           </tr>
           <tr>
             <th>{{#t}}pages.tenant-another.tables.headers.passport{{/t}}</th>
             <td>{{tenant-passport-number}}{{^tenant-passport-number}}{{#t}}pages.tenant-another.tables.values.undefined{{/t}}{{/tenant-passport-number}}</td>
+            <td><a href="/tenant-another/edit/{{tenant-uuid}}?field=tenant-passport-number">Change</td>
           </tr>
           <tr>
             <th>{{#t}}pages.tenant-another.tables.headers.brp{{/t}}</th>
             <td>{{tenant-brp-number}}{{^tenant-brp-number}}{{#t}}pages.tenant-another.tables.values.undefined{{/t}}{{/tenant-brp-number}}</td>
+            <td><a href="/tenant-another/edit/{{tenant-uuid}}?field=tenant-brp-number">Change</td>
           </tr>
           <tr>
             <th>{{#t}}pages.tenant-another.tables.headers.recorded-delivery{{/t}}</th>
             <td>{{tenant-recorded-delivery-number}}{{^tenant-recorded-delivery-number}}{{#t}}pages.tenant-another.tables.values.undefined{{/t}}{{/tenant-recorded-delivery-number}}</td>
+            <td><a href="/tenant-another/edit/{{tenant-uuid}}?field=tenant-recorded-delivery-number">Change</td>
           </tr>
         </tbody>
       </table>

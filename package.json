@@ -21,7 +21,8 @@
     "homeoffice-countries": "^0.1.0",
     "jquery": "^3.1.1",
     "lodash": "^4.17.4",
-    "typeahead-aria": "^1.0.4"
+    "typeahead-aria": "^1.0.4",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "chai": "^4.1.0",
@@ -31,6 +32,7 @@
     "funkie": "0.0.5",
     "funkie-phantom": "0.0.1",
     "mocha": "^3.4.2",
+    "proxyquire": "^1.8.0",
     "reqres": "^1.3.0",
     "sinon": "^2.4.0",
     "sinon-chai": "^2.12.0",

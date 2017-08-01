@@ -74,13 +74,19 @@ module.exports = {
         'tenant-dob',
         'tenant-country'
       ],
-      next: '/tenant-additional-details'
+      next: '/tenant-additional-details',
+      forks: [{
+        target: '/tenant-another',
+        condition: (req, res) => {
+          if (req.sessionModel.get('redirectTo')) {
+            return true;
+          }
+          return false;
+        }
+      }]
     },
     '/tenant-additional-details': {
       fields: [
-        'tenant-name',
-        'tenant-dob',
-        'tenant-country',
         'tenant-additional-details',
         'tenant-reference-number',
         'tenant-passport-number',

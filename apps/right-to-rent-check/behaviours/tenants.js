@@ -96,6 +96,7 @@ module.exports = fields => {
 
     render(req, res, callback) {
       if (req.params.action === 'edit') {
+        this.emit('complete', req, res);
         res.redirect(req.sessionModel.get('redirectTo'));
       } else {
         super.render(req, res, callback);

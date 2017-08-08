@@ -14,6 +14,7 @@ describe('behaviours/tenants', () => {
     render() {}
     getValues() {}
     saveValues() {}
+    emit() {}
   }
 
   let values;
@@ -78,7 +79,6 @@ describe('behaviours/tenants', () => {
 
   describe('render', () => {
 
-    let superRender;
     let callback;
     const redirectTo = 'foo/';
 
@@ -90,25 +90,33 @@ describe('behaviours/tenants', () => {
       res = reqres.res({redirect: redirectStub});
       req = reqres.req({sessionModel});
       callback = sinon.stub();
-      superRender = sinon.stub(Base.prototype, 'render');
+      sinon.stub(Base.prototype, 'render');
+      sinon.stub(Base.prototype, 'emit');
       Tenants = Behaviour()(Base);
       controller = new Tenants();
     });
 
     afterEach(() => {
       Base.prototype.render.restore();
+      Base.prototype.emit.restore();
     });
 
     it('calls super render', () => {
+      req.params.action = null;
       controller.render(req, res, callback);
-      expect(superRender).to.have.been.calledWithExactly(req, res, callback);
+      expect(Base.prototype.render).to.have.been.calledWithExactly(req, res, callback);
+
+    });
+
+    it('emits `complete` on edit', () => {
+      req.params.action = 'edit';
+      controller.render(req, res, callback);
+      expect(controller.emit).to.have.been.calledWith('complete');
 
     });
 
     it('redirects to redirect path on edit', () => {
-
       req.params.action = 'edit';
-
       controller.render(req, res, callback);
       expect(res.redirect).to.have.been.calledWith(redirectTo);
 

@@ -3,6 +3,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "hof-build watch",
+    "dev:ci": "MOCK_POSTCODE=true NODE_ENV=ci DISABLE_CSP=true npm run dev",
     "test": "NODE_ENV=test npm run test:unit && npm run test:lint",
     "test:unit": "_mocha",
     "test:lint": "eslint .",

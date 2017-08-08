@@ -13,7 +13,6 @@
   },
   "tenancy-start": {
     "required": "Enter a date",
-    "before": "Date cannot be in the future",
     "date": "Enter a valid date",
     "incorrect": "You don't need a right to rent check. <a href=\"https://www.gov.uk/check-tenant-right-to-rent-documents\">[Return to guidance]</a>",
     "after": "You don't need a right to rent check."

@@ -2,6 +2,7 @@
 
 const _ = require('lodash');
 const AddressLookup = require('hof-behaviour-address-lookup');
+const checkWMidlandsPostcode = require('./behaviours/tenancy-start-west-midlands-check');
 const tenants = require('./behaviours/tenants')([
   'tenant-name',
   'tenant-dob',
@@ -11,7 +12,6 @@ const tenants = require('./behaviours/tenants')([
   'tenant-brp-number',
   'tenant-recorded-delivery-number'
 ]);
-const checkWMidlandsPostcode = require('./behaviours/check-west-midlands-postcode');
 const config = require('../../config');
 
 module.exports = {

@@ -15,8 +15,8 @@ module.exports = superclass => class extends superclass {
         req.sessionModel.set('valid-tenancy', false);
       }
     }
-    super.saveValues(req, res, callback);
-  }
+      callback();
+    }
 
   checkPostcode(currentPostcode) {
     let flag = false;
@@ -29,10 +29,10 @@ module.exports = superclass => class extends superclass {
     return flag;
   }
 
-  getNextStep(req, res, callback) {
+  getNextStep(req, res) {
     if (req.sessionModel.get('valid-tenancy') === false) {
-      req.form.options.next = '/exit';
+      return '/exit';
     }
-    return super.getNextStep(req, res, callback);
+    return super.getNextStep(req, res);
   }
 };

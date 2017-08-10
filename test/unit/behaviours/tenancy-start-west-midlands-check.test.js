@@ -33,16 +33,16 @@ describe('apps/behaviours/tenancy-start-west-midlands-check', () => {
       Base.prototype.getNextStep.restore();
     });
 
-    it('calls super getNextStep if valid-tenancy is true', () => {
+    it('calls the parent method when the tenancy is valid', () => {
       req.sessionModel.get.withArgs('valid-tenancy').returns(true);
       instance.getNextStep(req, res);
 
       Base.prototype.getNextStep.should.have.been.calledWith(req, res);
     });
-    it('return /exit page if valid-tenancy is false', () => {
+    it('return exit page if valid-tenancy is false', () => {
       req.sessionModel.get.withArgs('valid-tenancy').returns(false);
       const result = instance.getNextStep(req, res);
-      result.should.equal('/exit-dont-need-check');
+      result.should.equal('/check-not-needed');
     });
   });
   describe('saveValues()', () => {

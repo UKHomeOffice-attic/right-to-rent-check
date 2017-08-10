@@ -8,7 +8,7 @@ Feature('Tenancy Start Page');
 Before((
   I
 ) => {
-  I.amOnPage('/');
+  I.amOnPage('/property-address');
 });
 
 Scenario('The correct fields are on the page', (
@@ -53,7 +53,8 @@ Scenario('I see an error if I enter a future date', (
 });
 
 Scenario('I go to the exit page when I enter a date before the 1 Dec 2014', (
-  I
+  I,
+  checkNotNeededPage
 ) => {
   I.completeToStep('/tenancy-start', {
     'living-status': 'yes'});
@@ -61,11 +62,12 @@ Scenario('I go to the exit page when I enter a date before the 1 Dec 2014', (
   I.fillField('#tenancy-start-month', '1');
   I.fillField('#tenancy-start-year', '2013');
   I.submitForm();
-  I.seeInCurrentUrl('exit-dont-need-check');
+  I.seeInCurrentUrl(checkNotNeededPage.url);
 });
 
 Scenario('I see an error when I enter a date between 1 Dec 2014 & 31st Jan 2016 & the postcode is not in the West Midlands', (
-  I
+  I,
+  checkNotNeededPage
 ) => {
   I.completeToStep('/tenancy-start', {
     'property-address-postcode': 'SW1P 4DF',
@@ -74,7 +76,7 @@ Scenario('I see an error when I enter a date between 1 Dec 2014 & 31st Jan 2016 
   I.fillField('#tenancy-start-month', '1');
   I.fillField('#tenancy-start-year', '2015');
   I.submitForm();
-  I.seeInCurrentUrl('exit-dont-need-check');
+  I.seeInCurrentUrl(checkNotNeededPage.url);
 });
 
 Scenario('I can go to the next step when I enter a date between 1 Dec 2014 & 31st Jan 2016 & the postcode is in the West Midlands', (

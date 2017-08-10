@@ -31,7 +31,7 @@ module.exports = superclass => class extends superclass {
 
   getNextStep(req, res) {
     if (req.sessionModel.get('valid-tenancy') === false) {
-      return '/exit';
+      return '/exit-dont-need-check';
     }
     return super.getNextStep(req, res);
   }

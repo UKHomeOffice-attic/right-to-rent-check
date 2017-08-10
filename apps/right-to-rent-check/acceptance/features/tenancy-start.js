@@ -52,7 +52,7 @@ Scenario('I see an error if I enter a future date', (
   I.seeErrors(tenancyStartPage.fields.date);
 });
 
-Scenario('I see an error when I enter a date before the 1 Dec 2014', (
+Scenario('I go to the exit page when I enter a date before the 1 Dec 2014', (
   I
 ) => {
   I.completeToStep('/tenancy-start', {
@@ -61,7 +61,7 @@ Scenario('I see an error when I enter a date before the 1 Dec 2014', (
   I.fillField('#tenancy-start-month', '1');
   I.fillField('#tenancy-start-year', '2013');
   I.submitForm();
-  I.seeErrors('#tenancy-start-group');
+  I.seeInCurrentUrl('exit-dont-need-check');
 });
 
 Scenario('I see an error when I enter a date between 1 Dec 2014 & 31st Jan 2016 & the postcode is not in the West Midlands', (
@@ -74,7 +74,7 @@ Scenario('I see an error when I enter a date between 1 Dec 2014 & 31st Jan 2016 
   I.fillField('#tenancy-start-month', '1');
   I.fillField('#tenancy-start-year', '2015');
   I.submitForm();
-  I.seeErrors('#tenancy-start-group');
+  I.seeInCurrentUrl('exit-dont-need-check');
 });
 
 Scenario('I can go to the next step when I enter a date between 1 Dec 2014 & 31st Jan 2016 & the postcode is in the West Midlands', (

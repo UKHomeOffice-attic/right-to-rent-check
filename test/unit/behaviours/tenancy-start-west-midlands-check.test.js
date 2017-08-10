@@ -42,7 +42,7 @@ describe('apps/behaviours/tenancy-start-west-midlands-check', () => {
     it('return /exit page if valid-tenancy is false', () => {
       req.sessionModel.get.withArgs('valid-tenancy').returns(false);
       const result = instance.getNextStep(req, res);
-      result.should.equal('/exit');
+      result.should.equal('/exit-dont-need-check');
     });
   });
   describe('saveValues()', () => {

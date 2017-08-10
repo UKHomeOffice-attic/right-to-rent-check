@@ -154,6 +154,9 @@ module.exports = {
     '/confirm': {
       next: '/complete'
     },
+    '/exit-dont-need-check': {
+      next: '/start'
+    },
     '/complete': {}
   }
 };

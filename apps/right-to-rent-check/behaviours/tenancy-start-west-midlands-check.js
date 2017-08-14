@@ -1,21 +1,24 @@
 'use strict';
 const westMidPostcodes = require('../../../west-midland-postcodes.js');
+const pilotStartDate = new Date('2014/12/01').getTime();
+const pilotEndDate = new Date('2016/01/31').getTime();
 
 module.exports = superclass => class extends superclass {
   saveValues(req, res, callback) {
-    const tenancyStart = req.form.values['tenancy-start'];
+    let tenancyStart = req.form.values['tenancy-start'];
+    tenancyStart = new Date(tenancyStart).getTime();
     const currentPostcode = req.sessionModel.get('property-address-postcode');
     req.sessionModel.set('valid-tenancy', true);
 
-    if (tenancyStart < '2014-12-01') {
-      req.sessionModel.set('valid-tenancy', false);
-    } else if (tenancyStart >= '2014-12-01' && tenancyStart <= '2016-01-31') {
-      const isWestMidPostcode = this.checkPostcode(currentPostcode);
-      if (!isWestMidPostcode) {
-        req.sessionModel.set('valid-tenancy', false);
+    if (tenancyStart < pilotStartDate) {
+      req.sessionModel.unset('valid-tenancy');
+    } else if (tenancyStart >= pilotStartDate && tenancyStart <= pilotEndDate) {
+      if (!this.checkPostcode(currentPostcode)) {
+        req.sessionModel.unset('valid-tenancy');
       }
     }
-      callback();
+
+    callback();
     }
 
   checkPostcode(currentPostcode) {
@@ -30,7 +33,7 @@ module.exports = superclass => class extends superclass {
   }
 
   getNextStep(req, res) {
-    if (req.sessionModel.get('valid-tenancy') === false) {
+    if (req.sessionModel.get('valid-tenancy') !== true) {
       return '/check-not-needed';
     }
     return super.getNextStep(req, res);

@@ -6,16 +6,17 @@ const steps = require('../../');
 Feature('Tenancy Start Page');
 
 Before((
-  I
+  I,
+  propertyAddressPage
 ) => {
-  I.amOnPage('/property-address');
+  I.amOnPage(propertyAddressPage.url);
 });
 
 Scenario('The correct fields are on the page', (
   I,
   tenancyStartPage
 ) => {
-  I.completeToStep('/tenancy-start', {
+  I.completeToStep(`/${tenancyStartPage.url}`, {
     'living-status': 'yes'});
   I.seeElements(_.values(tenancyStartPage.fields));
 });
@@ -24,7 +25,7 @@ Scenario('I see an error if I submit without completing the fields', (
   I,
   tenancyStartPage
 ) => {
-  I.completeToStep('/tenancy-start', {
+  I.completeToStep(`/${tenancyStartPage.url}`, {
     'living-status': 'yes'});
   I.submitForm();
   I.seeErrors(tenancyStartPage.fields.date);
@@ -34,7 +35,7 @@ Scenario('I see an error if I enter an invalid date', (
   I,
   tenancyStartPage
 ) => {
-  I.completeToStep('/tenancy-start', {
+  I.completeToStep(`/${tenancyStartPage.url}`, {
     'living-status': 'yes'});
   tenancyStartPage.enterDate('invalid');
   I.submitForm();
@@ -45,7 +46,7 @@ Scenario('I see an error if I enter a future date', (
   I,
   tenancyStartPage
 ) => {
-  I.completeToStep('/tenancy-start', {
+  I.completeToStep(`/${tenancyStartPage.url}`, {
     'living-status': 'yes'});
   tenancyStartPage.enterDate('future');
   I.submitForm();
@@ -54,9 +55,10 @@ Scenario('I see an error if I enter a future date', (
 
 Scenario('I go to the exit page when I enter a date before the 1 Dec 2014', (
   I,
+  tenancyStartPage,
   checkNotNeededPage
 ) => {
-  I.completeToStep('/tenancy-start', {
+  I.completeToStep(`/${tenancyStartPage.url}`, {
     'living-status': 'yes'});
   I.fillField('#tenancy-start-day', '1');
   I.fillField('#tenancy-start-month', '1');
@@ -67,9 +69,10 @@ Scenario('I go to the exit page when I enter a date before the 1 Dec 2014', (
 
 Scenario('I see an error when I enter a date between 1 Dec 2014 & 31st Jan 2016 & the postcode is not in the West Midlands', (
   I,
+  tenancyStartPage,
   checkNotNeededPage
 ) => {
-  I.completeToStep('/tenancy-start', {
+  I.completeToStep(`/${tenancyStartPage.url}`, {
     'property-address-postcode': 'SW1P 4DF',
     'living-status': 'yes'});
   I.fillField('#tenancy-start-day', '1');
@@ -79,14 +82,13 @@ Scenario('I see an error when I enter a date between 1 Dec 2014 & 31st Jan 2016 
   I.seeInCurrentUrl(checkNotNeededPage.url);
 });
 
-Scenario('I can go to the next step when I enter a date between 1 Dec 2014 & 31st Jan 2016 & the postcode is in the West Midlands', (
 Scenario('When I submit a valid date Then I am taken to the check confirmed page', (
   I,
-  tenantDetailsPage,
   tenancyStartPage,
+  tenantDetailsPage,
   checkConfirmedPage
 ) => {
-  I.completeToStep('/tenancy-start', {
+  I.completeToStep(`/${tenancyStartPage.url}`, {
     'property-address-postcode': 'B1 2EA',
     'living-status': 'yes'});
   I.fillField('#tenancy-start-day', '1');
@@ -98,9 +100,10 @@ Scenario('When I submit a valid date Then I am taken to the check confirmed page
 
 Scenario('I can go to the next step when I enter a date after 31st Jan 2016, that is not in the future & the postcode IS NOT in the the West Midlands', (
   I,
+  tenancyStartPage,
   tenantDetailsPage
 ) => {
-  I.completeToStep('/tenancy-start', {
+  I.completeToStep(`/${tenancyStartPage.url}`, {
     'property-address-postcode': 'SW1P 4DF',
     'living-status': 'yes'});
   I.fillField('#tenancy-start-day', '1');
@@ -112,9 +115,10 @@ Scenario('I can go to the next step when I enter a date after 31st Jan 2016, tha
 
 Scenario('I can go to the next step when I enter a date after 31st Jan 2016, that is not in the future & the postcode IS IN the West Midlands', (
   I,
-  tenantDetailsPage
+  tenancyStartPage,
+  checkConfirmedPage
 ) => {
-  I.completeToStep('/tenancy-start', {
+  I.completeToStep(`/${tenancyStartPage.url}`, {
     'property-address-postcode': 'B1 2EA',
     'living-status': 'yes'});
   I.fillField('#tenancy-start-day', '1');

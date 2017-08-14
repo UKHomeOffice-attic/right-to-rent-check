@@ -20,7 +20,7 @@ Scenario('I see the same Tenant Details on the tenant-add-another page', (
 ) => {
   I.submitForm();
   I.seeInCurrentUrl(tenantAddAnotherPage.url);
-  tenantAddAnotherPage.seeOneElement('details-table');
+  I.seeNumberOfElements('.tenant-details', 1);
 });
 
 Scenario('I see the Tenant Details change on the tenant-add-another page if I edit a field', (

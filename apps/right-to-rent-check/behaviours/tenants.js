@@ -13,11 +13,8 @@ module.exports = fields => {
           return callback(err);
         }
 
-        // Find values with keys in the list of fields
         let tenant = _.pick(values, fields);
-
-        // Get the list of tenants
-        const tenants = req.sessionModel.get('tenants') || [];
+        let tenants = req.sessionModel.get('tenants') || [];
 
         const savedByUuid = _.find(tenants, {'tenant-uuid': values['tenant-uuid']});
 
@@ -29,7 +26,6 @@ module.exports = fields => {
         // when a user has selected the change button
         if (req.params.action === 'edit') {
 
-          // find the tenant the user wants to edit
           tenant = _.find(tenants, {'tenant-uuid': req.params.id});
 
           // set the the tenant to be editted to the current values
@@ -42,27 +38,36 @@ module.exports = fields => {
             return step.fields && step.fields.indexOf(req.query.field) !== -1;
           });
 
-          // add hash field name to the url.
           values.redirectTo += `#${req.query.field}`;
-
-          // flag for editted
           tenant.edit = true;
 
           // replace the tenant the user want to edit
           // with the updated for editted tenant
           tenants.splice(_.findIndex(tenants, {'tenant-uuid': req.params.id}), 1, tenant);
 
+        } else if (req.params.action === 'delete') {
+
+          tenants = _.reject(tenants, {'tenant-uuid': req.params.id});
+
+          if (req.params.id === values['tenant-uuid']) {
+            // if deleting the tenant just added, delete it from the values
+            const fieldValues = _.pick(values, fields.concat('tenant-uuid', 'tenant-additional-details'));
+            values = _.assignWith(values, fieldValues, (values) => '');
+          }
+
+          if (tenants.length === 0) {
+            values.redirectTo = '/tenant-details';
+          }
+
         // After a tenant record has been editted,
         // either by way of the back link or a 'change' link
         } else if (editted) {
 
-          // make sure the replacer and valeus have the same uuids
+          // make sure the replacer and values have the same uuids
           tenant['tenant-uuid'] = values['tenant-uuid'] = editted['tenant-uuid'];
 
-          // reset its edit state
           tenant.edit = false;
 
-          // replace the edittable tenant
           tenants.splice(_.findIndex(tenants, editted), 1, tenant);
 
         // when the tenant does not exist yet
@@ -81,8 +86,6 @@ module.exports = fields => {
 
         // Update the current values with the tenants
         values.tenants = tenants;
-
-        // update the values
         req.sessionModel.set(values);
 
         callback();
@@ -95,9 +98,11 @@ module.exports = fields => {
     }
 
     render(req, res, callback) {
-      if (req.params.action === 'edit') {
+      const redirectTo = req.sessionModel.get('redirectTo');
+      if (redirectTo) {
+        req.sessionModel.unset('redirectTo');
         this.emit('complete', req, res);
-        res.redirect(req.sessionModel.get('redirectTo'));
+        res.redirect(redirectTo);
       } else {
         super.render(req, res, callback);
       }

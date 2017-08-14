@@ -1,5 +1,6 @@
 'use strict';
 
+const _ = require('lodash');
 const AddressLookup = require('hof-behaviour-address-lookup');
 const tenants = require('./behaviours/tenants')([
   'tenant-name',
@@ -78,7 +79,8 @@ module.exports = {
       forks: [{
         target: '/tenant-another',
         condition: (req, res) => {
-          if (req.sessionModel.get('redirectTo')) {
+          const edit = _.find(req.sessionModel.get('tenants'), {edit: true});
+          if (edit) {
             return true;
           }
           return false;

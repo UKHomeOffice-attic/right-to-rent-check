@@ -84,7 +84,8 @@ describe('behaviours/tenants', () => {
 
     beforeEach(() => {
       sessionModel = {
-        get: sinon.stub().withArgs('redirectTo').returns(redirectTo)
+        get: sinon.stub().withArgs('redirectTo').returns(redirectTo),
+        unset: sinon.stub()
       };
       const redirectStub = sinon.stub();
       res = reqres.res({redirect: redirectStub});
@@ -101,22 +102,24 @@ describe('behaviours/tenants', () => {
       Base.prototype.emit.restore();
     });
 
-    it('calls super render', () => {
-      req.params.action = null;
+    it('calls super render by default', () => {
+      sessionModel.get.withArgs('redirectTo').returns(null);
       controller.render(req, res, callback);
       expect(Base.prototype.render).to.have.been.calledWithExactly(req, res, callback);
 
     });
 
-    it('emits `complete` on edit', () => {
-      req.params.action = 'edit';
+    it('unsets `redirectTo` from the session', () => {
       controller.render(req, res, callback);
-      expect(controller.emit).to.have.been.calledWith('complete');
-
+      expect(req.sessionModel.unset).to.have.been.calledWith('redirectTo');
     });
 
-    it('redirects to redirect path on edit', () => {
-      req.params.action = 'edit';
+    it('emits `complete` if there is a redirectTo', () => {
+      controller.render(req, res, callback);
+      expect(controller.emit).to.have.been.calledWith('complete');
+    });
+
+    it('redirects to redirectTo path if there is a redirectTo', () => {
       controller.render(req, res, callback);
       expect(res.redirect).to.have.been.calledWith(redirectTo);
 
@@ -202,7 +205,7 @@ describe('behaviours/tenants', () => {
       Base.prototype.getValues.restore();
     });
 
-    describe('when a user is adding a tenant', () => {
+    describe('Adding a tenant', () => {
 
       it('adds a new tenant from the values with a uuid to the list of tenants', (done) => {
 
@@ -340,7 +343,7 @@ describe('behaviours/tenants', () => {
 
     });
 
-    describe('when a user has selected change', () => {
+    describe('Editting a tenant detail', () => {
 
       beforeEach(() => {
 
@@ -410,7 +413,7 @@ describe('behaviours/tenants', () => {
         controller.getValues(req, res, (err) => {
           expect(err).not.to.exist;
           expect(req.sessionModel.set.args[0][0]['tenant-uuid'])
-            .to.equal(tenants[0]['tenant-uuid'])
+            .to.equal(tenants[0]['tenant-uuid']);
           expect(req.sessionModel.set).to.have.been.calledWith(values);
           done();
         });
@@ -438,7 +441,115 @@ describe('behaviours/tenants', () => {
 
     });
 
-    describe('When a user has editted a tenant', () => {
+    describe('Deleting a tenant', () => {
+
+      beforeEach(() => {
+
+        // previously saved to the session model
+        req.sessionModel.get.withArgs('tenants').returns([{
+          'tenant-name': 'Karen Worth',
+          'tenant-age': '42',
+          'tenant-uuid': '1234567890'
+        }, {
+          'tenant-name': 'Angela Ragwort',
+          'tenant-age': '37',
+          'tenant-uuid': '0987654321'
+        }]);
+
+        // edit link clicked
+        req.params = {
+          action: 'delete',
+          id: '0987654321'
+        };
+
+        // expected tenants
+        tenants = [{
+          'tenant-name': 'Angela Ragwort',
+          'tenant-age': '37',
+          'tenant-uuid': '0987654321'
+        }];
+
+        values = {
+          'tenant-name': 'Karen Worth',
+          'tenant-age': '42',
+          'tenant-uuid': '1234567890',
+          tenants: tenants
+        };
+
+      });
+
+      it('removes the tenant from the tenants', (done) => {
+
+        superGetValues.returns(req, res).yields(null, values);
+
+        controller.getValues(req, res, (err) => {
+          expect(err).not.to.exist;
+          expect(req.sessionModel.set.args[0][0].tenants).to.have.length(1);
+          expect(req.sessionModel.set).to.have.been.calledWith(values);
+          done();
+        });
+
+      });
+
+    });
+
+    describe('Deleting the last tenant', () => {
+
+      beforeEach(() => {
+
+        // previously saved to the session model
+        req.sessionModel.get.withArgs('tenants').returns([{
+          'tenant-name': 'Karen Worth',
+          'tenant-age': '42',
+          'tenant-uuid': '1234567890'
+        }]);
+
+        // edit link clicked
+        req.params = {
+          action: 'delete',
+          id: '1234567890'
+        };
+
+        // expected tenants
+        tenants = [];
+
+        values = {
+          tenants: tenants
+        };
+
+      });
+
+      it('removes the tenant from the tenants and the values', (done) => {
+
+        superGetValues.returns(req, res).yields(null, values);
+
+        controller.getValues(req, res, (err) => {
+          expect(err).not.to.exist;
+          expect(req.sessionModel.set.args[0][0].tenants).to.have.length(0);
+          expect(req.sessionModel.set).to.have.been.calledWith(values);
+          done();
+        });
+
+      });
+
+      it('redirects to the tenant-details page if the last tenant is deleted', (done) => {
+
+        superGetValues.returns(req, res).yields(null, values);
+
+        controller.getValues(req, res, (err) => {
+          expect(err).not.to.exist;
+          expect(req.sessionModel.set.args[0][0])
+            .to.have.property('redirectTo')
+            .and.equal('/tenant-details');
+          expect(req.sessionModel.set).to.have.been.calledWith(values);
+          done();
+        });
+
+      });
+
+    });
+
+    describe('After editting a tenant', () => {
 
       beforeEach(() => {
         // previously saved
@@ -491,7 +602,7 @@ describe('behaviours/tenants', () => {
 
     });
 
-    describe('When the tenant exists and no changes have been made to the tenant', () => {
+    describe('Reloading the tenant-details', () => {
 
       beforeEach(() => {
 

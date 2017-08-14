@@ -23,7 +23,7 @@ Scenario('I see one tenant details table on the page', (
   I,
   tenantAddAnotherPage
 ) => {
-  tenantAddAnotherPage.seeOneElement('details-table');
+  I.seeNumberOfElements('.tenant-details', 1);
 });
 
 Scenario('I see a change button next to each tenant detail', (
@@ -31,7 +31,7 @@ Scenario('I see a change button next to each tenant detail', (
   tenantAddAnotherPage
 ) => {
   I.seeElements('#content form table > tbody > tr > td > a');
-  tenantAddAnotherPage.seeOneElement('details-table');
+  I.seeNumberOfElements('.tenant-details', 1);
 });
 
 Scenario('I see an error if I submit without selecting an option', (

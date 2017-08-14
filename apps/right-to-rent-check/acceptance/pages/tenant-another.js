@@ -17,11 +17,7 @@ module.exports = {
     yes: '#tenant-add-another-yes',
     no: '#tenant-add-another-no'
   },
-
-  content: {
-    'details-table': '.tenant-details'
-  },
-
+  
   selectors: {
     backLink: '#step a',
     change: {
@@ -34,10 +30,6 @@ module.exports = {
       delivery: '#content > div > form > table > tbody > tr:nth-child(7) > td:nth-child(3) > a',
     }
 
-  },
-
-  seeOneElement(id) {
-    return this.content[id].length === 1;
   }
 
 };

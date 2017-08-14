@@ -66,20 +66,20 @@
     }
   },
   "agent-name": {
-    "label": "Your full name",
+    "label": "Full name",
     "summary": "Name"
   },
   "agent-company": {
-    "label": "Your company name",
+    "label": "Company name",
     "summary": "Company name"
   },
   "agent-email-address": {
-    "label": "Your email address",
+    "label": "Email address",
     "hint": "We will use this to let you know the outcome of the check",
     "summary": "Email address"
   },
   "agent-phone-number": {
-    "label": "Your phone number",
+    "label": "Phone number",
     "hint": "We may use this number to contact you with queries",
     "summary": "Phone number"
   },

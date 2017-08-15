@@ -17,10 +17,13 @@ module.exports = {
   params: '/:action?/:id?',
   behaviours: [require('./behaviours/filter-fields')],
   steps: {
-    '/start': {
-      next: '/check-you-can-use'
+    '/eligibility-check': {
+      next: '/document-check'
     },
-    '/check-you-can-use': {
+    '/document-check': {
+      next: '/rental-property-location'
+    },
+    '/rental-property-location': {
       next: '/property-address'
     },
     '/property-address': {
@@ -36,15 +39,25 @@ module.exports = {
       fields: ['living-status'],
       next: '/tenancy-start',
       forks: [{
-        target: '/person-location',
+        target: '/tenant-in-uk',
         condition: {
           field: 'living-status',
           value: 'no'
         }
       }],
     },
-    '/person-location': {
+    '/tenant-in-uk': {
       next: '/current-property-address'
+    },
+    '/tenancy-start': {
+      fields: ['tenancy-start'],
+      next: '/check-confirmed'
+    },
+    '/check-confirmed': {
+      next: '/start'
+    },
+    '/start': {
+      next: '/tenant-details'
     },
     '/current-property-address': {
       behaviours: AddressLookup({
@@ -53,11 +66,7 @@ module.exports = {
           hostname: config.postcode.hostname
         }
       }),
-      next: '/tenant-details'
-    },
-    '/tenancy-start': {
-      fields: ['tenancy-start'],
-      next: '/tenant-details'
+      next: '/check-confirmed'
     },
     '/tenant-details': {
       fields: [

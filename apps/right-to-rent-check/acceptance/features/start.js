@@ -2,7 +2,7 @@
 
 const steps = require('../../');
 
-Feature('Agent Details Page');
+Feature('Start Page');
 
 Before((
   I,
@@ -11,10 +11,10 @@ Before((
   I.visitPage(startPage, steps);
 });
 
-Scenario('I am taken to the check you can use step when I click continue', (
+Scenario('When I click continue Then I am taken to the tenant details page', (
   I,
-  checkYouCanUsePage
+  tenantDetailsPage
 ) => {
   I.submitForm();
-  I.seeInCurrentUrl(checkYouCanUsePage.url);
+  I.seeInCurrentUrl(tenantDetailsPage.url);
 });

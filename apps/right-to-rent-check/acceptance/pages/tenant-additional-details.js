@@ -22,16 +22,16 @@ module.exports = {
   },
 
   hidden: {
-  	'reference-number': '#tenant-reference-number',
+    'reference-number': '#tenant-reference-number',
     'passport-number': '#tenant-passport-number',
     'brp-number': '#tenant-brp-number',
     'recorded-delivery-number': '#tenant-recorded-delivery-number'
   },
 
   checkFields() {
-  	_.values(this.fields).forEach(id => {
-  		I.click(id);
-  	});
+    _.values(this.fields).forEach(id => {
+      I.click(id);
+    });
   },
 
   completeAllFields() {

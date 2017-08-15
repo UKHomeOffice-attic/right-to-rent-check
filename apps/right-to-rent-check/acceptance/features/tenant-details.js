@@ -3,7 +3,7 @@
 const _ = require('lodash');
 const steps = require('../../');
 
-Feature('Tenant Details Page');
+Feature('Given I am at /tenant-details');
 
 Before((
   I,
@@ -12,57 +12,55 @@ Before((
   I.visitPage(tenantDetailsPage, steps);
 });
 
-Scenario('The correct fields are on the page', (
+Scenario('Then the correct fields are on the page', (
   I,
   tenantDetailsPage
 ) => {
   I.seeElements(_.values(tenantDetailsPage.fields));
 });
 
-Scenario('I see an error for each field if I submit without completing any of the fields', (
-  I,
-  tenantDetailsPage
+Scenario('When I submit an empty form then I see an error for each field', (
+  I
 ) => {
   I.submitForm();
-  I.seeErrors(tenantDetailsPage.fields.name);
-  I.seeErrors(tenantDetailsPage.fields.country);
-  I.seeErrors(tenantDetailsPage.fields.date);
+  I.seeErrors('#tenant-name');
+  I.seeErrors('#tenant-country');
+  I.seeErrors('#tenant-dob-group');
 });
 
-Scenario('I see an error if I submit an invalid date', (
+Scenario('When I submit an invalid date then I see an invalid date error', (
   I,
   tenantDetailsPage
 ) => {
   tenantDetailsPage.enterDate('invalid');
   I.submitForm();
-  I.seeErrors(tenantDetailsPage.fields.date);
+  I.seeErrors('#tenant-dob-group');
 });
 
-Scenario('I see an error if I enter a future date', (
+Scenario('When I submit a date in the future then I see a future date error', (
   I,
   tenantDetailsPage
 ) => {
   tenantDetailsPage.enterDate('future');
   I.submitForm();
-  I.seeErrors(tenantDetailsPage.fields.date);
+  I.seeErrors('#tenant-dob-group');
 });
 
-Scenario('I see an error if I do not select a country from the drop down', (
-  I,
-  tenantDetailsPage
+Scenario('When I submit an invalid country name then I see a country error', (
+  I
 ) => {
-  tenantDetailsPage.enterCountry('no country');
+  I.fillField('#tenant-country', 'Not a country');
   I.submitForm();
-  I.seeErrors(tenantDetailsPage.fields.country);
+  I.seeErrors('#tenant-country');
 });
 
-Scenario('I am taken to the tenant-additional-details step if I enter a valid date', (
+Scenario('When I submit a valid form then I am taken to the tenant-additional-details', (
   I,
   tenantDetailsPage,
   tenantAdditionalDetailsPage
 ) => {
-  I.fillField(tenantDetailsPage.fields.name, tenantDetailsPage.content.name);
-  I.fillField(tenantDetailsPage.fields.country, tenantDetailsPage.content.country);
+  I.fillField('#tenant-name', 'aaa');
+  I.fillField('#tenant-country', 'United Kingdom');
   tenantDetailsPage.enterDate('valid');
   I.submitForm();
   I.seeInCurrentUrl(tenantAdditionalDetailsPage.url);

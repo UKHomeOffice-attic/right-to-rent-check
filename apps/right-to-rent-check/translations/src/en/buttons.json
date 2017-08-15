@@ -1,3 +1,5 @@
 {
-  "start": "Start Now"
+  "start": "Start Now",
+  "change": "Change",
+  "delete": "Delete"
 }

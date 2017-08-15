@@ -1,14 +1,8 @@
-/* eslint implicit-dependencies/no-implicit: [2, {dev:true}] */
-
 'use strict';
-
-let I;
 
 module.exports = {
 
-  _init() {
-    I = require('so-acceptance/steps')();
-  },
+  _init() {},
 
   url: 'tenant-another',
 
@@ -17,17 +11,17 @@ module.exports = {
     yes: '#tenant-add-another-yes',
     no: '#tenant-add-another-no'
   },
-  
+
   selectors: {
     backLink: '#step a',
     change: {
-      name: '#content > div > form > table > tbody > tr:nth-child(1) > td:nth-child(3) > a',
-      dob: '#content > div > form > table > tbody > tr:nth-child(2) > td:nth-child(3) > a',
-      country: '#content > div > form > table > tbody > tr:nth-child(3) > td:nth-child(3) > a',
-      reference: '#content > div > form > table > tbody > tr:nth-child(4) > td:nth-child(3) > a',
-      passport: '#content > div > form > table > tbody > tr:nth-child(5) > td:nth-child(3) > a',
-      brp: '#content > div > form > table > tbody > tr:nth-child(6) > td:nth-child(3) > a',
-      delivery: '#content > div > form > table > tbody > tr:nth-child(7) > td:nth-child(3) > a',
+      name: '.tenant-details tr:nth-child(1) > td:nth-child(3) > a',
+      dob: '.tenant-details tr:nth-child(2) > td:nth-child(3) > a',
+      country: '.tenant-details tr:nth-child(3) > td:nth-child(3) > a',
+      reference: '.tenant-details tr:nth-child(4) > td:nth-child(3) > a',
+      passport: '.tenant-details tr:nth-child(5) > td:nth-child(3) > a',
+      brp: '.tenant-details tr:nth-child(6) > td:nth-child(3) > a',
+      delivery: '.tenant-details tr:nth-child(7) > td:nth-child(3) > a',
     }
 
   }

@@ -32,6 +32,7 @@
   "tenant-another": {
     "header": "Is there another person on the same tenancy you'd like to request a check for?",
     "tables": {
+      "title": "Tenant details",
       "headers": {
         "name": "Name",
         "dob": "Date of birth",

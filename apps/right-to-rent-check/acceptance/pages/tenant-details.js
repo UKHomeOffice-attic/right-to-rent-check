@@ -20,7 +20,6 @@ module.exports = {
     country: '#tenant-country'
   },
   content: {
-    'name': 'John Smith',
     'future-date': {
       day: '1',
       month: '1',
@@ -35,18 +34,13 @@ module.exports = {
       day: '1',
       month: '1',
       year: '2016'
-    },
-    country: 'Denmark'
+    }
   },
 
   enterDate(type) {
     ['day', 'month', 'year'].forEach(part => {
       I.fillField(this.fields[part], this.content[`${type}-date`][part]);
     });
-  },
-
-  enterCountry(type) {
-    I.fillField('tenant-country', type);
   }
 
 };

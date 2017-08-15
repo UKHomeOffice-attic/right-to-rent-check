@@ -78,12 +78,10 @@ module.exports = {
       next: '/tenant-additional-details',
       forks: [{
         target: '/tenant-another',
-        condition: (req, res) => {
-          const edit = _.find(req.sessionModel.get('tenants'), {edit: true});
-          if (edit) {
-            return true;
-          }
-          return false;
+        condition: (req) => {
+          return _.find(req.sessionModel.get('tenants'), {
+            edit: true
+          });
         }
       }]
     },

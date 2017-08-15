@@ -1,11 +1,7 @@
 'use strict';
 
-let I;
-
 module.exports = {
-  _init() {
-    I = require('so-acceptance/steps.js')();
-  },
+  _init() {},
 
   url: 'landlord-agent',
   fields: {

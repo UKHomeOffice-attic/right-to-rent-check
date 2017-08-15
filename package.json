@@ -4,10 +4,12 @@
     "start": "node app.js",
     "dev": "hof-build watch",
     "dev:ci": "MOCK_POSTCODE=true NODE_ENV=ci DISABLE_CSP=true npm run dev",
-    "test": "NODE_ENV=test npm run test:unit && npm run test:lint",
+    "test": "NODE_ENV=test npm run test:unit && npm run lint",
     "test:unit": "_mocha",
-    "test:lint": "eslint .",
+    "lint": "npm run lint:app && npm run lint:acceptance",
+    "lint:app": "eslint .",
     "test:acceptance": "funkie so-acceptance --steps",
+    "lint:acceptance": "eslint --no-ignore -c ./node_modules/so-acceptance/.eslintrc ./apps/*/acceptance/**/*.js",
     "build": "hof-build",
     "prepublish": "npm run build",
     "postinstall": "npm run build"
@@ -33,12 +35,16 @@
     "funkie": "0.0.5",
     "funkie-phantom": "0.0.1",
     "mocha": "^3.4.2",
+    "pre-commit": "^1.2.2",
     "proxyquire": "^1.8.0",
     "reqres": "^1.3.0",
     "sinon": "^2.4.0",
     "sinon-chai": "^2.12.0",
     "so-acceptance": "^4.2.5"
   },
+  "pre-commit": [
+    "test"
+  ],
   "name": "right-to-rent-check",
   "version": "1.0.0",
   "main": "index.js",
@@ -46,11 +52,9 @@
     "type": "git",
     "url": "git+https://github.com/UKHomeOffice/right-to-rent-check.git"
   },
-  "keywords": [],
-  "author": "",
   "bugs": {
     "url": "https://github.com/UKHomeOffice/right-to-rent-check/issues"
   },
   "homepage": "https://github.com/UKHomeOffice/right-to-rent-check#readme",
-  "description": ""
+  "description": "Right to Rent Check form service"
 }

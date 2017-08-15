@@ -190,7 +190,8 @@ describe('behaviours/tenants', () => {
       sessionModel = {
         get: sinon.stub(),
         set: sinon.stub(),
-        toJSON: sinon.stub()
+        toJSON: sinon.stub(),
+        unset: sinon.stub()
       };
       res = reqres.res();
       req = reqres.req({sessionModel});
@@ -464,9 +465,9 @@ describe('behaviours/tenants', () => {
 
         // expected tenants
         tenants = [{
-          'tenant-name': 'Angela Ragwort',
-          'tenant-age': '37',
-          'tenant-uuid': '0987654321'
+          'tenant-name': 'Karen Worth',
+          'tenant-age': '42',
+          'tenant-uuid': '1234567890'
         }];
 
         values = {
@@ -484,8 +485,7 @@ describe('behaviours/tenants', () => {
 
         controller.getValues(req, res, (err) => {
           expect(err).not.to.exist;
-          expect(req.sessionModel.set.args[0][0].tenants).to.have.length(1);
-          expect(req.sessionModel.set).to.have.been.calledWith(values);
+          expect(req.sessionModel.set).to.have.been.calledWith('tenants', tenants);
           done();
         });
 
@@ -525,8 +525,13 @@ describe('behaviours/tenants', () => {
 
         controller.getValues(req, res, (err) => {
           expect(err).not.to.exist;
-          expect(req.sessionModel.set.args[0][0].tenants).to.have.length(0);
-          expect(req.sessionModel.set).to.have.been.calledWith(values);
+          expect(req.sessionModel.unset.args[0][0]).to.deep.equal([
+            'tenant-name',
+            'tenant-age',
+            'tenant-uuid',
+            'tenant-additional-details'
+          ]);
+          expect(req.sessionModel.set).to.have.been.calledWith('tenants', tenants);
           done();
         });
 
@@ -538,10 +543,7 @@ describe('behaviours/tenants', () => {
 
         controller.getValues(req, res, (err) => {
           expect(err).not.to.exist;
-          expect(req.sessionModel.set.args[0][0])
-            .to.have.property('redirectTo')
-            .and.equal('/tenant-details');
-          expect(req.sessionModel.set).to.have.been.calledWith(values);
+          expect(req.sessionModel.set).to.have.been.calledWith('redirectTo', '/tenant-details');
           done();
         });
 
@@ -602,7 +604,7 @@ describe('behaviours/tenants', () => {
 
     });
 
-    describe('Reloading the tenant-details', () => {
+    describe('With no changes', () => {
 
       beforeEach(() => {
 

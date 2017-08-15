@@ -3,7 +3,7 @@
 const _ = require('lodash');
 const steps = require('../../');
 
-Feature('Tenant Additional Details Page');
+Feature('Given I am at /tenant-additional-details');
 
 Before((
   I,
@@ -12,14 +12,14 @@ Before((
   I.visitPage(tenantAdditionalDetailsPage, steps);
 });
 
-Scenario('The correct fields are on the page', (
+Scenario('When the page loads Then the correct fields are visible', (
   I,
   tenantAdditionalDetailsPage
 ) => {
   I.seeElements(_.values(tenantAdditionalDetailsPage.fields));
 });
 
-Scenario('Hidden fields become visible when the fields are checked', (
+Scenario('When a visible field is checked Then its hidden field becomes visible', (
   I,
   tenantAdditionalDetailsPage
 ) => {
@@ -27,27 +27,16 @@ Scenario('Hidden fields become visible when the fields are checked', (
   I.seeElements(_.values(tenantAdditionalDetailsPage.hidden));
 });
 
-Scenario('Hidden fields become visible when the fields are checked', (
-  I,
-  tenantAdditionalDetailsPage
-) => {
-  tenantAdditionalDetailsPage.checkFields();
-  I.seeElements(_.values(tenantAdditionalDetailsPage.hidden));
-});
-
-Scenario('I see an error if I check a field and do not complete it\'s hidden field', (
+Scenario('When a field is visible and empty And I submit the form Then I see errors', (
   I,
   tenantAdditionalDetailsPage
 ) => {
   tenantAdditionalDetailsPage.checkFields();
   I.submitForm();
-  I.seeErrors(tenantAdditionalDetailsPage.hidden['reference-number']);
-  I.seeErrors(tenantAdditionalDetailsPage.hidden['passport-number']);
-  I.seeErrors(tenantAdditionalDetailsPage.hidden['brp-number']);
-  I.seeErrors(tenantAdditionalDetailsPage.hidden['recorded-delivery-number']);
+  I.seeErrors(_.values(tenantAdditionalDetailsPage.hidden));
 });
 
-Scenario('I am taken to the tenant-another step if I do not complete or check any field', (
+Scenario('When all fields are empty And I submit the form Then I am redirected to /tenant-another', (
   I,
   tenantAdditionalDetailsPage,
   tenantAddAnotherPage
@@ -56,18 +45,18 @@ Scenario('I am taken to the tenant-another step if I do not complete or check an
   I.seeInCurrentUrl(tenantAddAnotherPage.url);
 });
 
-Scenario('I am taken to the tenant-another step if I check a field and complete it\'s hidden field', (
+Scenario('When I check a field and complete it\'s hidden field Then I am redirected to /tenant-another', (
   I,
   tenantAdditionalDetailsPage,
   tenantAddAnotherPage
 ) => {
-  I.click(tenantAdditionalDetailsPage.fields['brp-number']);
-  I.fillField(tenantAdditionalDetailsPage.hidden['brp-number'], '0987654321')
+  I.click('#tenant-additional-details-brp-number');
+  I.fillField('#tenant-brp-number', '0987654321');
   I.submitForm();
   I.seeInCurrentUrl(tenantAddAnotherPage.url);
 });
 
-Scenario('I am taken to the tenant-another step if I check all fields and complete their hidden fields', (
+Scenario('When I check all fields and complete their hidden fields Then I am redirected to /tenant-another', (
   I,
   tenantAdditionalDetailsPage,
   tenantAddAnotherPage

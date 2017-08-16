@@ -1,9 +1,8 @@
 'use strict';
 
 const _ = require('lodash');
-const steps = require('../../');
 
-Feature('Tenancy Start Page');
+Feature('Given I am on the Tenancy Start Page');
 
 Before((
   I,
@@ -85,7 +84,6 @@ Scenario('I see an error when I enter a date between 1 Dec 2014 & 31st Jan 2016 
 Scenario('When I submit a valid date Then I am taken to the check confirmed page', (
   I,
   tenancyStartPage,
-  tenantDetailsPage,
   checkConfirmedPage
 ) => {
   I.completeToStep(`/${tenancyStartPage.url}`, {
@@ -95,13 +93,13 @@ Scenario('When I submit a valid date Then I am taken to the check confirmed page
   I.fillField('#tenancy-start-month', '1');
   I.fillField('#tenancy-start-year', '2015');
   I.submitForm();
-  I.seeInCurrentUrl(tenantDetailsPage.url);
+  I.seeInCurrentUrl(checkConfirmedPage.url);
 });
 
 Scenario('I can go to the next step when I enter a date after 31st Jan 2016, that is not in the future & the postcode IS NOT in the the West Midlands', (
   I,
   tenancyStartPage,
-  tenantDetailsPage
+  checkConfirmedPage
 ) => {
   I.completeToStep(`/${tenancyStartPage.url}`, {
     'property-address-postcode': 'SW1P 4DF',
@@ -110,7 +108,7 @@ Scenario('I can go to the next step when I enter a date after 31st Jan 2016, tha
   I.fillField('#tenancy-start-month', '1');
   I.fillField('#tenancy-start-year', '2017');
   I.submitForm();
-  I.seeInCurrentUrl(tenantDetailsPage.url);
+  I.seeInCurrentUrl(checkConfirmedPage.url);
 });
 
 Scenario('I can go to the next step when I enter a date after 31st Jan 2016, that is not in the future & the postcode IS IN the West Midlands', (

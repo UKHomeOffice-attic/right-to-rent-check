@@ -14,7 +14,7 @@
   "tenancy-start": {
     "required": "Enter a date",
     "date": "Enter a valid date",
-    "before": "The tenancy start cannot be in the future"
+    "before": "The tenancy start date cannot be in the future"
   },
   "current-address-postcode": {
     "required": "Enter a postcode"

@@ -11,6 +11,7 @@ module.exports = {
   },
 
   url: 'tenant-details',
+    backlink: '#step a',
   fields: {
     date: '#tenant-dob-group',
     day: '#tenant-dob-day',
@@ -42,5 +43,4 @@ module.exports = {
       I.fillField(this.fields[part], this.content[`${type}-date`][part]);
     });
   }
-
 };

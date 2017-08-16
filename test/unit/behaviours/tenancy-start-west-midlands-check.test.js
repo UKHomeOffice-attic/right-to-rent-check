@@ -11,12 +11,12 @@ describe('apps/behaviours/tenancy-start-west-midlands-check', () => {
   class Base {
       getNextStep() {}
       saveValues() {}
-    }
-    let req;
-    let res;
-    let sessionModel;
-    let instance;
-    let ValidTenants;
+  }
+  let req;
+  let res;
+  let sessionModel;
+  let instance;
+  let ValidTenants;
 
   beforeEach(() => {
     sessionModel = {
@@ -26,24 +26,32 @@ describe('apps/behaviours/tenancy-start-west-midlands-check', () => {
     };
     res = reqres.res();
     req = reqres.req({sessionModel});
-    sinon.stub(Base.prototype, 'getNextStep');
-    sinon.stub(Base.prototype, 'saveValues');
     ValidTenants = Behaviour(Base);
     instance = new ValidTenants();
   });
 
-  afterEach(() => {
-    Base.prototype.getNextStep.restore();
-    Base.prototype.saveValues.restore();
-  });
-
   describe('getNextStep()', () => {
-   it('calls the parent method when the tenancy is valid', () => {
+    beforeEach(() => {
+      sinon.stub(Base.prototype, 'getNextStep');
+    });
+    afterEach(() => {
+      Base.prototype.getNextStep.restore();
+    });
+
+    it('calls the parent method when the tenancy is valid & unsets the valid-tenancy', () => {
       req.sessionModel.get.withArgs('valid-tenancy').returns(true);
       instance.getNextStep(req, res);
 
       Base.prototype.getNextStep.should.have.been.calledWith(req, res);
     });
+
+    it('unsets the valid-tenancy at the end when the tenancy is valid', () => {
+      req.sessionModel.get.withArgs('valid-tenancy').returns(true);
+      instance.getNextStep(req, res);
+
+      req.sessionModel.unset.should.have.been.calledWith('valid-tenancy');
+    });
+
     it('returns the exit page if tenancy is not set to true', () => {
       req.sessionModel.get.withArgs('valid-tenancy').returns(undefined);
       const result = instance.getNextStep(req, res);
@@ -55,6 +63,10 @@ describe('apps/behaviours/tenancy-start-west-midlands-check', () => {
 
     beforeEach(() => {
       callback = sinon.stub();
+      sinon.stub(Base.prototype, 'saveValues');
+    });
+    afterEach(() => {
+      Base.prototype.saveValues.restore();
     });
 
     it('if the tenancyStart is after 2016-01-31 then do NOT unset valid-tenancy', () => {
@@ -64,21 +76,21 @@ describe('apps/behaviours/tenancy-start-west-midlands-check', () => {
         }
       };
       instance.saveValues(req, res, callback);
-      req.sessionModel.unset.should.not.calledWith('valid-tenancy');
+      req.sessionModel.set.should.be.calledWith('valid-tenancy', true);
     });
 
-    it('if the tenancyStart is before 2014-12-01 set valid-tenancy to false', () => {
+    it('if the tenancyStart is before 2014-12-01 do NOT set valid-tenancy', () => {
       req.form = {
         values: {
           'tenancy-start': '2012-01-01'
         }
       };
       instance.saveValues(req, res, callback);
-      req.sessionModel.unset.should.be.calledWith('valid-tenancy');
+      req.sessionModel.set.should.not.be.calledWith('valid-tenancy', true);
     });
 
     describe('if the tenancyStart is between 2014-12-01 & 2016-01-31', () => {
-      it('the postcode is in the West Midlands, do NOT set valid-tenancy to false', () => {
+      it('the postcode is in the West Midlands, set valid-tenancy to true', () => {
         req.form = {
           values: {
             'tenancy-start': '2015-01-01'
@@ -87,11 +99,11 @@ describe('apps/behaviours/tenancy-start-west-midlands-check', () => {
         req.sessionModel.get.withArgs('property-address-postcode').returns('B1 2EA');
 
         instance.saveValues(req, res, callback);
-        req.sessionModel.unset.should.not.be.calledWith('valid-tenancy');
+        req.sessionModel.set.should.be.calledWith('valid-tenancy', true);
       });
 
       it(`if the tenancyStart is between 2014-12-01 & 2016-01-31 &
-        the postcode is NOT in the West Midlands unset valid-tenancy`, () => {
+        the postcode is NOT in the West Midlands do NOT set valid-tenancy to true`, () => {
         req.form = {
           values: {
             'tenancy-start': '2015-01-01'
@@ -100,7 +112,7 @@ describe('apps/behaviours/tenancy-start-west-midlands-check', () => {
         req.sessionModel.get.withArgs('property-address-postcode').returns('N1 2EA');
 
         instance.saveValues(req, res, callback);
-        req.sessionModel.unset.should.be.calledWith('valid-tenancy');
+        req.sessionModel.set.should.not.be.calledWith('valid-tenancy', true);
       });
     });
   });

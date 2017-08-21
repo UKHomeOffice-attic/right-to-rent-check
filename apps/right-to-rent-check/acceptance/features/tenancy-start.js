@@ -45,12 +45,12 @@ Scenario('I see an error if I enter a future date', (
   I.seeErrors(tenancyStartPage.fields.date);
 });
 
-Scenario('I am taken to the tenant-details step if I enter a valid date', (
+Scenario('When I submit a valid date Then I am taken to the check confirmed page', (
   I,
   tenancyStartPage,
-  tenantDetailsPage
+  checkConfirmedPage
 ) => {
   tenancyStartPage.enterDate('valid');
   I.submitForm();
-  I.seeInCurrentUrl(tenantDetailsPage.url);
+  I.seeInCurrentUrl(checkConfirmedPage.url);
 });

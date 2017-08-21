@@ -1,21 +1,27 @@
 {
+  "eligibility-check": {
+    "header": "Placeholder page"
+  },
+  "document-check": {
+    "header": "Placeholder page"
+  },
+  "rental-property-location": {
+    "header": "Placeholder page"
+  },
+  "tenant-in-uk": {
+    "header": "Placeholder page"
+  },
+  "check-confirmed": {
+    "header": "Placeholder page"
+  },
   "start": {
     "custom-header": "Request a Home Office right to rent check"
   },
   "person-in-property": {
     "intro": "You can add more people later if you need to."
   },
-  "person-location": {
-    "header": "Placeholder page"
-  },
-  "request-tenancy-start": {
-    "header": "Placeholder page"
-  },
   "current-property-address": {
     "header": "What's the person's current address?"
-  },
-  "current-property-address-select": {
-    "header": "Placeholder page"
   },
   "tenant-details": {
     "header": "What are the person's details?"
@@ -42,9 +48,6 @@
   },
   "property-address": {
     "header": "What's the rental property address?"
-  },
-  "landlord-agent": {
-    "header": "Placeholder page"
   },
   "landlord-details": {
     "header": "What are your contact details?"

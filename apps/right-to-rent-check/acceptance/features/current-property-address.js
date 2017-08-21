@@ -11,11 +11,11 @@ Before((
   I.visitPage(currentPropertyAddressPage, steps);
 });
 
-Scenario('I am taken to the tenant-details page on a valid submission', (
+Scenario('When I submit a valid address Then I am taken to the check confirmed page', (
   I,
   currentPropertyAddressPage,
-  tenantDetailsPage
+  checkConfirmedPage
 ) => {
   currentPropertyAddressPage.completeAddress();
-  I.seeInCurrentUrl(tenantDetailsPage.url);
+  I.seeInCurrentUrl(checkConfirmedPage.url);
 });

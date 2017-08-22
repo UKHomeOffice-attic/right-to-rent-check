@@ -14,9 +14,9 @@ Before((
 });
 
 Scenario('When I click the start button Then I am redirected to /start', (
-  I,
-  tenancyStartPage
+  I
 ) => {
-  I.click('a.button')
-  I.seeInCurrentUrl('/start');
+  I.see('Start again');
+  I.click('a.button');
+  I.seeInCurrentUrl('/eligibility-check');
 });

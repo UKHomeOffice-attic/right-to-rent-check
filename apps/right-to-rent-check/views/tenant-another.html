@@ -5,37 +5,79 @@
       {{#renderField}}{{/renderField}}
     {{/fields}}
     {{#input-submit}}continue{{/input-submit}}
-    <h2>Tenants details</h2>
+    {{#hasTenants}}
+      <h2>{{#t}}pages.tenant-another.tables.title{{/t}}</h2>
+    {{/hasTenants}}
     {{#tenants}}
       <table class="tenant-details">
         <tbody>
           <tr>
             <th>{{#t}}pages.tenant-another.tables.headers.name{{/t}}</th>
-            <td>{{tenant-name}}</td>
+            <td id="tenant-name">{{tenant-name}}</td>
+            <td>
+              <a class="change-tenant-button" href="/tenant-another/edit/{{tenant-uuid}}?field=tenant-name">
+                {{#t}}buttons.change{{/t}}
+              <a/>
+            </td>
           </tr>
           <tr>
             <th>{{#t}}pages.tenant-another.tables.headers.dob{{/t}}</th>
-            <td>{{tenant-dob}}</td>
+            <td id="tenant-dob">{{tenant-dob}}</td>
+            <td>
+              <a class="change-tenant-button" href="/tenant-another/edit/{{tenant-uuid}}?field=tenant-dob">
+                {{#t}}buttons.change{{/t}}
+              </a>
+            </td>
           </tr>
           <tr>
             <th>{{#t}}pages.tenant-another.tables.headers.country{{/t}}</th>
-            <td>{{tenant-country}}</td>
+            <td id="tenant-country">{{tenant-country}}</td>
+            <td>
+              <a class="change-tenant-button" href="/tenant-another/edit/{{tenant-uuid}}?field=tenant-country">
+                {{#t}}buttons.change{{/t}}
+              </a>
+            </td>
           </tr>
           <tr>
             <th>{{#t}}pages.tenant-another.tables.headers.reference{{/t}}</th>
-            <td>{{tenant-reference-number}}{{^tenant-reference-number}}{{#t}}pages.tenant-another.tables.values.undefined{{/t}}{{/tenant-reference-number}}</td>
+            <td id="reference-number">{{tenant-reference-number}}{{^tenant-reference-number}}{{#t}}pages.tenant-another.tables.values.undefined{{/t}}{{/tenant-reference-number}}</td>
+            <td>
+              <a class="change-tenant-button" href="/tenant-another/edit/{{tenant-uuid}}?field=tenant-reference-number">
+                {{#t}}buttons.change{{/t}}
+              </a>
+            </td>
           </tr>
           <tr>
             <th>{{#t}}pages.tenant-another.tables.headers.passport{{/t}}</th>
-            <td>{{tenant-passport-number}}{{^tenant-passport-number}}{{#t}}pages.tenant-another.tables.values.undefined{{/t}}{{/tenant-passport-number}}</td>
+            <td id="passport-number">{{tenant-passport-number}}{{^tenant-passport-number}}{{#t}}pages.tenant-another.tables.values.undefined{{/t}}{{/tenant-passport-number}}</td>
+            <td>
+              <a class="change-tenant-button" href="/tenant-another/edit/{{tenant-uuid}}?field=tenant-passport-number">
+                {{#t}}buttons.change{{/t}}
+              </a>
+            </td>
           </tr>
           <tr>
             <th>{{#t}}pages.tenant-another.tables.headers.brp{{/t}}</th>
-            <td>{{tenant-brp-number}}{{^tenant-brp-number}}{{#t}}pages.tenant-another.tables.values.undefined{{/t}}{{/tenant-brp-number}}</td>
+            <td id="brp-number">{{tenant-brp-number}}{{^tenant-brp-number}}{{#t}}pages.tenant-another.tables.values.undefined{{/t}}{{/tenant-brp-number}}</td>
+            <td>
+              <a class="change-tenant-button" href="/tenant-another/edit/{{tenant-uuid}}?field=tenant-brp-number">
+                {{#t}}buttons.change{{/t}}
+              </a>
+            </td>
           </tr>
           <tr>
             <th>{{#t}}pages.tenant-another.tables.headers.recorded-delivery{{/t}}</th>
-            <td>{{tenant-recorded-delivery-number}}{{^tenant-recorded-delivery-number}}{{#t}}pages.tenant-another.tables.values.undefined{{/t}}{{/tenant-recorded-delivery-number}}</td>
+            <td id="recorded-delivery">{{tenant-recorded-delivery-number}}{{^tenant-recorded-delivery-number}}{{#t}}pages.tenant-another.tables.values.undefined{{/t}}{{/tenant-recorded-delivery-number}}</td>
+            <td>
+              <a class="change-tenant-button" href="/tenant-another/edit/{{tenant-uuid}}?field=tenant-recorded-delivery-number">
+                {{#t}}buttons.change{{/t}}
+              </a>
+            </td>
+            <td rowspan="7">
+              <a id="delete-tenant-button" href="/tenant-another/delete/{{tenant-uuid}}">
+                {{#t}}buttons.delete{{/t}}
+              </a>
+            </td>
           </tr>
         </tbody>
       </table>

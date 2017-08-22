@@ -1,3 +1,5 @@
+/* eslint implicit-dependencies/no-implicit: [2, {dev:true}] */
+
 'use strict';
 
 let I;

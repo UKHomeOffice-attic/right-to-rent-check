@@ -58,10 +58,10 @@
   "tenant-add-another": {
     "options": {
       "yes": {
-        "label": "Yes I want to add another tenant"
+        "label": "Yes I want to add another person"
       },
       "no": {
-        "label": "No I do not want to add another"
+        "label": "No I do not want to add another person"
       }
     }
   },

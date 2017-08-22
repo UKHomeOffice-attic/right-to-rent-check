@@ -1,5 +1,6 @@
 'use strict';
 
+const _ = require('lodash');
 const AddressLookup = require('hof-behaviour-address-lookup');
 const tenants = require('./behaviours/tenants')([
   'tenant-name',
@@ -74,13 +75,18 @@ module.exports = {
         'tenant-dob',
         'tenant-country'
       ],
-      next: '/tenant-additional-details'
+      next: '/tenant-additional-details',
+      forks: [{
+        target: '/tenant-another',
+        condition: (req) => {
+          return _.find(req.sessionModel.get('tenants'), {
+            edit: true
+          });
+        }
+      }]
     },
     '/tenant-additional-details': {
       fields: [
-        'tenant-name',
-        'tenant-dob',
-        'tenant-country',
         'tenant-additional-details',
         'tenant-reference-number',
         'tenant-passport-number',

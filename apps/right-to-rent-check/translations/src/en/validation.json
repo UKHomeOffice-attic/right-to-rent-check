@@ -65,18 +65,19 @@
     "required": "Enter your phone number"
   },
   "landlord-name-agent": {
-    "required": "Enter the landlord's full name"
+    "required": "Enter your full name"
   },
   "representative": {
     "required": "Select an option"
   },
   "landlord-name": {
-    "required": "Enter the landlord's full name"
+    "required": "Enter your full name"
   },
   "landlord-email-address": {
-    "required": "Enter the landlord's email address"
+    "required": "Enter your email address",
+    "email": "Enter a valid email address"
   },
   "landlord-phone-number": {
-    "required": "Enter the landlord's phone number"
+    "required": "Enter your phone number"
   }
 }

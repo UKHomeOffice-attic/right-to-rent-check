@@ -1,9 +1,9 @@
 'use strict';
 
 const reqres = require('reqres');
-const Behaviour = require('../../../apps/right-to-rent-check/behaviours/tenancy-start-west-midlands-check');
+const Behaviour = require('../../../apps/right-to-rent-check/behaviours/tenancy-start-postcode-check');
 
-describe('apps/behaviours/tenancy-start-west-midlands-check', () => {
+describe('apps/behaviours/tenancy-start-postcode-check', () => {
   it('exports a function', () => {
     expect(Behaviour).to.be.a('function');
   });

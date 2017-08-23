@@ -1,5 +1,5 @@
 'use strict';
-const westMidPostcodes = require('../../../west-midland-postcodes.js');
+const pilotPostcodes = require('../../../pilot-postcodes.js');
 const pilotStartDate = new Date('2014/12/01').getTime();
 const pilotEndDate = new Date('2016/01/31').getTime();
 const _ = require('lodash');
@@ -21,7 +21,7 @@ module.exports = superclass => class extends superclass {
     }
 
   checkPostcode(currentPostcode) {
-    return _.some(westMidPostcodes, postcode => currentPostcode.startsWith(postcode));
+    return _.some(pilotPostcodes, postcode => currentPostcode.startsWith(postcode));
   }
 
   getNextStep(req, res) {

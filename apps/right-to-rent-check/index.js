@@ -48,7 +48,17 @@ module.exports = {
       }],
     },
     '/tenant-in-uk': {
-      next: '/current-property-address'
+      fields: ['tenant-in-uk'],
+      next: '/current-property-address',
+      forks: [{
+        target: '/uk-check-yourself',
+        condition: {
+          field: 'tenant-in-uk',
+          value: 'no'
+        }
+      }],
+    },
+    '/uk-check-yourself': {
     },
     '/tenancy-start': {
       fields: ['tenancy-start'],

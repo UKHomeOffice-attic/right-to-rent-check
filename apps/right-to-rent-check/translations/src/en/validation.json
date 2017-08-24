@@ -1,4 +1,7 @@
 {
+  "tenant-in-uk": {
+    "required": "Select an option"
+  },
   "property-address-postcode": {
     "required": "Enter a postcode"
   },

@@ -1,6 +1,7 @@
 {
   "eligibility-check": {
-    "header": "Placeholder page"
+    "header": "Confirm you need a Home Office right to rent check",
+    "intro": "Answer up to 6 questions to make sure you can use this service."
   },
   "document-check": {
     "header": "Placeholder page"

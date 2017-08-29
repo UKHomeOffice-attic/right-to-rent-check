@@ -1,5 +1,6 @@
 {
-  "start": "Start Now",
+  "questions": "Continue to questions",
+  "start-now": "Start Now",
   "change": "Change",
   "delete": "Delete"
 }

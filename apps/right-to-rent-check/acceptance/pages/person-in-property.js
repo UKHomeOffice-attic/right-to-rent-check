@@ -10,6 +10,7 @@ module.exports = {
   },
 
   url: 'person-in-property',
+  backlink: '#step a',
   fields: {
     yes: '#living-status-yes',
     no: '#living-status-no'

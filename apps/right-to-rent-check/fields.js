@@ -14,7 +14,7 @@ module.exports = {
     ]
   },
   'tenancy-start': dateComponent('tenancy-start', {
-    validate: ['required', 'date', 'before'],
+    validate: ['required', 'before'],
     legend: {
       className: 'visuallyhidden'
     }

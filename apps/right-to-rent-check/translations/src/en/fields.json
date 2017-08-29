@@ -11,7 +11,7 @@
     }
   },
   "tenancy-start": {
-    "legend": "When did the tenancy start?",
+    "legend": "When did they move in?",
     "hint": "For example, 10 3 2016"
   },
   "tenant-name": {

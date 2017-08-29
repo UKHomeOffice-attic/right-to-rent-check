@@ -2,6 +2,7 @@
 
 const _ = require('lodash');
 const AddressLookup = require('hof-behaviour-address-lookup');
+const checkPilotPostcodeAndDate = require('./behaviours/tenancy-start-postcode-check');
 const tenants = require('./behaviours/tenants')([
   'tenant-name',
   'tenant-dob',
@@ -51,6 +52,7 @@ module.exports = {
       next: '/current-property-address'
     },
     '/tenancy-start': {
+      behaviours: [checkPilotPostcodeAndDate],
       fields: ['tenancy-start'],
       next: '/check-confirmed'
     },
@@ -151,6 +153,9 @@ module.exports = {
     },
     '/confirm': {
       next: '/complete'
+    },
+    '/check-not-needed': {
+      next: '/start'
     },
     '/complete': {}
   }

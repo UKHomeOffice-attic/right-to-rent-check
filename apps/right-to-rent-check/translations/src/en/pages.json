@@ -51,6 +51,12 @@
   "property-address": {
     "header": "What's the rental property address?"
   },
+  "check-not-needed": {
+    "header": "Placeholder page"
+  },
+  "landlord-agent": {
+    "header": "Placeholder page"
+  },
   "landlord-details": {
     "header": "What are your contact details?"
   },

@@ -1,4 +1,15 @@
 {
+  "tenant-in-uk": {
+    "legend": "Are they living in the UK?",
+    "options": {
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "No"
+      }
+    }
+  },
   "living-status": {
     "legend": "Does the person already live in the property?",
     "options": {

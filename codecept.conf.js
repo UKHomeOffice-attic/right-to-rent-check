@@ -13,6 +13,7 @@ module.exports = {
     documentCheckPage: pagesPath('document-check.js'),
     tenantInUkPage: pagesPath('tenant-in-uk.js'),
     checkConfirmedPage: pagesPath('check-confirmed.js'),
+    ukCheckYourselfPage: pagesPath('uk-check-yourself.js'),
     startPage: pagesPath('start.js'),
     checkNotNeededPage: pagesPath('check-not-needed.js'),
     personInPropertyPage: pagesPath('person-in-property.js'),

@@ -9,6 +9,8 @@ module.exports = {
   name: 'right-to-rent-check',
   tests: './apps/**/acceptance/features/*.js',
   include: {
+    eligibilityCheckPage: pagesPath('eligibility-check.js'),
+    documentCheckPage: pagesPath('document-check.js'),
     tenantInUkPage: pagesPath('tenant-in-uk.js'),
     checkConfirmedPage: pagesPath('check-confirmed.js'),
     startPage: pagesPath('start.js'),

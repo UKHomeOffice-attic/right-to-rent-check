@@ -2,7 +2,7 @@
 
 const steps = require('../../');
 
-Feature('Start Page');
+Feature('Given I am on the /eligibility-check Page');
 
 Before((
   I,
@@ -11,7 +11,7 @@ Before((
   I.visitPage(eligibilityCheckPage, steps);
 });
 
-Scenario('When I click continue Then I am taken to /document-check page', (
+Scenario('When I click continue Then I am taken to /documents-check page', (
   I,
   documentCheckPage
 ) => {

@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  url: 'document-check'
+  url: 'documents-check'
 };

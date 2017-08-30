@@ -20,10 +20,20 @@ module.exports = {
   behaviours: [require('./behaviours/filter-fields')],
   steps: {
     '/eligibility-check': {
-      next: '/document-check'
+      next: '/documents-check'
     },
-    '/document-check': {
-      next: '/rental-property-location'
+    '/documents-check': {
+      fields: ['documents-check'],
+      next: '/rental-property-location',
+      forks: [{
+        target: '/documents-check-yourself',
+        condition: {
+          field: 'documents-check',
+          value: 'yes'
+        }
+      }],
+    },
+    '/documents-check-yourself': {
     },
     '/rental-property-location': {
       next: '/property-address'

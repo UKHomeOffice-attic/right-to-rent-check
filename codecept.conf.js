@@ -10,7 +10,9 @@ module.exports = {
   tests: './apps/**/acceptance/features/*.js',
   include: {
     eligibilityCheckPage: pagesPath('eligibility-check.js'),
-    documentCheckPage: pagesPath('document-check.js'),
+    documentCheckPage: pagesPath('documents-check.js'),
+    documentCheckYourselfPage: pagesPath('documents-check-yourself.js'),
+    rentalPropertyLocationPage: pagesPath('rental-property-location.js'),
     tenantInUkPage: pagesPath('tenant-in-uk.js'),
     checkConfirmedPage: pagesPath('check-confirmed.js'),
     ukCheckYourselfPage: pagesPath('uk-check-yourself.js'),

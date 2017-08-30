@@ -2,6 +2,17 @@
 const dateComponent = require('hof-component-date');
 
 module.exports = {
+  'documents-check': {
+    mixin: 'radio-group',
+    validate: 'required',
+    legend: {
+      className: 'visuallyhidden'
+    },
+    options: [
+      'yes',
+      'no'
+    ]
+  },
   'tenant-in-uk': {
     mixin: 'radio-group',
     validate: 'required',

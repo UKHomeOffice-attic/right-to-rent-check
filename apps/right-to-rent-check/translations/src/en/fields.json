@@ -1,4 +1,15 @@
 {
+  "documents-check": {
+    "legend": "Does the person have documents?",
+    "options": {
+      "yes": {
+        "label": "Yes"
+      },
+      "no": {
+        "label": "No"
+      }
+    }
+  },
   "tenant-in-uk": {
     "legend": "Are they living in the UK?",
     "options": {

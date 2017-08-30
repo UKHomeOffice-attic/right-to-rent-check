@@ -3,7 +3,10 @@
     "header": "Confirm you need a Home Office right to rent check",
     "intro": "Answer up to 6 questions to make sure you can use this service."
   },
-  "document-check": {
+  "documents-check": {
+    "intro": "If the person has documents showing whether they can live in the UK or not, you need to do the check yourself."
+  },
+  "documents-check-yourself": {
     "header": "Placeholder page"
   },
   "rental-property-location": {

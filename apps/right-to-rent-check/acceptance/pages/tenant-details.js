@@ -11,7 +11,7 @@ module.exports = {
   },
 
   url: 'tenant-details',
-    backlink: '#step a',
+  backlink: '#step a',
   fields: {
     date: '#tenant-dob-group',
     day: '#tenant-dob-day',

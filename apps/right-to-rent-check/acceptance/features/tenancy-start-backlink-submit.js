@@ -11,6 +11,7 @@ Before((
 ) => {
   I.amOnPage(propertyAddressPage.url);
   I.completeToStep(`/${tenancyStartPage.url}`, {
+    'rental-property-location': 'england',
     'property-address-postcode': 'B1 2EA',
     'living-status': 'yes'});
   I.fillField('#tenancy-start-day', '1');

@@ -32,6 +32,23 @@
       }
     }
   },
+  "rental-property-location": {
+    "legend": "Where is the rental property?",
+    "options": {
+      "england": {
+        "label": "England"
+      },
+      "scotland": {
+        "label": "Scotland"
+      },
+      "wales": {
+        "label": "Wales"
+      },
+      "ireland": {
+        "label": "Northen Ireland"
+      }
+    }
+  },
   "tenancy-start": {
     "legend": "When did they move in?",
     "hint": "For example, 10 3 2016"

@@ -33,12 +33,20 @@ module.exports = {
         }
       }],
     },
-    '/documents-check-yourself': {
-    },
+    '/documents-check-yourself': {},
     '/rental-property-location': {
-      next: '/property-address'
+      next: '/check-not-needed-location',
+      fields: ['rental-property-location'],
+      forks: [{
+        target: '/rental-property-address',
+        condition: {
+          field: 'rental-property-location',
+          value: 'england'
+        }
+      }]
     },
-    '/property-address': {
+    '/check-not-needed-location': {},
+    '/rental-property-address': {
       behaviours: AddressLookup({
         addressKey: 'property-address',
         apiSettings: {

@@ -12,6 +12,7 @@ const tenants = require('./behaviours/tenants')([
   'tenant-brp-number',
   'tenant-recorded-delivery-number'
 ]);
+const getDeclarer = require('./behaviours/get-declarer');
 const config = require('../../config');
 
 module.exports = {
@@ -180,11 +181,17 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
-      next: '/complete'
+      next: '/declaration'
     },
+    '/declaration': {
+      behaviours: [getDeclarer],
+      next: '/confirmation'
+    },
+    '/confirmation': {},
     '/check-not-needed': {
       next: '/start'
     },
-    '/complete': {}
+    '/privacy-policy': {
+    },
   }
 };

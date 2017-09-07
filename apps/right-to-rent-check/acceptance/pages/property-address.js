@@ -10,7 +10,7 @@ module.exports = {
     I = require('so-acceptance/steps')();
   },
 
-  url: 'property-address',
+  url: 'rental-property-address',
   backlink: '#step a',
 
   id: {

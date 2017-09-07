@@ -24,6 +24,19 @@ module.exports = {
       'no'
     ]
   },
+  'rental-property-location': {
+    mixin: 'radio-group',
+    validate: 'required',
+    legend: {
+      className: 'visuallyhidden'
+    },
+    options: [
+      'england',
+      'scotland',
+      'wales',
+      'ireland'
+    ]
+  },
   'living-status': {
     mixin: 'radio-group',
     validate: 'required',

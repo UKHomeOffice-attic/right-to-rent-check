@@ -5,6 +5,9 @@
   "documents-check": {
     "required": "Select an option"
   },
+  "rental-property-location": {
+    "required": "Select an option"
+  },
   "property-address-postcode": {
     "required": "Enter a postcode"
   },

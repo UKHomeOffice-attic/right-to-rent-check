@@ -46,6 +46,17 @@ Scenario('When I submit a date in the future then I see a future date error', (
   I.seeErrors('#tenant-dob-group');
 });
 
+Scenario('When I submit a date of birth that is less than 18 years then I see a age restriction error', (
+  I,
+  tenantDetailsPage
+) => {
+  I.fillField('#tenant-name', 'aaa');
+  I.fillField('#tenant-country', 'United Kingdom');
+  tenantDetailsPage.enterDate('underage');
+  I.submitForm();
+  I.seeErrors('#tenant-dob-group');
+});
+
 Scenario('When I submit an invalid country name then I see a country error', (
   I
 ) => {

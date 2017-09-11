@@ -35,14 +35,16 @@
     "required": "Enter an address"
   },
   "tenant-name": {
-    "required": "Enter the prospective tenant's name"
+    "required": "Enter the tenant's name"
   },
   "tenant-country": {
-    "required": "Enter the prospective tenant's country of nationality"
+    "required": "Enter the tenant's country of nationality",
+    "equal": "Pick a country from the list"
   },
   "tenant-dob": {
-    "required": "Enter a date",
+    "required": "Enter the tenant's date of birth",
     "before": "Date cannot be in the future",
+    "age": "You only need to check tenants who are 18 and over. Enter a valid date of birth",
     "date": "Enter a valid date"
   },
   "tenant-reference-number": {

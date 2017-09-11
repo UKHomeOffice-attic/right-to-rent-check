@@ -31,10 +31,15 @@ module.exports = {
       month: 'm',
       year: 'y'
     },
+    'underage-date': {
+      day: '1',
+      month: '1',
+      year: (new Date()).getFullYear().toString()
+    },
     'valid-date': {
       day: '1',
       month: '1',
-      year: '2016'
+      year: '1990'
     }
   },
 

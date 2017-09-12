@@ -55,7 +55,7 @@ describe('apps/behaviours/tenancy-start-postcode-check', () => {
     it('returns the exit page if tenancy is not set to true', () => {
       req.sessionModel.get.withArgs('valid-tenancy').returns(undefined);
       const result = instance.getNextStep(req, res);
-      result.should.equal('/check-not-needed');
+      result.should.equal('/check-not-needed-date');
     });
   });
   describe('saveValues()', () => {

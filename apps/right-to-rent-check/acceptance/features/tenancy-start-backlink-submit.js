@@ -30,7 +30,7 @@ Before((
 Scenario('When I submit a date between 1 Dec 2014 & 31st Jan 2016 & the postcode is NOT in the West Midlands Then I see an exit page', (
   I,
   tenancyStartPage,
-  checkNotNeededPage
+  checkNotNeededDatePage
 ) => {
   I.completeToStep(`/${tenancyStartPage.url}`, {
     'property-address-postcode': 'SW1P 4DF',
@@ -39,7 +39,7 @@ Scenario('When I submit a date between 1 Dec 2014 & 31st Jan 2016 & the postcode
   I.fillField('#tenancy-start-month', '1');
   I.fillField('#tenancy-start-year', '2015');
   I.submitForm();
-  I.seeInCurrentUrl(checkNotNeededPage.url);
+  I.seeInCurrentUrl(checkNotNeededDatePage.url);
 });
 
 Scenario('When I submit a date between 1 Dec 2014 & 31st Jan 2016 & the postcode is in the West Midlands Then I see the tenancy details page', (

@@ -10,7 +10,7 @@ module.exports = {
     I = require('so-acceptance/steps')();
   },
 
-  url: 'tenancy-start',
+  url: 'tenancy-start-date',
   backlink: '#step a',
   fields: {
     date: '#tenancy-start-group',

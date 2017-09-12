@@ -8,8 +8,14 @@
   },
   "documents-check-yourself": {
     "header": "You need to do the right to rent check yourself",
-    "intro": "If the person has documents, you need to perform the check yourself.",
-    "link": "<a href=\"https://www.gov.uk/check-tenant-right-to-rent-documents\">Back to guidance</a>"
+    "intro": "If the person has documents, you need to perform the check yourself."
+  },
+  "check-not-needed": {
+    "link-text": "Back to guidance"
+  },
+  "check-not-needed-uk": {
+    "header": "You do not need a Home Office right to rent check",
+    "intro": "You can't do a right to rent check until the person is in the UK."
   },
   "check-not-needed": {
     "link-text": "Back to guidance"

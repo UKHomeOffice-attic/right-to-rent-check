@@ -12,7 +12,7 @@
     "link": "<a href=\"https://www.gov.uk/check-tenant-right-to-rent-documents\">Back to guidance</a>"
   },
   "check-not-needed": {
-    "link": "<a href=\"https://www.gov.uk/check-tenant-right-to-rent-documents\">Back to guidance</a>"
+    "link-text": "Back to guidance"
   },
   "check-not-needed-date": {
     "header": "You do not need a Home Office right to rent check",

@@ -1,0 +1,11 @@
+{{<partials-page}}
+  {{$page-content}}
+    <p>{{#t}}pages.declaration.initial-paragraph{{/t}}</p>
+    <ul class="no-new-line">
+      <li id={{declarerID}}>{{declarer}}</li>
+    </ul>
+    {{#markdown}}declaration{{/markdown}}
+    <p>{{#t}}pages.declaration.email-paragraph{{/t}}</p>
+    {{#input-submit}}submit{{/input-submit}}
+  {{/page-content}}
+{{/partials-page}}

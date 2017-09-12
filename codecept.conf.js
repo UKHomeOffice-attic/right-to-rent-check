@@ -31,6 +31,7 @@ module.exports = {
     landlordAgentPage: pagesPath('landlord-agent.js'),
     landlordAddressPage: pagesPath('landlord-address.js'),
     landlordDetailsPage: pagesPath('landlord-details.js'),
-    confirmPage: pagesPath('confirm.js')
+    confirmPage: pagesPath('confirm.js'),
+    declarationPage: pagesPath('declaration.js')
   }
 };

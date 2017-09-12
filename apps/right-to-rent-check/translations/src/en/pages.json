@@ -68,6 +68,16 @@
   "confirm": {
     "header": "Placeholder page"
   },
+  "declaration": {
+    "header": "Declaration",
+    "initial-paragraph": "By submitting this request:",
+    "landlord": "you are the landlord",
+    "agent": "you are an agent acting on behalf of the landlord",
+    "email-paragraph": "When you've submitted this request, we'll send a copy of the information you’ve provided to {{declarerEmail}}."
+  },
+  "privacy-policy": {
+    "header": "Placeholder page"
+  },
   "complete": {
     "header": "Placeholder page"
   }

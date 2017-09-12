@@ -78,3 +78,13 @@ table.tenant-details {
     font-weight: 600;
   }
 }
+
+ul {
+  @extend .text;
+  @extend .list;
+  @extend .list-bullet;
+}
+
+.no-new-line {
+  margin-bottom: 0;
+}

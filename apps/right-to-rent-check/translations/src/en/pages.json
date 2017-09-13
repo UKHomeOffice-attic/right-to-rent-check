@@ -11,6 +11,13 @@
     "intro": "If the person has documents, you need to perform the check yourself.",
     "link": "<a href=\"https://www.gov.uk/check-tenant-right-to-rent-documents\">Back to guidance</a>"
   },
+  "check-not-needed": {
+    "link-text": "Back to guidance"
+  },
+  "check-not-needed-date": {
+    "header": "You do not need a Home Office right to rent check",
+    "intro": "You only need to use this service if the tenancy started after 1 February 2016 (or 1 December 2014 in the West Midlands)."
+  },
   "rental-property-location": {
     "header": "Where is the rental property?"
   },
@@ -55,9 +62,6 @@
   },
   "property-address": {
     "header": "What's the rental property address?"
-  },
-  "check-not-needed": {
-    "header": "Placeholder page"
   },
   "landlord-details": {
     "header": "What are your contact details?"

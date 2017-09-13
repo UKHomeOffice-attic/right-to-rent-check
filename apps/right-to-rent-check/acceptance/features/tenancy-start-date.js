@@ -59,7 +59,7 @@ Scenario('I see an error if I enter a future date', (
 Scenario('I go to the exit page when I enter a date before the 1 Dec 2014', (
   I,
   tenancyStartPage,
-  checkNotNeededPage
+  checkNotNeededDatePage
 ) => {
   I.completeToStep(`/${tenancyStartPage.url}`, {
     'rental-property-location': 'england',
@@ -68,13 +68,13 @@ Scenario('I go to the exit page when I enter a date before the 1 Dec 2014', (
   I.fillField('#tenancy-start-month', '1');
   I.fillField('#tenancy-start-year', '2013');
   I.submitForm();
-  I.seeInCurrentUrl(checkNotNeededPage.url);
+  I.seeInCurrentUrl(checkNotNeededDatePage.url);
 });
 
 Scenario('I see an error when I enter a date between 1 Dec 2014 & 31st Jan 2016 & the postcode is not in the West Midlands', (
   I,
   tenancyStartPage,
-  checkNotNeededPage
+  checkNotNeededDatePage
 ) => {
   I.completeToStep(`/${tenancyStartPage.url}`, {
     'rental-property-location': 'england',
@@ -84,7 +84,7 @@ Scenario('I see an error when I enter a date between 1 Dec 2014 & 31st Jan 2016 
   I.fillField('#tenancy-start-month', '1');
   I.fillField('#tenancy-start-year', '2015');
   I.submitForm();
-  I.seeInCurrentUrl(checkNotNeededPage.url);
+  I.seeInCurrentUrl(checkNotNeededDatePage.url);
 });
 
 Scenario('When I submit a valid date Then I am taken to the check confirmed page', (

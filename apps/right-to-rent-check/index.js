@@ -58,7 +58,7 @@ module.exports = {
     },
     '/person-in-property': {
       fields: ['living-status'],
-      next: '/tenancy-start',
+      next: '/tenancy-start-date',
       forks: [{
         target: '/tenant-in-uk',
         condition: {
@@ -80,7 +80,7 @@ module.exports = {
     },
     '/uk-check-yourself': {
     },
-    '/tenancy-start': {
+    '/tenancy-start-date': {
       behaviours: [checkPilotPostcodeAndDate],
       fields: ['tenancy-start'],
       next: '/check-confirmed'
@@ -188,7 +188,7 @@ module.exports = {
       next: '/confirmation'
     },
     '/confirmation': {},
-    '/check-not-needed': {
+    '/check-not-needed-date': {
       next: '/start'
     },
     '/privacy-policy': {

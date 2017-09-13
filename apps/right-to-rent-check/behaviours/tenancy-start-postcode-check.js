@@ -26,7 +26,7 @@ module.exports = superclass => class extends superclass {
 
   getNextStep(req, res) {
     if (req.sessionModel.get('valid-tenancy') !== true) {
-      return '/check-not-needed';
+      return '/check-not-needed-date';
     }
     req.sessionModel.unset('valid-tenancy');
     return super.getNextStep(req, res);

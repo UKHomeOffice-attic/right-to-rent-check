@@ -3,7 +3,7 @@
 const _ = require('lodash');
 const steps = require('../../');
 
-Feature('Given I have added one tenant and /tenant-another loads');
+Feature('Given I have added one tenant and /request-another-tenant loads');
 
 Before((
   I,
@@ -23,9 +23,9 @@ Before((
 
 Scenario('When the page loads Then the correct fields are visible', (
   I,
-  tenantAddAnotherPage
+  requestAnotherTenantPage
 ) => {
-  I.seeElements(_.values(tenantAddAnotherPage.fields));
+  I.seeElements(_.values(requestAnotherTenantPage.fields));
 });
 
 Scenario('When the tenants become visible Then one tenant is visible', (
@@ -71,7 +71,7 @@ Scenario('When I select yes and submit the form Then all fields are empty on /te
 
 Scenario('When I select no and submit the form Then I am taken to /landlord-agent', (
   I,
-  tenantAddAnotherPage,
+  requestAnotherTenantPage,
   landlordAgentPage
 ) => {
   I.checkOption('#tenant-add-another-no');
@@ -81,20 +81,20 @@ Scenario('When I select no and submit the form Then I am taken to /landlord-agen
 
 Scenario('When I click the back link Then I am redirected to /tenant-additonal-details', (
   I,
-  tenantAddAnotherPage,
+  requestAnotherTenantPage,
   tenantAdditionalDetailsPage
 ) => {
-  I.click(tenantAddAnotherPage.selectors.backLink);
+  I.click(requestAnotherTenantPage.selectors.backLink);
   I.seeInCurrentUrl(tenantAdditionalDetailsPage.url);
 });
 
 Scenario('When I click the back link And submit /tenant-additonal-details Then I see the same tenant details', (
   I,
-  tenantAddAnotherPage
+  requestAnotherTenantPage
 ) => {
-  I.click(tenantAddAnotherPage.selectors.backLink);
+  I.click(requestAnotherTenantPage.selectors.backLink);
   I.submitForm();
-  I.seeInCurrentUrl(tenantAddAnotherPage.url);
+  I.seeInCurrentUrl(requestAnotherTenantPage.url);
   I.seeNumberOfElements('.tenant-details', 1);
   I.see('aaa', '#tenant-name');
   I.see('1980-01-01', '#tenant-dob');
@@ -104,11 +104,11 @@ Scenario('When I click the back link And submit /tenant-additonal-details Then I
 
 Scenario('When I click the back link And and submit with a new BRP number Then I see the same tenant with a new BRP number', (
   I,
-  tenantAddAnotherPage
+  requestAnotherTenantPage
 ) => {
-  I.click(tenantAddAnotherPage.selectors.backLink);
+  I.click(requestAnotherTenantPage.selectors.backLink);
   I.submitForm();
-  I.seeInCurrentUrl(tenantAddAnotherPage.url);
+  I.seeInCurrentUrl(requestAnotherTenantPage.url);
   I.seeNumberOfElements('.tenant-details', 1);
   I.see('aaa', '#tenant-name');
   I.see('1980-01-01', '#tenant-dob');
@@ -120,7 +120,7 @@ Scenario('When I delete the tenant Then I am redirected to /tenant-details', (
   I,
   tenantDetailsPage
 ) => {
-  I.seeInCurrentUrl('/tenant-another');
+  I.seeInCurrentUrl('/request-another-tenant');
   I.click('#delete-tenant-button');
   I.seeInCurrentUrl(tenantDetailsPage.url);
 });
@@ -138,7 +138,7 @@ Scenario('When I delete the tenant Then all fields are empty at /tenant-details'
 
 Scenario('When I delete the tenant And submit a valid form at /tenant-details Then I am redirected to /tenant-additional-details', (
   I,
-  tenantAddAnotherPage,
+  requestAnotherTenantPage,
   tenantDetailsPage,
   tenantAdditionalDetailsPage
 ) => {
@@ -155,20 +155,20 @@ Scenario('When I delete the tenant And submit a valid form at /tenant-details Th
 
 Scenario('When I click the change Name button Then I see the Name I entered at /tenant-details', (
   I,
-  tenantAddAnotherPage,
+  requestAnotherTenantPage,
   tenantDetailsPage
 ) => {
-  I.click(tenantAddAnotherPage.selectors.change.name);
+  I.click(requestAnotherTenantPage.selectors.change.name);
   I.seeInCurrentUrl(tenantDetailsPage.url);
   I.seeInField('#tenant-name', 'aaa');
 });
 
 Scenario('When I click the change Date of Birth button Then I see the DOB I entered at /tenant-details', (
   I,
-  tenantAddAnotherPage,
+  requestAnotherTenantPage,
   tenantDetailsPage
 ) => {
-  I.click(tenantAddAnotherPage.selectors.change.dob);
+  I.click(requestAnotherTenantPage.selectors.change.dob);
   I.seeInCurrentUrl(tenantDetailsPage.url);
   I.seeInField('#tenant-dob-day', '1');
   I.seeInField('#tenant-dob-month', '1');
@@ -177,93 +177,93 @@ Scenario('When I click the change Date of Birth button Then I see the DOB I ente
 
 Scenario('When I click the change Country of Nationality button Then I see the Country I entered at /tenant-details', (
   I,
-  tenantAddAnotherPage,
+  requestAnotherTenantPage,
   tenantDetailsPage
 ) => {
-  I.click(tenantAddAnotherPage.selectors.change.country);
+  I.click(requestAnotherTenantPage.selectors.change.country);
   I.seeInCurrentUrl(tenantDetailsPage.url);
   I.seeInField('#tenant-country', 'United Kingdom');
 });
 
 Scenario('When I click the change Home Office reference number button Then I see an empty HO reference number at /tenant-additional-details', (
   I,
-  tenantAddAnotherPage,
+  requestAnotherTenantPage,
   tenantAdditionalDetailsPage
 ) => {
-  I.click(tenantAddAnotherPage.selectors.change.reference);
+  I.click(requestAnotherTenantPage.selectors.change.reference);
   I.seeInCurrentUrl(tenantAdditionalDetailsPage.url);
   I.seeInField('#tenant-reference-number', '');
 });
 
 Scenario('When I click the change Passport number button Then I see an empty Passport number at /tenant-additional-details', (
   I,
-  tenantAddAnotherPage,
+  requestAnotherTenantPage,
   tenantAdditionalDetailsPage
 ) => {
-  I.click(tenantAddAnotherPage.selectors.change.passport);
+  I.click(requestAnotherTenantPage.selectors.change.passport);
   I.seeInCurrentUrl(tenantAdditionalDetailsPage.url);
   I.seeInField('#tenant-passport-number', '');
 });
 
 Scenario('When I click the change BRP number button Then I see the BRP number I entered at /tenant-additional-details', (
   I,
-  tenantAddAnotherPage,
+  requestAnotherTenantPage,
   tenantAdditionalDetailsPage
 ) => {
-  I.click(tenantAddAnotherPage.selectors.change.brp);
+  I.click(requestAnotherTenantPage.selectors.change.brp);
   I.seeInCurrentUrl(tenantAdditionalDetailsPage.url);
   I.seeInField('#tenant-brp-number', '0987654321');
 });
 
 Scenario('When I click the change Recorded delivery reference number button Then I see the Delivery number I entered at /tenant-additional-details', (
   I,
-  tenantAddAnotherPage,
+  requestAnotherTenantPage,
   tenantAdditionalDetailsPage
 ) => {
-  I.click(tenantAddAnotherPage.selectors.change.delivery);
+  I.click(requestAnotherTenantPage.selectors.change.delivery);
   I.seeInCurrentUrl(tenantAdditionalDetailsPage.url);
   I.seeInField('#tenant-recorded-delivery-number', '');
 });
 
-Scenario('When I edit the tenants\' Name  And submit Then I see the Name I editted at /tenant-another', (
+Scenario('When I edit the tenants\' Name  And submit Then I see the Name I editted at /request-another-tenant', (
   I,
-  tenantAddAnotherPage,
+  requestAnotherTenantPage,
   tenantDetailsPage
 ) => {
-  I.click(tenantAddAnotherPage.selectors.change.name);
+  I.click(requestAnotherTenantPage.selectors.change.name);
   I.seeInCurrentUrl(tenantDetailsPage.url);
   I.fillField('#tenant-name', 'bar');
   I.fillField('#tenant-dob-year', '1981');
   I.submitForm();
-  I.seeInCurrentUrl(tenantAddAnotherPage.url);
+  I.seeInCurrentUrl(requestAnotherTenantPage.url);
   I.see('bar');
   I.see('1981');
 });
 
-Scenario('When I edit the tenants\' BRP number And submit Then I see the BRP number I editted at /tenant-another', (
+Scenario('When I edit the tenants\' BRP number And submit Then I see the BRP number I editted at /request-another-tenant', (
   I,
-  tenantAddAnotherPage,
+  requestAnotherTenantPage,
   tenantAdditionalDetailsPage
 ) => {
-  I.click(tenantAddAnotherPage.selectors.change.brp);
+  I.click(requestAnotherTenantPage.selectors.change.brp);
   I.seeInCurrentUrl(tenantAdditionalDetailsPage.url);
   I.fillField('#tenant-brp-number', '123456789');
   I.submitForm();
-  I.seeInCurrentUrl(tenantAddAnotherPage.url);
+  I.seeInCurrentUrl(requestAnotherTenantPage.url);
   I.see('123456789');
 });
 
-Scenario('When I uncheck the tenants\' Passport number checkbox And submit Then I don\'t see the Passport number I entered at /tenant-another', (
+Scenario('When I uncheck the tenants\' Passport number checkbox And submit Then I don\'t see the Passport number I entered at /request-another-tenant', (
   I,
-  tenantAddAnotherPage,
+  requestAnotherTenantPage,
   tenantAdditionalDetailsPage
 ) => {
-  I.click(tenantAddAnotherPage.selectors.change.passport);
+  I.click(requestAnotherTenantPage.selectors.change.passport);
   I.seeInCurrentUrl(tenantAdditionalDetailsPage.url);
   I.click('#tenant-additional-details-passport-number');
   I.fillField('#tenant-passport-number', '0000000000');
   I.click('#tenant-additional-details-passport-number');
   I.submitForm();
-  I.seeInCurrentUrl(tenantAddAnotherPage.url);
+  I.seeInCurrentUrl(requestAnotherTenantPage.url);
   I.dontSee('0000000000');
 });

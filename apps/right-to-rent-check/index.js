@@ -112,7 +112,7 @@ module.exports = {
       ],
       next: '/tenant-additional-details',
       forks: [{
-        target: '/tenant-another',
+        target: '/request-another-tenant',
         condition: (req) => {
           return _.find(req.sessionModel.get('tenants'), {
             edit: true
@@ -128,9 +128,9 @@ module.exports = {
         'tenant-brp-number',
         'tenant-recorded-delivery-number'
       ],
-      next: '/tenant-another'
+      next: '/request-another-tenant'
     },
-    '/tenant-another': {
+    '/request-another-tenant': {
       behaviours: [tenants],
       fields: [
         'tenant-add-another',

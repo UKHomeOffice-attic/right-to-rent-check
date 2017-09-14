@@ -1,6 +1,7 @@
 {{<partials-page}}
   {{$page-content}}
-    {{#markdown}}request-another-tenant{{/markdown}}
+    <h1>{{#t}}{{livingStatusHeader}}{{/t}}</h1>
+    <p>{{#t}}{{livingStatusIntro}}{{/t}}</p>
     {{#fields}}
       {{#renderField}}{{/renderField}}
     {{/fields}}

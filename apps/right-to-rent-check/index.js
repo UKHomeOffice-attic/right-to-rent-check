@@ -4,6 +4,7 @@ const _ = require('lodash');
 const AddressLookup = require('hof-behaviour-address-lookup');
 const checkPilotPostcodeAndDate = require('./behaviours/tenancy-start-postcode-check');
 const ageRestriction = require('./behaviours/age-restriction');
+const getLivingStatus = require('./behaviours/get-living-status');
 const tenants = require('./behaviours/tenants')([
   'tenant-name',
   'tenant-dob',
@@ -131,7 +132,7 @@ module.exports = {
       next: '/request-another-tenant'
     },
     '/request-another-tenant': {
-      behaviours: [tenants],
+      behaviours: [tenants, getLivingStatus],
       fields: [
         'tenant-add-another',
       ],

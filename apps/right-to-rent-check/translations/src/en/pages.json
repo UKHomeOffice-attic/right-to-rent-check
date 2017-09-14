@@ -61,7 +61,16 @@
     "header": "What additional information can you provide for {{values.tenant-name}}?"
   },
   "request-another-tenant": {
-    "header": "Is there anyone else on this tenancy that we should check?",
+    "header": "{{livingStatusHeader}}",
+    "intro": "{{livingStatusIntro}}",
+    "yes-living-status": {
+      "header": "Is there anyone else on this tenancy that we should check?",
+      "intro": "You'll be able to request a separate check for anyone on a different tenancy later. Remember, you only need to check tenants who are 18 and over."
+    },
+    "no-living-status": {
+      "header": "Is there anyone else living at the same address as {{firstTenant}} that we should check?",
+      "intro": "If you have a tenant living at a different address, you can request a separate check for them later. Remember, you only need to check tenants who are 18 and over."
+    },
     "tables": {
       "title": "Tenant details",
       "headers": {

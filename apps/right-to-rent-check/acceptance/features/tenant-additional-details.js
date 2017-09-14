@@ -36,32 +36,32 @@ Scenario('When a field is visible and empty And I submit the form Then I see err
   I.seeErrors(_.values(tenantAdditionalDetailsPage.hidden));
 });
 
-Scenario('When all fields are empty And I submit the form Then I am redirected to /tenant-another', (
+Scenario('When all fields are empty And I submit the form Then I am redirected to /request-another-tenant', (
   I,
   tenantAdditionalDetailsPage,
-  tenantAddAnotherPage
+  requestAnotherTenantPage
 ) => {
   I.submitForm();
-  I.seeInCurrentUrl(tenantAddAnotherPage.url);
+  I.seeInCurrentUrl(requestAnotherTenantPage.url);
 });
 
-Scenario('When I check a field and complete it\'s hidden field Then I am redirected to /tenant-another', (
+Scenario('When I check a field and complete it\'s hidden field Then I am redirected to /request-another-tenant', (
   I,
   tenantAdditionalDetailsPage,
-  tenantAddAnotherPage
+  requestAnotherTenantPage
 ) => {
   I.click('#tenant-additional-details-brp-number');
   I.fillField('#tenant-brp-number', '0987654321');
   I.submitForm();
-  I.seeInCurrentUrl(tenantAddAnotherPage.url);
+  I.seeInCurrentUrl(requestAnotherTenantPage.url);
 });
 
-Scenario('When I check all fields and complete their hidden fields Then I am redirected to /tenant-another', (
+Scenario('When I check all fields and complete their hidden fields Then I am redirected to /request-another-tenant', (
   I,
   tenantAdditionalDetailsPage,
-  tenantAddAnotherPage
+  requestAnotherTenantPage
 ) => {
   tenantAdditionalDetailsPage.completeAllFields();
   I.submitForm();
-  I.seeInCurrentUrl(tenantAddAnotherPage.url);
+  I.seeInCurrentUrl(requestAnotherTenantPage.url);
 });

@@ -17,7 +17,6 @@ module.exports = {
     checkNotNeededLocationPage: pagesPath('check-not-needed-location.js'),
     tenantInUkPage: pagesPath('tenant-in-uk.js'),
     checkConfirmedPage: pagesPath('check-confirmed.js'),
-    ukCheckYourselfPage: pagesPath('uk-check-yourself.js'),
     startPage: pagesPath('start.js'),
     checkNotNeededDatePage: pagesPath('check-not-needed-date.js'),
     personInPropertyPage: pagesPath('person-in-property.js'),

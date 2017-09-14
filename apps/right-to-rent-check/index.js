@@ -80,7 +80,6 @@ module.exports = {
       }],
     },
     '/check-not-needed-uk': {},
-    '/uk-check-yourself': {},
     '/tenancy-start-date': {
       behaviours: [checkPilotPostcodeAndDate],
       fields: ['tenancy-start'],

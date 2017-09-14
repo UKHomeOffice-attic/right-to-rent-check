@@ -46,7 +46,7 @@ Scenario('When I click the Continue button then I see the start page', (
   I.seeInCurrentUrl('/start');
 });
 
-Scenario.only('When the user is living in the property then the following tabular data is visible', (
+Scenario('When the user is living in the property then the following tabular data is visible', (
   I,
   checkConfirmedPage
 ) => {

@@ -59,38 +59,40 @@ describe('apps/behaviours/tenancy-start-postcode-check', () => {
     });
   });
   describe('saveValues()', () => {
-    let callback;
 
     beforeEach(() => {
-      callback = sinon.stub();
-      sinon.stub(Base.prototype, 'saveValues');
+      sinon.stub(Base.prototype, 'saveValues').yields();
     });
     afterEach(() => {
       Base.prototype.saveValues.restore();
     });
 
-    it('if the tenancyStart is after 2016-01-31 then do NOT unset valid-tenancy', () => {
+    it('if the tenancyStart is after 2016-01-31 then do NOT unset valid-tenancy', (done) => {
       req.form = {
         values: {
           'tenancy-start': '2017-01-01'
         }
       };
-      instance.saveValues(req, res, callback);
-      req.sessionModel.set.should.be.calledWith('valid-tenancy', true);
+      instance.saveValues(req, res, () => {
+        req.sessionModel.set.should.be.calledWith('valid-tenancy', true);
+        done();
+      });
     });
 
-    it('if the tenancyStart is before 2014-12-01 do NOT set valid-tenancy', () => {
+    it('if the tenancyStart is before 2014-12-01 do NOT set valid-tenancy', (done) => {
       req.form = {
         values: {
           'tenancy-start': '2012-01-01'
         }
       };
-      instance.saveValues(req, res, callback);
-      req.sessionModel.set.should.not.be.calledWith('valid-tenancy', true);
+      instance.saveValues(req, res, () => {
+        req.sessionModel.set.should.not.be.calledWith('valid-tenancy', true);
+        done();
+      });
     });
 
     describe('if the tenancyStart is between 2014-12-01 & 2016-01-31', () => {
-      it('the postcode is in the West Midlands, set valid-tenancy to true', () => {
+      it('the postcode is in the West Midlands, set valid-tenancy to true', (done) => {
         req.form = {
           values: {
             'tenancy-start': '2015-01-01'
@@ -98,12 +100,14 @@ describe('apps/behaviours/tenancy-start-postcode-check', () => {
         };
         req.sessionModel.get.withArgs('property-address-postcode').returns('B1 2EA');
 
-        instance.saveValues(req, res, callback);
-        req.sessionModel.set.should.be.calledWith('valid-tenancy', true);
+        instance.saveValues(req, res, () => {
+          req.sessionModel.set.should.be.calledWith('valid-tenancy', true);
+          done();
+        });
       });
 
       it(`if the tenancyStart is between 2014-12-01 & 2016-01-31 &
-        the postcode is NOT in the West Midlands do NOT set valid-tenancy to true`, () => {
+        the postcode is NOT in the West Midlands do NOT set valid-tenancy to true`, (done) => {
         req.form = {
           values: {
             'tenancy-start': '2015-01-01'
@@ -111,8 +115,10 @@ describe('apps/behaviours/tenancy-start-postcode-check', () => {
         };
         req.sessionModel.get.withArgs('property-address-postcode').returns('N1 2EA');
 
-        instance.saveValues(req, res, callback);
-        req.sessionModel.set.should.not.be.calledWith('valid-tenancy', true);
+        instance.saveValues(req, res, () => {
+          req.sessionModel.set.should.not.be.calledWith('valid-tenancy', true);
+          done();
+        });
       });
     });
   });

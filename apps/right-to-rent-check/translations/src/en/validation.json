@@ -6,7 +6,7 @@
     "required": "Select an option"
   },
   "rental-property-location": {
-    "required": "Select an option"
+    "required": "Select an address"
   },
   "property-address-postcode": {
     "required": "Enter a postcode"
@@ -15,7 +15,7 @@
     "required": "Enter an address"
   },
   "property-address-select": {
-    "required": "Select an option"
+    "required": "Select an address"
   },
   "living-status": {
     "required": "Select an option"
@@ -29,7 +29,7 @@
     "required": "Enter a postcode"
   },
   "current-address-select": {
-    "required": "Select an option"
+    "required": "Select an address"
   },
   "current-address": {
     "required": "Enter an address"

@@ -88,3 +88,22 @@ ul {
 .no-new-line {
   margin-bottom: 0;
 }
+
+#checkAnswersForm {
+  #checkAnswersTable {
+    margin-bottom: 30px;
+    th {
+      width: 290px;
+    }
+    td {
+      text-transform: capitalize;
+    }
+  }
+  a[href='/documents-check'] {
+    margin-left: 20px;
+  }
+}
+
+
+
+

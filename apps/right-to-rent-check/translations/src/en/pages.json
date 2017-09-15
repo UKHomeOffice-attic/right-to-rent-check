@@ -69,6 +69,10 @@
   "property-address": {
     "header": "What's the rental property address?"
   },
+  "check-not-needed-location": {
+    "header": "You do not need a Home Office right to rent check",
+    "link":"<a id='guidance-link' href='https://www.gov.uk/check-tenant-right-to-rent-documents'>Back to guidance</a>"
+  },
   "landlord-details": {
     "header": "What are your contact details?"
   },

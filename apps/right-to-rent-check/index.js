@@ -71,14 +71,14 @@ module.exports = {
       fields: ['tenant-in-uk'],
       next: '/current-property-address',
       forks: [{
-        target: '/uk-check-yourself',
+        target: '/check-not-needed-uk',
         condition: {
           field: 'tenant-in-uk',
           value: 'no'
         }
       }],
     },
-    '/uk-check-yourself': {
+    '/check-not-needed-uk': {
     },
     '/tenancy-start-date': {
       behaviours: [checkPilotPostcodeAndDate],

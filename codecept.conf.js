@@ -12,6 +12,7 @@ module.exports = {
     eligibilityCheckPage: pagesPath('eligibility-check.js'),
     documentCheckPage: pagesPath('documents-check.js'),
     documentCheckYourselfPage: pagesPath('documents-check-yourself.js'),
+    checkNotNeededUkPage: pagesPath('check-not-needed-uk.js'),
     rentalPropertyLocationPage: pagesPath('rental-property-location.js'),
     tenantInUkPage: pagesPath('tenant-in-uk.js'),
     checkConfirmedPage: pagesPath('check-confirmed.js'),

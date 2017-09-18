@@ -15,7 +15,6 @@ describe('apps/behaviours/age-restriction', () => {
   }
   let req;
   let res;
-  let next;
   let AgeRestriction;
   let instance;
   let ValidationError;
@@ -27,10 +26,9 @@ describe('apps/behaviours/age-restriction', () => {
         values: {}
       }
     });
-    next = sinon.stub();
     AgeRestriction = Behavior(Base);
     instance = new AgeRestriction();
-    sinon.stub(Base.prototype, 'validate');
+    sinon.stub(Base.prototype, 'validate').yields();
     ValidationError = sinon.stub(Base.prototype, 'ValidationError');
   });
   afterEach(() => {
@@ -39,34 +37,23 @@ describe('apps/behaviours/age-restriction', () => {
   });
 
   describe('validate()', () => {
-    it('calls parent method when tenant date of birth is greater than 17 years 11 months', () => {
+    it('calls parent method when tenant is older than 17 years 11 months', (done) => {
       const validDob = moment('1990-12-01');
       req.form.values['tenant-dob'] = validDob;
-      instance.validate(req, res);
-
-      Base.prototype.validate.should.have.been.calledWith(req, res);
-    });
-    describe('when the tenant\'s date of birth is less than than 17 years 11 months', () => {
-      let invalidDob = moment().subtract(1, 'months');
-
-      it('calls next', () => {
-        req.form.values['tenant-dob'] = invalidDob;
-        instance.validate(req, res, next);
-        next.should.have.been.called;
+      instance.validate(req, res, (err) => {
+        expect(err).not.to.exist;
+        Base.prototype.validate.should.have.been.calledWith(req, res);
+        done();
       });
-
-      describe('the next function', () => {
-        it('has a property of tenant-dob which is an instance of ValidationError', () => {
-          req.form.values['tenant-dob'] = invalidDob;
-          instance.validate(req, res, next);
-          next.getCall(0).args[0]['tenant-dob'].should.be.an.instanceOf(Base.prototype.ValidationError);
-        });
-
-        it('ValidationError is called with the field tenant-dob with the validation type age', () => {
-          req.form.values['tenant-dob'] = invalidDob;
-          instance.validate(req, res, next);
-          ValidationError.should.have.been.calledWith('tenant-dob', {type: 'age'});
-        });
+    });
+    it('when the tenant is younger than than 17 years 11 months', (done) => {
+      let invalidDob = moment().subtract(1, 'months');
+      req.form.values['tenant-dob'] = invalidDob;
+      instance.validate(req, res, (err) => {
+        expect(err).to.exist;
+        err['tenant-dob'].should.be.an.instanceOf(Base.prototype.ValidationError);
+        ValidationError.should.have.been.calledWith('tenant-dob', {type: 'age'});
+        done();
       });
     });
   });

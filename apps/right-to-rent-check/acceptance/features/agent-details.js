@@ -45,15 +45,15 @@ Scenario('I see an error if I enter an invalid email address', (
   I.seeErrors(agentDetailsPage.fields.email);
 });
 
-Scenario('I am taken to the landlord-name step on a valid submission', (
+Scenario('I am taken to /agent-address on a valid submission', (
   I,
   agentDetailsPage,
-  landlordNamePage
+  agentAddressPage
 ) => {
   I.fillField(agentDetailsPage.fields.company, agentDetailsPage.content.company);
   I.fillField(agentDetailsPage.fields.name, agentDetailsPage.content.name);
   I.fillField(agentDetailsPage.fields.email, agentDetailsPage.content.email);
   I.fillField(agentDetailsPage.fields.phone, agentDetailsPage.content.phone);
   I.submitForm();
-  I.seeInCurrentUrl(landlordNamePage.url);
+  I.seeInCurrentUrl(agentAddressPage.url);
 });

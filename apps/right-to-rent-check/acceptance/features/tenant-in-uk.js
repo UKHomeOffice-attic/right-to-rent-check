@@ -35,9 +35,9 @@ Scenario('When I select Yes And submit the form Then I am taken to /current-prop
 
 Scenario('When I select No And submit the form Then I am taken to the /uk-check-yourself page', (
   I,
-  ukCheckYourselfPage
+  checkNotNeededUkPage
 ) => {
   I.click('#tenant-in-uk-no');
   I.submitForm();
-  I.seeInCurrentUrl(ukCheckYourselfPage.url);
+  I.seeInCurrentUrl(checkNotNeededUkPage.url);
 });

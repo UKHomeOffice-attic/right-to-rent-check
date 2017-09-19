@@ -169,6 +169,15 @@ module.exports = {
         'agent-email-address',
         'agent-phone-number'
       ],
+      next: '/agent-address'
+    },
+    '/agent-address': {
+      behaviours: AddressLookup({
+        addressKey: 'agent-address',
+        apiSettings: {
+          hostname: config.postcode.hostname
+        }
+      }),
       next: '/landlord-name'
     },
     '/landlord-name': {

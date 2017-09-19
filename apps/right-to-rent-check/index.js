@@ -13,6 +13,7 @@ const tenants = require('./behaviours/tenants')([
   'tenant-recorded-delivery-number'
 ]);
 const getDeclarer = require('./behaviours/get-declarer');
+const rentalQuestions = require('./behaviours/rental-questions');
 const config = require('../../config');
 
 module.exports = {
@@ -78,15 +79,15 @@ module.exports = {
         }
       }],
     },
-    '/check-not-needed-uk': {
-    },
+    '/check-not-needed-uk': {},
     '/tenancy-start-date': {
       behaviours: [checkPilotPostcodeAndDate],
       fields: ['tenancy-start'],
       next: '/check-confirmed'
     },
     '/check-confirmed': {
-      next: '/start'
+      next: '/start',
+      behaviours: [rentalQuestions]
     },
     '/start': {
       next: '/tenant-details'

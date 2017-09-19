@@ -31,7 +31,19 @@
     "header": "Placeholder page"
   },
   "check-confirmed": {
-    "header": "Placeholder page"
+    "header": "You can use the Home Office right to rent check",
+    "sub": "These are your answers",
+    "intro": "Please check them carefully. If you need to change anything later, you'll have to start again.",
+    "table": {
+      "documents": "Does the person have documents",
+      "where": "Where is the rental property",
+      "address": "What is the rental property address",
+      "persons": "Person(s) living in property",
+      "uk": "Person(s) living in UK",
+      "current": "Current address",
+      "when": "When did they move in"
+    },
+    "link": "Something’s wrong, start again"
   },
   "start": {
     "custom-header": "Request a Home Office right to rent check"

@@ -1,0 +1,23 @@
+{{<partials-page}}
+  {{$content}}
+    <form id="checkAnswersForm" action="" method="POST" {{$encoding}}{{/encoding}} autocomplete="off" novalidate="true" spellcheck="false">
+      <p class="form-block"><strong>{{#t}}pages.check-confirmed.sub{{/t}}</strong></p>
+      <p class="form-block">{{#t}}pages.check-confirmed.intro{{/t}}</p>
+      <table id="checkAnswersTable">
+        {{#questions}}
+        <tr>
+          <th>{{question}}</th>
+          <td>{{answer}}</td>
+        </tr>
+        {{/questions}}
+      </table>
+      {{#input-submit}}continue{{/input-submit}}
+      <a href="/documents-check">{{#t}}pages.check-confirmed.link{{/t}}</a>
+      {{#csrf-token}}
+        <input type="hidden" name="x-csrf-token" value="{{csrf-token}}" />
+      {{/csrf-token}}
+    </form>
+  {{/content}}
+{{/partials-page}}
+
+

@@ -91,6 +91,9 @@
   "agent-details": {
     "header": "What are your contact details?"
   },
+  "agent-address": {
+    "header": "What is your address?"
+  },
   "confirm": {
     "header": "Placeholder page"
   },

@@ -1,6 +1,7 @@
 'use strict';
 
 const steps = require('../../');
+const config = require('../../../../config');
 
 Feature('Given I am on /landlord-agent');
 
@@ -41,6 +42,14 @@ Scenario('When I select agent and go through the agent part of the form Then I s
   I.fillField('#agent-email-address', 'b@g.com');
   I.fillField('#agent-phone-number', '0123');
   I.submitForm();
+
+  I.seeInCurrentUrl('agent-address');
+  I.fillField('#agent-address-postcode', config.mocks.postcode);
+  I.submitForm();
+  I.seeInCurrentUrl('agent-address?step=lookup');
+  I.selectOption('#agent-address-select', config.mocks.address);
+  I.submitForm();
+
   I.seeInCurrentUrl('landlord-name');
   I.fillField('#landlord-name-agent', 'Bruce Wayne');
   I.submitForm();

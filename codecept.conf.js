@@ -7,7 +7,7 @@ const pagesPath = page => path.resolve(__dirname,
 
 module.exports = {
   name: 'right-to-rent-check',
-  tests: './apps/**/acceptance/features/*.js',
+  tests: './apps/**/acceptance/features/**/*.js',
   include: {
     eligibilityCheckPage: pagesPath('eligibility-check.js'),
     documentCheckPage: pagesPath('documents-check.js'),
@@ -23,6 +23,7 @@ module.exports = {
     personLocationPage: pagesPath('person-location.js'),
     tenancyStartPage: pagesPath('tenancy-start-date.js'),
     agentDetailsPage: pagesPath('agent-details.js'),
+    agentAddressPage: pagesPath('agent-address.js'),
     landlordNamePage: pagesPath('landlord-name.js'),
     currentPropertyAddressPage: pagesPath('current-property-address.js'),
     tenantDetailsPage: pagesPath('tenant-details.js'),

@@ -68,15 +68,58 @@ h1 {
 }
 
 table.tenant-details {
-  border-top: 1px #aaa solid;
   border-collapse: separate;
-  padding: 15px 0;
-  th, td {
-    border: none;
-  }
   th {
     font-weight: 600;
   }
+  tbody {
+    border-bottom: 2px solid black;
+    display: block;
+  }
+  tbody:last-child {
+    border-bottom: none;
+    padding-top: 1em;
+  }
+  th:nth-child(1) {
+    width: 40%
+    }
+  td:nth-child(2) {
+    width: 50%
+  }
+  td:nth-child(3) {
+    width: 10%
+  }
+
+  .button-delete {
+    @include bold-24;
+    font-size: 16px !important;
+    background: $red no-repeat 90% 50% / 14px 14px;
+    float: right;
+    box-shadow: 0 2px 0 darken( $red, 10% );
+    padding-top: 0.75em;
+    padding-bottom: 0.5em;
+    padding-right: 1em;
+    padding-left: em(16);
+    margin-bottom: 1em;
+    margin-top: 0em;
+    -webkit-box-shadow: 0 2px 0 darken( $red, 10% );
+    -moz-box-shadow: 0 2px 0 darken( $red, 10% );
+
+    &:hover, &:active {
+      background-color: darken( $red, 10% );
+    }
+
+    &:visited {
+      background-color: $red;
+    }
+  }
+}
+
+.tenant-details-border {
+  border: solid #D3D3D3;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-top: 3em;
 }
 
 table.table-details {

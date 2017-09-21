@@ -55,7 +55,7 @@
     "header": "What is their current address?"
   },
   "tenant-details": {
-    "header": "What are the person's details?"
+    "header": "What are the tenant’s details?"
   },
   "tenant-additional-details": {
     "header": "What additional information can you provide for {{values.tenant-name}}?"

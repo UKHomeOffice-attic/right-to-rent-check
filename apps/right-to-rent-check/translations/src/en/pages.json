@@ -88,6 +88,9 @@
   "landlord-details": {
     "header": "What are your contact details?"
   },
+  "landlord-address": {
+    "header": "What is the landlord’s address?"
+  },
   "agent-details": {
     "header": "What are your contact details?"
   },

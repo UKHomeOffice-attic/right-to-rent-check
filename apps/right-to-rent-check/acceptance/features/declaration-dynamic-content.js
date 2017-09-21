@@ -54,6 +54,9 @@ Scenario('When I select agent and go through the agent part of the form Then I s
   I.fillField('#landlord-name-agent', 'Bruce Wayne');
   I.submitForm();
   I.seeInCurrentUrl('landlord-address');
+  I.fillField('#landlord-address-postcode', config.mocks.postcode);
+  I.submitForm();
+  I.selectOption('#landlord-address-select', config.mocks.address);
   I.submitForm();
   I.seeInCurrentUrl('confirm');
   I.submitForm();

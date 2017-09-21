@@ -100,5 +100,15 @@
   },
   "landlord-phone-number": {
     "required": "Enter your phone number"
+  },
+  "landlord-address-postcode": {
+    "required": "Enter a postcode",
+    "postcode": "Enter a valid postcode"
+  },
+  "landlord-address": {
+    "required": "Enter an address"
+  },
+  "landlord-address-select": {
+    "required": "Select an address"
   }
 }

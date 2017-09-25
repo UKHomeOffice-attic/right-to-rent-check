@@ -32,12 +32,12 @@ Before((
   I.seeNumberOfElements('.tenant-details', 2);
 });
 
-Scenario('When I delete one of the tenants Then I am at /tenant-another', (
+Scenario('When I delete one of the tenants Then I am at /request-another-tenant', (
   I,
-  tenantAddAnotherPage
+  requestAnotherTenantPage
 ) => {
   I.click('#delete-tenant-button');
-  I.seeInCurrentUrl(tenantAddAnotherPage.url);
+  I.seeInCurrentUrl(requestAnotherTenantPage.url);
 });
 
 Scenario('When I delete one of the tenants Then I see the tenant I did not delete', (

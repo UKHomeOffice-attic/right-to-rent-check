@@ -3,6 +3,7 @@
   "start-now": "Start Now",
   "change": "Change",
   "delete": "Delete",
-  "submit": "Submit",
-  "find-address": "Find address"
+  "find-address": "Find address",
+  "delete-tenant": "Delete this tenant",
+  "submit": "Submit"
 }

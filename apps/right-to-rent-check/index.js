@@ -51,6 +51,7 @@ module.exports = {
     '/check-not-needed-location': {},
     '/rental-property-address': {
       behaviours: AddressLookup({
+        required: true,
         addressKey: 'property-address',
         apiSettings: {
           hostname: config.postcode.hostname
@@ -176,6 +177,7 @@ module.exports = {
     },
     '/agent-address': {
       behaviours: AddressLookup({
+        required: true,
         addressKey: 'agent-address',
         apiSettings: {
           hostname: config.postcode.hostname
@@ -190,6 +192,13 @@ module.exports = {
       next: '/landlord-address'
     },
     '/landlord-address': {
+       behaviours: AddressLookup({
+        required: true,
+        addressKey: 'landlord-address',
+        apiSettings: {
+          hostname: config.postcode.hostname
+        }
+      }),
       next: '/confirm'
     },
     '/confirm': {

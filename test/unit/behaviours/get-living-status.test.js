@@ -39,10 +39,11 @@ describe('apps/right-to-rent-check/behaviours/get-living-status', () => {
     });
 
     describe('locals', () => {
-      it('returns an extended locals when a tenant is currently living in the property', () => {
+      it('returns an extended locals with living status when a tenant is currently living in the property', () => {
           const expected = {
             tenants: [{'tenant-name': 'Mo Khan'}],
             livingStatusHeader: 'yes living',
+            livingStatusId: 'yes-living-status',
             livingStatusIntro: 'intro'
           };
           req.sessionModel.get.withArgs('living-status').returns('yes');
@@ -58,6 +59,7 @@ describe('apps/right-to-rent-check/behaviours/get-living-status', () => {
           tenants: [{'tenant-name': 'Mo Khan'}],
           firstTenant: 'Mo Khan',
           livingStatusHeader: 'not living',
+          livingStatusId: 'no-living-status',
           livingStatusIntro: 'intro'
         };
         req.sessionModel.get.withArgs('living-status').returns('no');

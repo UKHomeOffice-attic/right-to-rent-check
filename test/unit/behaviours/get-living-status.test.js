@@ -38,33 +38,52 @@ describe('apps/right-to-rent-check/behaviours/get-living-status', () => {
       Base.prototype.locals.restore();
     });
 
-    describe('locals', () => {
-      it('returns an extended locals when a tenant is currently living in the property', () => {
-          const expected = {
-            tenants: [{'tenant-name': 'Mo Khan'}],
-            livingStatusHeader: 'yes living',
-            livingStatusIntro: 'intro'
-          };
+    describe('locals()', () => {
+      describe('when a tenant is currently living in the property', () => {
+        const expected = {
+              tenants: [{'tenant-name': 'Mo Khan'}],
+              livingStatusHeader: 'yes living',
+              livingStatusId: 'yes-living-status',
+              livingStatusIntro: 'intro'
+            };
+        let result;
+        beforeEach(() => {
           req.sessionModel.get.withArgs('living-status').returns('yes');
           req.translate.withArgs('pages.request-another-tenant.yes-living-status.header').returns('yes living');
           req.translate.withArgs('pages.request-another-tenant.yes-living-status.intro').returns('intro');
-          const result = instance.locals(req, res);
+          result = instance.locals(req, res);
+        });
+        it('has a yes living status', () => {
+            result.livingStatusId.should.equal(expected.livingStatusId);
+        });
+        it('extends from super.locals', () => {
           result.should.deep.equal(expected);
+        });
       });
-
-      it(`returns an extended locals which includes the first tenant\'s name when a tenant
-        is NOT living in the property`, () => {
+      describe('when a tenant is NOT living in the property', () => {
+        let result;
         const expected = {
-          tenants: [{'tenant-name': 'Mo Khan'}],
-          firstTenant: 'Mo Khan',
-          livingStatusHeader: 'not living',
-          livingStatusIntro: 'intro'
-        };
-        req.sessionModel.get.withArgs('living-status').returns('no');
-        req.translate.withArgs('pages.request-another-tenant.no-living-status.header').returns('not living');
-        req.translate.withArgs('pages.request-another-tenant.no-living-status.intro').returns('intro');
-        const result = instance.locals(req, res);
-        result.should.deep.equal(expected);
+            tenants: [{'tenant-name': 'Mo Khan'}],
+            firstTenant: 'Mo Khan',
+            livingStatusHeader: 'not living',
+            livingStatusId: 'no-living-status',
+            livingStatusIntro: 'intro'
+          };
+        beforeEach(() => {
+          req.sessionModel.get.withArgs('living-status').returns('no');
+          req.translate.withArgs('pages.request-another-tenant.no-living-status.header').returns('not living');
+          req.translate.withArgs('pages.request-another-tenant.no-living-status.intro').returns('intro');
+          result = instance.locals(req, res);
+        });
+        it('has a no living status', () => {
+            result.livingStatusId.should.equal(expected.livingStatusId);
+        });
+        it('returns the first tenant\'s name', () => {
+          result.firstTenant.should.equal(expected.firstTenant);
+        });
+        it('extends from super.locals()', () => {
+          result.should.deep.equal(expected);
+        });
       });
     });
 });

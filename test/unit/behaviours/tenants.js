@@ -73,7 +73,25 @@ describe('behaviours/tenants', () => {
       expect(controller.locals(req, res)).to.deep.equal(Object.assign(superLocals, {
         tenants: tenants
       }));
+    });
+    it('returns locals extended from super with the tenants dob converted to dd-mm-yyyy', () => {
+      tenants = [{
+        'tenant-name': 'john smith',
+        'tenant-dob': '1980-12-29'
+      }];
 
+      const expected = {
+        tenants: [{
+          'tenant-name': 'john smith',
+          'tenant-dob': '29-12-1980'
+        }],
+        foo: 'bar',
+        'hasTenants': true
+      };
+
+      req.sessionModel.get.withArgs('tenants').returns(tenants);
+
+      expect(controller.locals(req, res)).to.deep.equal(expected);
     });
   });
 

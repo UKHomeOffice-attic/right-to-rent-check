@@ -2,6 +2,7 @@
 
 const _ = require('lodash');
 const uuid = require('uuid/v4');
+const moment = require('moment');
 
 // Find the step that includes the field
 const findStep = (steps, field) =>
@@ -141,6 +142,10 @@ module.exports = fields => {
     locals(req, res) {
       const locals = super.locals(req, res);
       locals.tenants = req.sessionModel.get('tenants');
+      _.map(locals.tenants, (tenant) => {
+        tenant['tenant-dob'] = moment(tenant['tenant-dob'], ['YYYY-MM-DD', 'DD-MM-YYYY']).format('DD-MM-YYYY');
+      });
+
       if (locals.tenants.length) {
         locals.hasTenants = true;
       }

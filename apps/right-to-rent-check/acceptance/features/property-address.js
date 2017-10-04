@@ -2,7 +2,7 @@
 
 const steps = require('../../');
 
-Feature('Property Address Page');
+Feature('Rental Property Address Page');
 
 Before((
   I,

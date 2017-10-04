@@ -97,8 +97,56 @@
   "agent-address": {
     "header": "What is your address?"
   },
+  "check-your-answers": {
+    "header": "Check your answers"
+  },
   "confirm": {
-    "header": "Placeholder page"
+    "sections": {
+      "key-details": {
+        "header": "Key details"
+      },
+      "tenant-details": {
+        "header": "Tenant details"
+      },
+      "agent-details": {
+        "header": "Agent details"
+      },
+      "landlord-details": {
+        "header": "Landlord details"
+      }
+    },
+    "fields": {
+      "documents-check": {
+        "label": "Does the person have documents?"
+      },
+      "rental-property-location": {
+        "label": "Rental property location"
+      },
+      "rental-property-address": {
+        "label": "Rental property address"
+      },
+      "living-status": {
+        "label": "Person(s) living in property"
+      },
+      "tenant-in-uk": {
+        "label": "Person(s) living in UK"
+      },
+      "current-property-address": {
+        "label": "Current address"
+      },
+      "tenancy-start": {
+        "label": "When did they move in?"
+      },
+      "tenant-name": {
+        "label": "Tenant name"
+      },
+      "agent-address": {
+        "label": "Address"
+      },
+      "landlord-address": {
+        "label": "Address"
+      }
+    }
   },
   "declaration": {
     "header": "Declaration",

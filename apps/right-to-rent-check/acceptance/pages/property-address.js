@@ -14,9 +14,9 @@ module.exports = {
   backlink: '#step a',
 
   id: {
-    postcode: '#property-address-postcode',
-    select: '#property-address-select',
-    address: '#property-address',
+    postcode: '#rental-property-address-postcode',
+    select: '#rental-property-address-select',
+    address: '#rental-property-address',
     manualLink: '[href="?step=manual"]',
     cantFind: '.cant-find',
     change: '.change-postcode'

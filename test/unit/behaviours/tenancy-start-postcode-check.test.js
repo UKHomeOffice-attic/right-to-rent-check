@@ -98,7 +98,7 @@ describe('apps/behaviours/tenancy-start-postcode-check', () => {
             'tenancy-start': '2015-01-01'
           }
         };
-        req.sessionModel.get.withArgs('property-address-postcode').returns('B1 2EA');
+        req.sessionModel.get.withArgs('rental-property-address-postcode').returns('B1 2EA');
 
         instance.saveValues(req, res, () => {
           req.sessionModel.set.should.be.calledWith('valid-tenancy', true);
@@ -113,7 +113,7 @@ describe('apps/behaviours/tenancy-start-postcode-check', () => {
             'tenancy-start': '2015-01-01'
           }
         };
-        req.sessionModel.get.withArgs('property-address-postcode').returns('N1 2EA');
+        req.sessionModel.get.withArgs('rental-property-address-postcode').returns('N1 2EA');
 
         instance.saveValues(req, res, () => {
           req.sessionModel.set.should.not.be.calledWith('valid-tenancy', true);

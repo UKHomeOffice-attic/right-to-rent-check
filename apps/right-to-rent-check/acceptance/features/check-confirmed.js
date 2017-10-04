@@ -26,8 +26,6 @@ Scenario('When I click the link then I am taken to /documents-check', (
   I.completeToStep(`/${checkConfirmedPage.url}`, {
     'documents-check': 'no',
     'rental-property-location': 'england',
-    'property-address-postcode': 'CR0 2EU',
-    'property-address-select': '49 Sydenham Road, Croydon, CR0 2EU',
     'living-status': 'yes',
     'tenancy-start-day': '1',
     'tenancy-start-month': '1',
@@ -46,15 +44,15 @@ Scenario('When I click the Continue button then I see the start page', (
   I.seeInCurrentUrl('/start');
 });
 
-Scenario('When the user is living in the property then the following tabular data is visible', (
+Scenario('When the user is living in the property then the following data is visible', (
   I,
   checkConfirmedPage
 ) => {
   I.completeToStep(`/${checkConfirmedPage.url}`, {
     'documents-check': 'no',
     'rental-property-location': 'england',
-    'property-address-postcode': 'CR0 2EU',
-    'property-address-select': '49 Sydenham Road, Croydon, CR0 2EU',
+    'rental-property-address-postcode': 'CR0 2EU',
+    'rental-property-address-select': '49 Sydenham Road, Croydon, CR0 2EU',
     'living-status': 'yes',
     'tenancy-start-day': '1',
     'tenancy-start-month': '1',
@@ -68,19 +66,19 @@ Scenario('When the user is living in the property then the following tabular dat
   I.see('When did they move in 01-01-2017', '#checkAnswersTable tr:nth-child(5)');
 });
 
-Scenario('When the user is not living in the property then the following tabular data is visible', (
+Scenario('When the user is not living in the property then the following data is visible', (
   I,
   checkConfirmedPage
 ) => {
   I.completeToStep(`/${checkConfirmedPage.url}`, {
     'documents-check': 'no',
     'rental-property-location': 'england',
-    'property-address-postcode': 'CR0 2EU',
-    'property-address-select': '49 Sydenham Road, Croydon, CR0 2EU',
+    'rental-property-address-postcode': 'CR0 2EU',
+    'rental-property-address-select': '49 Sydenham Road, Croydon, CR0 2EU',
     'living-status': 'no',
     'tenant-in-uk': 'yes',
-    'current-address-postcode': 'CR0 2EU',
-    'current-address-select': '49 Sydenham Road, Croydon, CR0 2EU',
+    'current-property-address-postcode': 'CR0 2EU',
+    'current-property-address-select': '49 Sydenham Road, Croydon, CR0 2EU',
   });
   I.seeNumberOfElements('#checkAnswersTable tr', 6);
   I.see('Does the person have documents No', '#checkAnswersTable tr:nth-child(1)');

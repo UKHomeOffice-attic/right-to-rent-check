@@ -31,14 +31,14 @@ Scenario('When the page loads Then the correct fields are visible', (
 Scenario('When the tenants become visible Then one tenant is visible', (
   I
 ) => {
-  I.seeNumberOfElements('.tenant-details', 1);
+  I.seeNumberOfElements('.tenant-details > tbody', 1);
 });
 
 Scenario('When the tenant details become visible Then a change button is visible next to each tenant detail', (
   I
 ) => {
   I.seeNumberOfElements('.change-tenant-button', 7);
-  I.seeNumberOfElements('.tenant-details', 1);
+  I.seeNumberOfElements('.tenant-details > tbody', 1);
 });
 
 Scenario('When I submit the form Then I see an error', (
@@ -95,11 +95,11 @@ Scenario('When I click the back link And submit /tenant-additonal-details Then I
   I.click(tenantAddAnotherPage.selectors.backLink);
   I.submitForm();
   I.seeInCurrentUrl(tenantAddAnotherPage.url);
-  I.seeNumberOfElements('.tenant-details', 1);
-  I.see('aaa', '#tenant-name');
-  I.see('1980-01-01', '#tenant-dob');
-  I.see('United Kingdom', '#tenant-country');
-  I.see('0987654321', '#brp-number');
+  I.seeNumberOfElements('.tenant-details > tbody', 1);
+  I.see('aaa', '.tenant-name');
+  I.see('01-01-1980', '.tenant-dob');
+  I.see('United Kingdom', '.tenant-country');
+  I.see('0987654321', '.brp-number');
 });
 
 Scenario('When I click the back link And and submit with a new BRP number Then I see the same tenant with a new BRP number', (
@@ -109,11 +109,11 @@ Scenario('When I click the back link And and submit with a new BRP number Then I
   I.click(tenantAddAnotherPage.selectors.backLink);
   I.submitForm();
   I.seeInCurrentUrl(tenantAddAnotherPage.url);
-  I.seeNumberOfElements('.tenant-details', 1);
-  I.see('aaa', '#tenant-name');
-  I.see('1980-01-01', '#tenant-dob');
-  I.see('United Kingdom', '#tenant-country');
-  I.see('0987654321', '#brp-number');
+  I.seeNumberOfElements('.tenant-details tbody', 1);
+  I.see('aaa', '.tenant-name');
+  I.see('01-01-1980', '.tenant-dob');
+  I.see('United Kingdom', '.tenant-country');
+  I.see('0987654321', '.brp-number');
 });
 
 Scenario('When I delete the tenant Then I am redirected to /tenant-details', (
@@ -121,14 +121,14 @@ Scenario('When I delete the tenant Then I am redirected to /tenant-details', (
   tenantDetailsPage
 ) => {
   I.seeInCurrentUrl('/tenant-another');
-  I.click('#delete-tenant-button');
+  I.click('.delete-tenant-button');
   I.seeInCurrentUrl(tenantDetailsPage.url);
 });
 
 Scenario('When I delete the tenant Then all fields are empty at /tenant-details', (
   I
 ) => {
-  I.click('#delete-tenant-button');
+  I.click('.delete-tenant-button');
   I.seeInField('tenant-name', '');
   I.seeInField('tenant-dob-day', '');
   I.seeInField('tenant-dob-month', '');
@@ -142,7 +142,7 @@ Scenario('When I delete the tenant And submit a valid form at /tenant-details Th
   tenantDetailsPage,
   tenantAdditionalDetailsPage
 ) => {
-  I.click('#delete-tenant-button');
+  I.click('.delete-tenant-button');
   I.fillField('tenant-name', 'bbb');
   I.fillField('tenant-dob-day', '2');
   I.fillField('tenant-dob-month', '2');

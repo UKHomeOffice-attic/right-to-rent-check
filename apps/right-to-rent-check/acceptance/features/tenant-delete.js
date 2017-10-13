@@ -1,6 +1,7 @@
 'use strict';
 
 const steps = require('../../');
+const deleteSelector = '#content > div > form > table:nth-child(7) > tbody > tr:nth-child(7) > td:nth-child(4) > a';
 
 Feature('Given I have added two tenants');
 
@@ -36,27 +37,27 @@ Scenario('When I delete one of the tenants Then I am at /tenant-another', (
   I,
   tenantAddAnotherPage
 ) => {
-  I.click('#delete-tenant-button');
+  I.click(deleteSelector);
   I.seeInCurrentUrl(tenantAddAnotherPage.url);
 });
 
 Scenario('When I delete one of the tenants Then I see the tenant I did not delete', (
   I
 ) => {
-  I.click('#delete-tenant-button');
+  I.click(deleteSelector);
   I.seeNumberOfElements('.tenant-details', 1);
-  I.see('bbb', '#tenant-name');
-  I.see('1981-02-02', '#tenant-dob');
-  I.see('India', '#tenant-country');
+  I.see('bbb', '.tenant-name');
+  I.see('02-02-1981', '.tenant-dob');
+  I.see('India', '.tenant-country');
 });
 
 Scenario('When I delete one of the tenants Then I do not see the tenant I deleted', (
   I
 ) => {
-  I.click('#delete-tenant-button');
+  I.click(deleteSelector);
   I.seeNumberOfElements('.tenant-details', 1);
-  I.dontSee('aaa', '#tenant-name');
-  I.dontSee('1981-01-01', '#tenant-dob');
-  I.dontSee('United Kingdom', '#tenant-country');
+  I.dontSee('aaa', '.tenant-name');
+  I.dontSee('01-01-1980', '.tenant-dob');
+  I.dontSee('United Kingdom', '.tenant-country');
 });
 

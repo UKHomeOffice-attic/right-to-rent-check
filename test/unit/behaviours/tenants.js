@@ -74,7 +74,7 @@ describe('behaviours/tenants', () => {
         tenants: tenants
       }));
     });
-    it('returns locals extended from super with the tenants dob converted to dd-mm-yyyy', () => {
+    it('adds formatted dob (dd-mm-yyyy) to each tenant', () => {
       tenants = [{
         'tenant-name': 'john smith',
         'tenant-dob': '1980-12-29'

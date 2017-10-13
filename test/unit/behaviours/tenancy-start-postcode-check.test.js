@@ -106,8 +106,8 @@ describe('apps/behaviours/tenancy-start-postcode-check', () => {
         });
       });
 
-      it(`if the tenancyStart is between 2014-12-01 & 2016-01-31 &
-        the postcode is NOT in the West Midlands do NOT set valid-tenancy to true`, (done) => {
+      it(`the postcode is NOT in the West Midlands do NOT set valid-tenancy to
+        true`, (done) => {
         req.form = {
           values: {
             'tenancy-start': '2015-01-01'
@@ -117,6 +117,20 @@ describe('apps/behaviours/tenancy-start-postcode-check', () => {
 
         instance.saveValues(req, res, () => {
           req.sessionModel.set.should.not.be.calledWith('valid-tenancy', true);
+          done();
+        });
+      });
+
+      it('no postcode is supplied then set valid-tenancy to true', (done) => {
+        req.form = {
+          values: {
+            'tenancy-start': '2015-01-01'
+          }
+        };
+        req.sessionModel.get.withArgs('property-address-postcode').returns(undefined);
+
+        instance.saveValues(req, res, () => {
+          req.sessionModel.set.should.be.calledWith('valid-tenancy', true);
           done();
         });
       });

@@ -71,7 +71,7 @@ Scenario('I go to the exit page when I enter a date before the 1 Dec 2014', (
   I.seeInCurrentUrl(checkNotNeededDatePage.url);
 });
 
-Scenario('I see an error when I enter a date between 1 Dec 2014 & 31st Jan 2016 & the postcode is not in the West Midlands', (
+Scenario('I see an exit page when I enter a date between 1 Dec 2014 & 31st Jan 2016 & the postcode is not in the West Midlands', (
   I,
   tenancyStartPage,
   checkNotNeededDatePage

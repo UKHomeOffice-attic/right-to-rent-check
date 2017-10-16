@@ -140,7 +140,7 @@ describe('behaviours/tenants', () => {
       ];
       res = reqres.res();
       req = reqres.req({sessionModel});
-      sinon.stub(Base.prototype, 'saveValues');
+      sinon.stub(Base.prototype, 'saveValues').yields();
       Tenants = Behaviour(fields)(Base);
       controller = new Tenants();
     });
@@ -150,7 +150,8 @@ describe('behaviours/tenants', () => {
     });
 
     it('unsets all fields and the tenant-uuid from the session', (done) => {
-      controller.saveValues(req, res, () => {
+      controller.saveValues(req, res, (err) => {
+        expect(err).to.not.exist;
         expect(sessionModel.unset)
           .to.have.been.calledWithExactly(fields.concat('tenant-uuid', 'redirectTo'));
         done();
@@ -585,8 +586,7 @@ describe('behaviours/tenants', () => {
           }, {
             'tenant-name': 'Angel Ragwort',
             'tenant-age': '39',
-            'tenant-uuid': '0987654321',
-            'edit': false
+            'tenant-uuid': '0987654321'
           }]
         };
 

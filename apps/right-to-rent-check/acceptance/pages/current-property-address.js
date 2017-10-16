@@ -13,7 +13,7 @@ module.exports = {
 
   elements: {
     manualEntry: 'a[href="?step=manual"]',
-    address: '#current-address'
+    address: '#current-property-address'
   },
 
   content: {

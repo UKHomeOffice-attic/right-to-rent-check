@@ -17,7 +17,7 @@ module.exports = superclass => class extends superclass {
   saveValues(req, res, next) {
     super.saveValues(req, res, err => {
       const tenancyStart = new Date(req.form.values['tenancy-start']).getTime();
-      const postcode = req.sessionModel.get('property-address-postcode');
+      const postcode = req.sessionModel.get('rental-property-address-postcode');
 
       if (inRange(tenancyStart)) {
         req.sessionModel.set('valid-tenancy', isPilotOrUndefined(postcode));

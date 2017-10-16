@@ -49,9 +49,8 @@ module.exports = fields => {
 
         const edittedTenant = isEditted(tenants, tenant, values['tenant-uuid']);
 
-
         // when a user has selected the change button
-        if (req.params.action === 'edit') {
+        if (req.params.action === 'edit' && req.params.id) {
           // Find the tenant the user wants to edit
           tenant = _.find(tenants, {'tenant-uuid': req.params.id});
 
@@ -100,14 +99,11 @@ module.exports = fields => {
         // After a tenant record has been edittedTenant,
         // either by way of the back link or a 'change' link
         } else if (edittedTenant) {
-
           // make sure the replacer and values have the same uuids
           tenant['tenant-uuid'] = values['tenant-uuid'] = edittedTenant['tenant-uuid'];
-          tenant.edit = false;
           tenants.splice(_.findIndex(tenants, edittedTenant), 1, tenant);
 
         } else if (isNewTenant(tenants, tenant)) {
-
           tenant.edit = false;
           tenant['tenant-uuid'] = values['tenant-uuid'] = uuid();
           tenants.push(tenant);
@@ -120,14 +116,15 @@ module.exports = fields => {
         values.tenants = tenants;
 
         req.sessionModel.set(values);
-
         callback();
       });
     }
 
     saveValues(req, res, callback) {
-      req.sessionModel.unset(fields.concat('tenant-uuid', 'redirectTo'));
-      callback();
+      super.saveValues(req, res, (err) => {
+        req.sessionModel.unset(fields.concat('tenant-uuid', 'redirectTo'));
+        callback(err);
+      });
     }
 
     render(req, res, callback) {

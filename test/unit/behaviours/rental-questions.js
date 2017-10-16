@@ -36,10 +36,10 @@ describe('behaviours/rental-questions', () => {
     const attrs = {
       'documents-check': 'no',
       'rental-property-location': 'england',
-      'property-address': '1 New Street, Town, ABC 123',
+      'rental-property-address': '1 New Street, Town, ABC 123',
       'tenant-in-uk': 'yes',
       'tenancy-start': '2017-7-7',
-      'current-address': '1 Old Street, Ville, DEF 456'
+      'current-property-address': '1 Old Street, Ville, DEF 456'
     };
 
     let Behaviour;

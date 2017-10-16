@@ -20,7 +20,7 @@ module.exports = superclass => class extends superclass {
       answer: data['rental-property-location']
     }, {
       question: translate('pages.check-confirmed.table.address'),
-      answer: data['property-address']
+      answer: data['rental-property-address']
     }, {
       question: translate('pages.check-confirmed.table.persons'),
       answer: data['living-status']
@@ -37,7 +37,7 @@ module.exports = superclass => class extends superclass {
         answer: data['tenant-in-uk']
       }, {
         question: translate('pages.check-confirmed.table.current'),
-        answer: data['current-address']
+        answer: data['current-property-address']
       });
     }
 

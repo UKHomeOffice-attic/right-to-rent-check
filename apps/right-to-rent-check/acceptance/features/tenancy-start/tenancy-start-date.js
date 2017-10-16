@@ -78,7 +78,7 @@ Scenario('I see an exit page when I enter a date between 1 Dec 2014 & 31st Jan 2
 ) => {
   I.completeToStep(`/${tenancyStartPage.url}`, {
     'rental-property-location': 'england',
-    'property-address-postcode': 'SW1P 4DF',
+    'rental-property-address-postcode': 'SW1P 4DF',
     'living-status': 'yes'});
   I.fillField('#tenancy-start-day', '1');
   I.fillField('#tenancy-start-month', '1');
@@ -94,11 +94,11 @@ Scenario('When I submit a valid date Then I am taken to the check confirmed page
 ) => {
   I.completeToStep(`/${tenancyStartPage.url}`, {
     'rental-property-location': 'england',
-    'property-address-postcode': 'B1 2EA',
+    'rental-property-address-postcode': 'B1 2EA',
     'living-status': 'yes'});
   I.fillField('#tenancy-start-day', '1');
   I.fillField('#tenancy-start-month', '1');
-  I.fillField('#tenancy-start-year', '2015');
+  I.fillField('#tenancy-start-year', '2017');
   I.submitForm();
   I.seeInCurrentUrl(checkConfirmedPage.url);
 });
@@ -110,7 +110,7 @@ Scenario('I can go to the next step when I enter a date after 31st Jan 2016, tha
 ) => {
   I.completeToStep(`/${tenancyStartPage.url}`, {
     'rental-property-location': 'england',
-    'property-address-postcode': 'SW1P 4DF',
+    'rental-property-address-postcode': 'SW1P 4DF',
     'living-status': 'yes'});
   I.fillField('#tenancy-start-day', '1');
   I.fillField('#tenancy-start-month', '1');
@@ -126,7 +126,7 @@ Scenario('I can go to the next step when I enter a date after 31st Jan 2016, tha
 ) => {
   I.completeToStep(`/${tenancyStartPage.url}`, {
     'rental-property-location': 'england',
-    'property-address-postcode': 'B1 2EA',
+    'rental-property-address-postcode': 'B1 2EA',
     'living-status': 'yes'});
   I.fillField('#tenancy-start-day', '1');
   I.fillField('#tenancy-start-month', '1');

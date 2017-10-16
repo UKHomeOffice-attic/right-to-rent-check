@@ -1,0 +1,21 @@
+{{<partials-page}}
+  {{$page-content}}
+    {{#rows}}
+      <h3>{{section.label}}</h3>
+      <table data-section="{{section.id}}" class="table-details">
+        {{#group}}
+        <tbody{{#name}} data-group="{{name}}"{{/name}}>
+          {{#fields}}
+            <tr data-id="{{field}}">
+              <td data-label="{{label}}">{{label}}</td>
+              <td data-value="{{value}}">{{value}}</td>
+              <td>{{#edit}}<a href="{{step}}/edit{{uuid}}?field={{field}}" class="button-change" id="{{field}}-change">{{#t}}buttons.change{{/t}}</a>{{/edit}}</td>
+            </tr>
+          {{/fields}}
+        </tbody>
+        {{/group}}
+      </table>
+    {{/rows}}
+    {{#input-submit}}confirm{{/input-submit}}
+  {{/page-content}}
+{{/partials-page}}

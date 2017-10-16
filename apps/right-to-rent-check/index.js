@@ -13,6 +13,7 @@ const tenants = require('./behaviours/tenants')([
   'tenant-brp-number',
   'tenant-recorded-delivery-number'
 ]);
+const confirmTenants = require('./behaviours/confirm-tenants.js');
 const getDeclarer = require('./behaviours/get-declarer');
 const rentalQuestions = require('./behaviours/rental-questions');
 const config = require('../../config');
@@ -52,7 +53,7 @@ module.exports = {
     '/rental-property-address': {
       behaviours: AddressLookup({
         required: true,
-        addressKey: 'property-address',
+        addressKey: 'rental-property-address',
         apiSettings: {
           hostname: config.postcode.hostname
         }
@@ -96,7 +97,7 @@ module.exports = {
     },
     '/current-property-address': {
       behaviours: AddressLookup({
-        addressKey: 'current-address',
+        addressKey: 'current-property-address',
         apiSettings: {
           hostname: config.postcode.hostname
         }
@@ -202,6 +203,79 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
+      behaviours: [confirmTenants, 'complete'],
+      nullValue: 'pages.tenant-another.tables.values.undefined',
+      sections: {
+        'key-details': [{
+            field: 'documents-check',
+            edit: false
+          }, {
+            field: 'rental-property-location',
+            edit: false
+          }, {
+            field: 'rental-property-address',
+            edit: false
+          }, {
+            field: 'living-status',
+            edit: false
+          }, {
+            field: 'tenant-in-uk',
+            edit: false
+          }, {
+            field: 'current-property-address',
+            edit: false
+          }, {
+            field: 'tenancy-start',
+            edit: false
+          }
+        ],
+        'tenant-details': [
+          {
+            field: 'tenants',
+            children: [
+              'tenant-name',
+              'tenant-dob',
+              'tenant-country',
+              'tenant-reference-number',
+              'tenant-passport-number',
+              'tenant-brp-number',
+              'tenant-recorded-delivery-number'
+            ],
+            uuid: 'tenant-uuid',
+            lists: [{
+              id: 'tenant-additional-details',
+              fields: [{
+                name: 'tenant-reference-number',
+                id: 'reference-number'
+              }, {
+                name: 'tenant-passport-number',
+                id: 'passport-number'
+              }, {
+                name: 'tenant-brp-number',
+                id: 'brp-number'
+              }, {
+                name: 'tenant-recorded-delivery-number',
+                id: 'recorded-delivery-number'
+              }]
+            }]
+          }
+        ],
+        'agent-details': [
+          'agent-company',
+          'agent-name',
+          'agent-email-address',
+          'agent-phone-number',
+          'agent-address'
+        ],
+        'landlord-details': [
+          'landlord-name',
+          'landlord-name-agent',
+          'landlord-company',
+          'landlord-email-address',
+          'landlord-phone-number',
+          'landlord-address'
+        ]
+      },
       next: '/declaration'
     },
     '/declaration': {

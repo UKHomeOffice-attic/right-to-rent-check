@@ -79,6 +79,17 @@ table.tenant-details {
   }
 }
 
+table.table-details {
+  tbody[data-group='tenants'] {
+    display: table;
+    margin-bottom: 2em;
+    width: 100%;
+    &:last-child {
+      margin-bottom: 0px;
+    }
+  }
+}
+
 ul {
   @extend .text;
   @extend .list;

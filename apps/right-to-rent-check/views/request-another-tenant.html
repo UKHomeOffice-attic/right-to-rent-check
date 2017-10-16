@@ -1,0 +1,91 @@
+{{<partials-page}}
+  {{$page-content}}
+    <h1 id={{livingStatusId}}>{{#t}}{{livingStatusHeader}}{{/t}}</h1>
+    <p>{{#t}}{{livingStatusIntro}}{{/t}}</p>
+    {{#fields}}
+      {{#renderField}}{{/renderField}}
+    {{/fields}}
+    {{#input-submit}}continue{{/input-submit}}
+    <div class="tenant-details-border">
+      <table class="tenant-details">
+        {{#hasTenants}}
+          <caption><h2>{{#t}}pages.request-another-tenant.tables.title{{/t}}</h2></caption>
+        {{/hasTenants}}
+        {{#tenants}}
+          <tbody>
+            <tr>
+              <th>{{#t}}pages.request-another-tenant.tables.headers.name{{/t}}</th>
+              <td class="tenant-name">{{tenant-name}}</td>
+              <td>
+                <a class="change-tenant-button" href="/request-another-tenant/edit/{{tenant-uuid}}?field=tenant-name">
+                  {{#t}}buttons.change{{/t}}
+                <a/>
+              </td>
+            </tr>
+            <tr>
+              <th>{{#t}}pages.request-another-tenant.tables.headers.dob{{/t}}</th>
+              <td class="tenant-dob">{{tenant-dob}}</td>
+              <td>
+                <a class="change-tenant-button" href="/request-another-tenant/edit/{{tenant-uuid}}?field=tenant-dob">
+                  {{#t}}buttons.change{{/t}}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>{{#t}}pages.request-another-tenant.tables.headers.country{{/t}}</th>
+              <td class="tenant-country">{{tenant-country}}</td>
+              <td>
+                <a class="change-tenant-button" href="/request-another-tenant/edit/{{tenant-uuid}}?field=tenant-country">
+                  {{#t}}buttons.change{{/t}}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>{{#t}}pages.request-another-tenant.tables.headers.reference{{/t}}</th>
+              <td class="reference-number">{{tenant-reference-number}}{{^tenant-reference-number}}{{#t}}pages.request-another-tenant.tables.values.undefined{{/t}}{{/tenant-reference-number}}</td>
+              <td>
+                <a class="change-tenant-button" href="/request-another-tenant/edit/{{tenant-uuid}}?field=tenant-reference-number">
+                  {{#t}}buttons.change{{/t}}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>{{#t}}pages.request-another-tenant.tables.headers.passport{{/t}}</th>
+              <td class="passport-number">{{tenant-passport-number}}{{^tenant-passport-number}}{{#t}}pages.request-another-tenant.tables.values.undefined{{/t}}{{/tenant-passport-number}}</td>
+              <td>
+                <a class="change-tenant-button" href="/request-another-tenant/edit/{{tenant-uuid}}?field=tenant-passport-number">
+                  {{#t}}buttons.change{{/t}}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>{{#t}}pages.request-another-tenant.tables.headers.brp{{/t}}</th>
+              <td class="brp-number">{{tenant-brp-number}}{{^tenant-brp-number}}{{#t}}pages.request-another-tenant.tables.values.undefined{{/t}}{{/tenant-brp-number}}</td>
+              <td>
+                <a class="change-tenant-button" href="/request-another-tenant/edit/{{tenant-uuid}}?field=tenant-brp-number">
+                  {{#t}}buttons.change{{/t}}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>{{#t}}pages.request-another-tenant.tables.headers.recorded-delivery{{/t}}</th>
+              <td class="recorded-delivery">{{tenant-recorded-delivery-number}}{{^tenant-recorded-delivery-number}}{{#t}}pages.request-another-tenant.tables.values.undefined{{/t}}{{/tenant-recorded-delivery-number}}</td>
+              <td>
+                <a class="change-tenant-button" href="/request-another-tenant/edit/{{tenant-uuid}}?field=tenant-recorded-delivery-number">
+                  {{#t}}buttons.change{{/t}}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <a class="button button-delete" href="/request-another-tenant/delete/{{tenant-uuid}}">
+                  {{#t}}buttons.delete-tenant{{/t}}
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        {{/tenants}}
+      </table>
+    </div>
+  {{/page-content}}
+{{/partials-page}}

@@ -16,7 +16,10 @@ Before((
     'tenancy-start-month': '1',
     'tenancy-start-year': '2017',
     'representative': 'landlord',
-    'landlord-email-address': 'abc@test.com'
+    'landlord-name': 'Johnny',
+    'landlord-company': 'Johnny Corp',
+    'landlord-email-address': 'johnny@corp.com',
+    'landlord-phone-number': '1234567890'
   });
 });
 

@@ -4,7 +4,7 @@ module.exports = {
 
   _init() {},
 
-  url: 'tenant-another',
+  url: 'request-another-tenant',
 
   fields: {
     group: '#tenant-add-another-group',

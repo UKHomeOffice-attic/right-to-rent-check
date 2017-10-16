@@ -15,7 +15,14 @@ Before((
     'tenancy-start-day': '1',
     'tenancy-start-month': '1',
     'tenancy-start-year': '2017',
-    'representative': 'agent'
+    'representative': 'agent',
+    'agent-company': 'abc corp',
+    'agent-name': 'abc',
+    'agent-email-address': 'abc@abc-corp.com',
+    'agent-phone-number': '12345',
+    'agent-address': 'CR0 2EU',
+    'landlord-name-agent': 'Johnny',
+    'landlord-address-postcode': 'CR0 2EU'
   });
 });
 

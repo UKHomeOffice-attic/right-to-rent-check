@@ -37,7 +37,7 @@ Before((
   I.click('#tenant-name-change');
   I.seeInCurrentUrl('tenant-details/edit#tenant-name');
   I.click('#step a');
-  I.seeInCurrentUrl('tenant-another/edit');
+  I.seeInCurrentUrl('request-another-tenant/edit');
 });
 
 Scenario('When I continue to /confirm without adding another tenant then I see the same tenants', (

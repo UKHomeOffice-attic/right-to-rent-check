@@ -14,7 +14,11 @@ Before((
     'living-status': 'no',
     'tenant-in-uk': 'yes',
     'current-property-address': 'ABC 222',
-    'representative': 'landlord'
+    'representative': 'landlord',
+    'landlord-name': 'Johnny',
+    'landlord-company': 'Johnny Corp',
+    'landlord-email-address': 'johnny@corp.com',
+    'landlord-phone-number': '1234567890'
   });
 });
 

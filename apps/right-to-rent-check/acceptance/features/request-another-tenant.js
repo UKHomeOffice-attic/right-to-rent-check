@@ -121,14 +121,14 @@ Scenario('When I delete the tenant Then I am redirected to /tenant-details', (
   tenantDetailsPage
 ) => {
   I.seeInCurrentUrl('/request-another-tenant');
-  I.click('.delete-tenant-button');
+  I.click('.button-delete');
   I.seeInCurrentUrl(tenantDetailsPage.url);
 });
 
 Scenario('When I delete the tenant Then all fields are empty at /tenant-details', (
   I
 ) => {
-  I.click('.delete-tenant-button');
+  I.click('.button-delete');
   I.seeInField('tenant-name', '');
   I.seeInField('tenant-dob-day', '');
   I.seeInField('tenant-dob-month', '');
@@ -142,7 +142,7 @@ Scenario('When I delete the tenant And submit a valid form at /tenant-details Th
   tenantDetailsPage,
   tenantAdditionalDetailsPage
 ) => {
-  I.click('.delete-tenant-button');
+  I.click('.button-delete');
   I.fillField('tenant-name', 'bbb');
   I.fillField('tenant-dob-day', '2');
   I.fillField('tenant-dob-month', '2');

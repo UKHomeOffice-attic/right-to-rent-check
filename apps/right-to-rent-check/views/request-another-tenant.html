@@ -15,7 +15,7 @@
           <tbody>
             <tr>
               <th>{{#t}}pages.request-another-tenant.tables.headers.name{{/t}}</th>
-              <td id="tenant-name">{{tenant-name}}</td>
+              <td class="tenant-name">{{tenant-name}}</td>
               <td>
                 <a class="change-tenant-button" href="/request-another-tenant/edit/{{tenant-uuid}}?field=tenant-name">
                   {{#t}}buttons.change{{/t}}
@@ -24,7 +24,7 @@
             </tr>
             <tr>
               <th>{{#t}}pages.request-another-tenant.tables.headers.dob{{/t}}</th>
-              <td id="tenant-dob">{{tenant-dob}}</td>
+              <td class="tenant-dob">{{tenant-dob}}</td>
               <td>
                 <a class="change-tenant-button" href="/request-another-tenant/edit/{{tenant-uuid}}?field=tenant-dob">
                   {{#t}}buttons.change{{/t}}
@@ -33,7 +33,7 @@
             </tr>
             <tr>
               <th>{{#t}}pages.request-another-tenant.tables.headers.country{{/t}}</th>
-              <td id="tenant-country">{{tenant-country}}</td>
+              <td class="tenant-country">{{tenant-country}}</td>
               <td>
                 <a class="change-tenant-button" href="/request-another-tenant/edit/{{tenant-uuid}}?field=tenant-country">
                   {{#t}}buttons.change{{/t}}
@@ -42,7 +42,7 @@
             </tr>
             <tr>
               <th>{{#t}}pages.request-another-tenant.tables.headers.reference{{/t}}</th>
-              <td id="reference-number">{{tenant-reference-number}}{{^tenant-reference-number}}{{#t}}pages.request-another-tenant.tables.values.undefined{{/t}}{{/tenant-reference-number}}</td>
+              <td class="reference-number">{{tenant-reference-number}}{{^tenant-reference-number}}{{#t}}pages.request-another-tenant.tables.values.undefined{{/t}}{{/tenant-reference-number}}</td>
               <td>
                 <a class="change-tenant-button" href="/request-another-tenant/edit/{{tenant-uuid}}?field=tenant-reference-number">
                   {{#t}}buttons.change{{/t}}
@@ -51,7 +51,7 @@
             </tr>
             <tr>
               <th>{{#t}}pages.request-another-tenant.tables.headers.passport{{/t}}</th>
-              <td id="passport-number">{{tenant-passport-number}}{{^tenant-passport-number}}{{#t}}pages.request-another-tenant.tables.values.undefined{{/t}}{{/tenant-passport-number}}</td>
+              <td class="passport-number">{{tenant-passport-number}}{{^tenant-passport-number}}{{#t}}pages.request-another-tenant.tables.values.undefined{{/t}}{{/tenant-passport-number}}</td>
               <td>
                 <a class="change-tenant-button" href="/request-another-tenant/edit/{{tenant-uuid}}?field=tenant-passport-number">
                   {{#t}}buttons.change{{/t}}
@@ -60,7 +60,7 @@
             </tr>
             <tr>
               <th>{{#t}}pages.request-another-tenant.tables.headers.brp{{/t}}</th>
-              <td id="brp-number">{{tenant-brp-number}}{{^tenant-brp-number}}{{#t}}pages.request-another-tenant.tables.values.undefined{{/t}}{{/tenant-brp-number}}</td>
+              <td class="brp-number">{{tenant-brp-number}}{{^tenant-brp-number}}{{#t}}pages.request-another-tenant.tables.values.undefined{{/t}}{{/tenant-brp-number}}</td>
               <td>
                 <a class="change-tenant-button" href="/request-another-tenant/edit/{{tenant-uuid}}?field=tenant-brp-number">
                   {{#t}}buttons.change{{/t}}
@@ -69,7 +69,7 @@
             </tr>
             <tr>
               <th>{{#t}}pages.request-another-tenant.tables.headers.recorded-delivery{{/t}}</th>
-              <td id="recorded-delivery">{{tenant-recorded-delivery-number}}{{^tenant-recorded-delivery-number}}{{#t}}pages.request-another-tenant.tables.values.undefined{{/t}}{{/tenant-recorded-delivery-number}}</td>
+              <td class="recorded-delivery">{{tenant-recorded-delivery-number}}{{^tenant-recorded-delivery-number}}{{#t}}pages.request-another-tenant.tables.values.undefined{{/t}}{{/tenant-recorded-delivery-number}}</td>
               <td>
                 <a class="change-tenant-button" href="/request-another-tenant/edit/{{tenant-uuid}}?field=tenant-recorded-delivery-number">
                   {{#t}}buttons.change{{/t}}
@@ -78,7 +78,7 @@
             </tr>
             <tr>
               <td colspan="3">
-                <a id="delete-tenant-button" class= "button button-delete" href="/request-another-tenant/delete/{{tenant-uuid}}">
+                <a class="button button-delete" href="/request-another-tenant/delete/{{tenant-uuid}}">
                   {{#t}}buttons.delete-tenant{{/t}}
                 </a>
               </td>

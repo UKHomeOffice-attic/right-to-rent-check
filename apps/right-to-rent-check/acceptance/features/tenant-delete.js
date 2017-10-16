@@ -1,7 +1,7 @@
 'use strict';
 
 const steps = require('../../');
-const deleteSelector = '#content > div > form > table:nth-child(7) > tbody > tr:nth-child(7) > td:nth-child(4) > a';
+const deleteSelector = '#content > div > form > div.tenant-details-border > table > tbody:nth-child(2) > tr:nth-child(8) > td > a';
 
 Feature('Given I have added two tenants');
 

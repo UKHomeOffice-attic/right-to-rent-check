@@ -156,7 +156,8 @@
       "landlord-address": {
         "label": "Address"
       }
-    }
+    },
+    "undefined": "Not provided"
   },
   "declaration": {
     "header": "Declaration",

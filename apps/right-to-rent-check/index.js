@@ -205,7 +205,7 @@ module.exports = {
     },
     '/confirm': {
       behaviours: [confirmTenants, 'complete'],
-      nullValue: 'pages.tenant-another.tables.values.undefined',
+      nullValue: 'pages.confirm.undefined',
       sections: {
         'key-details': [{
             field: 'documents-check',

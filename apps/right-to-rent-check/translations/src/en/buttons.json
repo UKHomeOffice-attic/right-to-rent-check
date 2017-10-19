@@ -5,5 +5,6 @@
   "delete": "Delete",
   "find-address": "Find address",
   "delete-tenant": "Delete this tenant",
-  "submit": "Submit"
+  "submit": "Submit",
+  "continue-declaration": "Continue to declaration"
 }

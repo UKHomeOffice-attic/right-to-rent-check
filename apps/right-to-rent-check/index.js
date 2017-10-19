@@ -1,5 +1,7 @@
 'use strict';
 
+const moment = require('moment');
+
 const _ = require('lodash');
 const AddressLookup = require('hof-behaviour-address-lookup');
 const checkPilotPostcodeAndDate = require('./behaviours/tenancy-start-postcode-check');
@@ -235,7 +237,10 @@ module.exports = {
             field: 'tenants',
             children: [
               'tenant-name',
-              'tenant-dob',
+              {
+                field: 'tenant-dob',
+                parse: d => moment(d).format('DD-MM-YYYY')
+              },
               'tenant-country',
               'tenant-reference-number',
               'tenant-passport-number',

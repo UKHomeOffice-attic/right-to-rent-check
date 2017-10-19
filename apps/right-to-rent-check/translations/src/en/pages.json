@@ -110,6 +110,7 @@
     "header": "Check your answers"
   },
   "confirm": {
+    "header": "Check your answers",
     "sections": {
       "key-details": {
         "header": "Key details"

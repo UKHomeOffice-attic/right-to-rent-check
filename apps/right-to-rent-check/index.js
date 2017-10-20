@@ -19,6 +19,7 @@ const tenants = require('./behaviours/tenants')([
 const confirmTenants = require('./behaviours/confirm-tenants.js');
 const getDeclarer = require('./behaviours/get-declarer');
 const rentalQuestions = require('./behaviours/rental-questions');
+const filterSections = require('./behaviours/confirm-filter-sections');
 const config = require('../../config');
 
 module.exports = {
@@ -206,7 +207,7 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
-      behaviours: [confirmTenants, 'complete'],
+      behaviours: [filterSections, confirmTenants, 'complete'],
       nullValue: 'pages.confirm.undefined',
       sections: {
         'key-details': [{

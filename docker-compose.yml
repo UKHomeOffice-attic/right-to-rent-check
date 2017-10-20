@@ -31,3 +31,21 @@ services:
       - app
     volumes_from:
       - app
+
+  maildev:
+    image: djfarrelly/maildev
+    ports:
+      - "8000:80"
+      - "25"
+
+  html-pdf-converter:
+    image: quay.io/ukhomeofficedigital/html-pdf-converter:01442cbca45c8c1965a64f680d8fab95998e5238
+    environment:
+      - CHROME_HOST=chrome
+    ports:
+      - "8001:8001"
+    links:
+      - chrome
+
+  chrome:
+    image: yukinying/chrome-headless

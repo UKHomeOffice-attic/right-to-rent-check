@@ -38,6 +38,7 @@
     "express": "^4.15.2",
     "funkie": "0.0.5",
     "funkie-phantom": "0.0.1",
+    "hof-util-reqres": "^1.1.0",
     "mocha": "^3.4.2",
     "pre-commit": "^1.2.2",
     "proxyquire": "^1.8.0",

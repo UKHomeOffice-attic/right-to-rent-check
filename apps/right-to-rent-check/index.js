@@ -21,6 +21,7 @@ const getDeclarer = require('./behaviours/get-declarer');
 const rentalQuestions = require('./behaviours/rental-questions');
 const filterSections = require('./behaviours/confirm-filter-sections');
 const dynamicTitle = require('./behaviours/dynamic-title');
+const pdfUploader = require('./behaviours/pdf-uploader');
 const config = require('../../config');
 
 module.exports = {
@@ -211,7 +212,7 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
-      behaviours: [filterSections, confirmTenants, 'complete'],
+      behaviours: [filterSections, confirmTenants],
       nullValue: 'pages.confirm.undefined',
       sections: {
         'key-details': [{
@@ -296,7 +297,7 @@ module.exports = {
       next: '/declaration'
     },
     '/declaration': {
-      behaviours: [getDeclarer],
+      behaviours: [getDeclarer, pdfUploader, 'complete'],
       next: '/confirmation'
     },
     '/confirmation': {},

@@ -1,9 +1,9 @@
 /* eslint implicit-dependencies/no-implicit: [2, {dev:true}] */
-
 'use strict';
+
 const router = require('express').Router();
 
-module.exports = router.use('/api/postcode-test/:action?/:postcode?', (req, res) => {
+module.exports = router.use('/:action?/:postcode?', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.status(200);
   const action = req.params.action;

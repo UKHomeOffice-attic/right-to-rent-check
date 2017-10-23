@@ -27,7 +27,7 @@
     "jquery": "^3.1.1",
     "lodash": "^4.17.4",
     "mixwith": "^0.1.1",
-    "moment": "^2.18.1",
+    "moment": "^2.19.1",
     "typeahead-aria": "^1.0.4",
     "uuid": "^3.1.0"
   },
@@ -38,6 +38,7 @@
     "express": "^4.15.2",
     "funkie": "0.0.5",
     "funkie-phantom": "0.0.1",
+    "hof-util-reqres": "^1.1.0",
     "mocha": "^3.4.2",
     "pre-commit": "^1.2.2",
     "proxyquire": "^1.8.0",

@@ -1,5 +1,7 @@
 'use strict';
 
+const moment = require('moment');
+
 const _ = require('lodash');
 const AddressLookup = require('hof-behaviour-address-lookup');
 const checkPilotPostcodeAndDate = require('./behaviours/tenancy-start-postcode-check');
@@ -17,6 +19,8 @@ const tenants = require('./behaviours/tenants')([
 const confirmTenants = require('./behaviours/confirm-tenants.js');
 const getDeclarer = require('./behaviours/get-declarer');
 const rentalQuestions = require('./behaviours/rental-questions');
+const filterSections = require('./behaviours/confirm-filter-sections');
+const dynamicTitle = require('./behaviours/dynamic-title');
 const config = require('../../config');
 
 module.exports = {
@@ -166,7 +170,7 @@ module.exports = {
         'landlord-email-address',
         'landlord-phone-number'
       ],
-      next: '/confirm'
+      next: '/landlord-address'
     },
     '/agent-details': {
       fields: [
@@ -194,18 +198,21 @@ module.exports = {
       next: '/landlord-address'
     },
     '/landlord-address': {
-       behaviours: AddressLookup({
-        required: true,
-        addressKey: 'landlord-address',
-        apiSettings: {
-          hostname: config.postcode.hostname
-        }
-      }),
+      behaviours: [
+        dynamicTitle('representative'),
+        AddressLookup({
+          required: true,
+          addressKey: 'landlord-address',
+          apiSettings: {
+            hostname: config.postcode.hostname
+          }
+        })
+      ],
       next: '/confirm'
     },
     '/confirm': {
-      behaviours: [confirmTenants, 'complete'],
-      nullValue: 'pages.tenant-another.tables.values.undefined',
+      behaviours: [filterSections, confirmTenants, 'complete'],
+      nullValue: 'pages.confirm.undefined',
       sections: {
         'key-details': [{
             field: 'documents-check',
@@ -235,7 +242,10 @@ module.exports = {
             field: 'tenants',
             children: [
               'tenant-name',
-              'tenant-dob',
+              {
+                field: 'tenant-dob',
+                parse: d => moment(d).format('DD-MM-YYYY')
+              },
               'tenant-country',
               'tenant-reference-number',
               'tenant-passport-number',
@@ -266,7 +276,10 @@ module.exports = {
           'agent-name',
           'agent-email-address',
           'agent-phone-number',
-          'agent-address'
+          {
+            field: 'agent-address',
+            step: '/agent-address'
+          }
         ],
         'landlord-details': [
           'landlord-name',
@@ -274,7 +287,10 @@ module.exports = {
           'landlord-company',
           'landlord-email-address',
           'landlord-phone-number',
-          'landlord-address'
+          {
+            field: 'landlord-address',
+            step: '/landlord-address'
+          }
         ]
       },
       next: '/declaration'

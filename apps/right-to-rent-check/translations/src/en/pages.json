@@ -98,7 +98,10 @@
     "header": "What are your contact details?"
   },
   "landlord-address": {
-    "header": "What is the landlord’s address?"
+    "header": {
+      "agent": "What is the landlord’s address?",
+      "landlord": "What is your address?"
+    }
   },
   "agent-details": {
     "header": "What are your contact details?"
@@ -110,6 +113,7 @@
     "header": "Check your answers"
   },
   "confirm": {
+    "header": "Check your answers",
     "sections": {
       "key-details": {
         "header": "Key details"
@@ -155,7 +159,8 @@
       "landlord-address": {
         "label": "Address"
       }
-    }
+    },
+    "undefined": "Not provided"
   },
   "declaration": {
     "header": "Declaration",

@@ -1,0 +1,9 @@
+{{<partials-page}}
+  {{$page-content}}
+    {{>partials-confirmation-alert}}
+    <header class="page-header"> 
+      <h2>{{#t}}pages.confirmation.custom-header{{/t}}</h2>
+    </header>
+    {{#markdown}}confirmation{{/markdown}}
+  {{/page-content}}
+{{/partials-page}}

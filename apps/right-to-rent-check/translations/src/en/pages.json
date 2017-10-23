@@ -174,5 +174,9 @@
   },
   "complete": {
     "header": "Placeholder page"
+  },
+  "confirmation": {
+    "alert": "Your request has been sent",
+    "custom-header": "Thank you for your request"
   }
 }

@@ -46,13 +46,12 @@ Scenario('I see an error if I enter an invalid email address', (
 
 Scenario('I am taken to the landlord address step on a valid submission', (
   I,
-  landlordDetailsPage,
-  confirmPage
+  landlordDetailsPage
 ) => {
   I.fillField(landlordDetailsPage.fields.company, landlordDetailsPage.content.company);
   I.fillField(landlordDetailsPage.fields.name, landlordDetailsPage.content.name);
   I.fillField(landlordDetailsPage.fields.email, landlordDetailsPage.content.email);
   I.fillField(landlordDetailsPage.fields.phone, landlordDetailsPage.content.phone);
   I.submitForm();
-  I.seeInCurrentUrl(confirmPage.url);
+  I.seeInCurrentUrl('/landlord-address');
 });

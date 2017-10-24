@@ -22,7 +22,7 @@
   },
   "check-not-needed-date": {
     "header": "You do not need a Home Office right to rent check",
-    "intro": "You only need to use this service if the tenancy started after 1 February 2016 (or 1 December 2014 in the West Midlands)."
+    "intro": "You only need to use this service if the tenancy started on or after 1 February 2016 (or 1 December 2014 in the West Midlands)."
   },
   "rental-property-location": {
     "header": "Where is the rental property?"

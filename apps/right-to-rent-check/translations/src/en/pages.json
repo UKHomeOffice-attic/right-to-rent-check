@@ -27,6 +27,9 @@
   "rental-property-location": {
     "header": "Where is the rental property?"
   },
+  "rental-property-address": {
+    "header": "What is the rental property address?"
+  },
   "uk-check-yourself": {
     "header": "Placeholder page"
   },

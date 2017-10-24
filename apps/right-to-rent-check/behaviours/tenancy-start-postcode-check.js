@@ -1,6 +1,6 @@
 'use strict';
 
-const pilotPostcodes = require('../../../pilot-postcodes.js');
+const pilotPostcodes = require('../../../config.js').postcode.pilot;
 const pilotStartDate = new Date('2014/12/01').getTime();
 const pilotEndDate = new Date('2016/01/31').getTime();
 const _ = require('lodash');

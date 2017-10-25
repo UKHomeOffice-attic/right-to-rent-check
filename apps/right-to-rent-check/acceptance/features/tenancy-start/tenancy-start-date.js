@@ -6,9 +6,9 @@ Feature('Given I am on the Tenancy Start Page');
 
 Before((
   I,
-  propertyAddressPage
+  rentalPropertyAddressPage
 ) => {
-  I.amOnPage(propertyAddressPage.url);
+  I.amOnPage(rentalPropertyAddressPage.url);
 });
 
 Scenario('The correct fields are on the page', (

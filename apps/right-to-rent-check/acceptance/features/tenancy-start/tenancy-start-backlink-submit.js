@@ -4,12 +4,12 @@ Feature('Given I have submited a valid tenancy and I go back to the property add
 
 Before((
   I,
-  propertyAddressPage,
+  rentalPropertyAddressPage,
   personInPropertyPage,
   tenancyStartPage,
   checkConfirmedPage
 ) => {
-  I.amOnPage(propertyAddressPage.url);
+  I.amOnPage(rentalPropertyAddressPage.url);
   I.completeToStep(`/${tenancyStartPage.url}`, {
     'rental-property-location': 'england',
     'rental-property-address-postcode': 'B1 2EA',
@@ -24,7 +24,7 @@ Before((
   I.click(tenancyStartPage.backlink);
   I.seeInCurrentUrl(personInPropertyPage.url);
   I.click(personInPropertyPage.backlink);
-  I.seeInCurrentUrl(propertyAddressPage.url);
+  I.seeInCurrentUrl(rentalPropertyAddressPage.url);
 });
 
 Scenario('When I submit a date between 1 Dec 2014 & 31st Jan 2016 & the postcode is NOT in the West Midlands Then I see an exit page', (

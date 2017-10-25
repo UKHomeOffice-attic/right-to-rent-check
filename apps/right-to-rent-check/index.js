@@ -1,9 +1,10 @@
 'use strict';
 
 const moment = require('moment');
-
 const _ = require('lodash');
+
 const AddressLookup = require('hof-behaviour-address-lookup');
+
 const checkPilotPostcodeAndDate = require('./behaviours/tenancy-start-postcode-check');
 const ageRestriction = require('./behaviours/age-restriction');
 const getLivingStatus = require('./behaviours/get-living-status');
@@ -23,6 +24,7 @@ const filterSections = require('./behaviours/confirm-filter-sections');
 const dynamicTitle = require('./behaviours/dynamic-title');
 const pdfUploader = require('./behaviours/pdf-uploader');
 const config = require('../../config');
+const customerEmailer = require('./behaviours/customer-email')(config);
 
 module.exports = {
   name: 'right-to-rent-check',
@@ -212,7 +214,7 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
-      behaviours: [filterSections, confirmTenants],
+      behaviours: [customerEmailer, filterSections, confirmTenants],
       nullValue: 'pages.confirm.undefined',
       sections: {
         'key-details': [{

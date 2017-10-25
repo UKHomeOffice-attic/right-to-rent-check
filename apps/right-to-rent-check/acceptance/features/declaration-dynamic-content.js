@@ -22,7 +22,16 @@ Scenario('When I select landlord and go through the landlord part of the form Th
   I.fillField('#landlord-name', 'J');
   I.fillField('#landlord-email-address', 'a@g.com');
   I.fillField('#landlord-phone-number', '0123');
+
   I.submitForm();
+
+  I.seeInCurrentUrl('landlord-address');
+  I.fillField('#landlord-address-postcode', config.postcode.stub.postcode);
+  I.submitForm();
+  I.selectOption('#landlord-address-select', config.postcode.stub.address);
+
+  I.submitForm();
+
   I.seeInCurrentUrl('confirm');
   I.submitForm();
   I.seeInCurrentUrl('declaration');
@@ -44,19 +53,19 @@ Scenario('When I select agent and go through the agent part of the form Then I s
   I.submitForm();
 
   I.seeInCurrentUrl('agent-address');
-  I.fillField('#agent-address-postcode', config.mocks.postcode);
+  I.fillField('#agent-address-postcode', config.postcode.stub.postcode);
   I.submitForm();
   I.seeInCurrentUrl('agent-address?step=lookup');
-  I.selectOption('#agent-address-select', config.mocks.address);
+  I.selectOption('#agent-address-select', config.postcode.stub.address);
   I.submitForm();
 
   I.seeInCurrentUrl('landlord-name');
   I.fillField('#landlord-name-agent', 'Bruce Wayne');
   I.submitForm();
   I.seeInCurrentUrl('landlord-address');
-  I.fillField('#landlord-address-postcode', config.mocks.postcode);
+  I.fillField('#landlord-address-postcode', config.postcode.stub.postcode);
   I.submitForm();
-  I.selectOption('#landlord-address-select', config.mocks.address);
+  I.selectOption('#landlord-address-select', config.postcode.stub.address);
   I.submitForm();
   I.seeInCurrentUrl('confirm');
   I.submitForm();

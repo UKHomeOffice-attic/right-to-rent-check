@@ -10,14 +10,14 @@ Before((
   landlordAddressPage
 ) => {
   I.visitPage(landlordAddressPage, steps);
-  I.fillField('#landlord-address-postcode', config.mocks.postcode);
+  I.fillField('#landlord-address-postcode', config.postcode.stub.postcode);
   I.submitForm();
 });
 
 Scenario('When I select an address and submit then I am taken to /confirm', (
   I
 ) => {
-  I.selectOption('#landlord-address-select', config.mocks.address);
+  I.selectOption('#landlord-address-select', config.postcode.stub.address);
   I.submitForm();
   I.seeInCurrentUrl('confirm');
 });

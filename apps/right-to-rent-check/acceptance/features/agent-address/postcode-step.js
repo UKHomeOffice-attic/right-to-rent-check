@@ -25,7 +25,7 @@ Scenario('When I click the Manually Address link then I am directed to enter my 
 Scenario('When I submit a valid postcode then I am directed to select my address from the lookup step', (
   I
 ) => {
-  I.fillField('#agent-address-postcode', config.mocks.postcode);
+  I.fillField('#agent-address-postcode', config.postcode.stub.postcode);
   I.submitForm();
   I.seeInCurrentUrl('agent-address?step=lookup');
 });

@@ -4,7 +4,7 @@ const Emailer = require('hof-behaviour-emailer');
 const path = require('path');
 const moment = require('moment');
 
-const obfuscate = str => str.replace(/./g, '*') || 'Not provided';
+const obfuscate = str => str.replace(/./g, '*');
 
 const getDataRows = model => {
   const isAgent = model.representative === 'agent';
@@ -13,10 +13,8 @@ const getDataRows = model => {
       table: [
         { label: 'Date and time of submission', value: moment().format('DD-MM-YYYY, hh:mma') },
         { label: 'Rental property address', value: model['rental-property-address'] },
-        model['living-status'] === 'no' && {
-          label: 'Current property address', value: model['current-property-address']
-        }
-      ].filter(Boolean)
+        { label: 'Current property address', value: model['current-property-address'] }
+      ]
     },
     {
       title: 'Tenant details',

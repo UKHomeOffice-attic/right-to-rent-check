@@ -85,9 +85,6 @@
   "agent-phone-number": {
     "required": "Enter your phone number"
   },
-  "landlord-name-agent": {
-    "required": "Enter your full name"
-  },
   "representative": {
     "required": "Select an option"
   },

@@ -194,7 +194,7 @@ module.exports = {
     },
     '/landlord-name': {
       fields: [
-        'landlord-name-agent'
+        'landlord-name'
       ],
       next: '/landlord-address'
     },
@@ -284,7 +284,6 @@ module.exports = {
         ],
         'landlord-details': [
           'landlord-name',
-          'landlord-name-agent',
           'landlord-company',
           'landlord-email-address',
           'landlord-phone-number',

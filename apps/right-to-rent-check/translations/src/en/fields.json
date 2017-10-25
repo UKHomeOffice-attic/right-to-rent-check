@@ -122,9 +122,6 @@
     "hint": "We may use this number to contact you with queries",
     "summary": "Phone number"
   },
-  "landlord-name-agent": {
-    "label": "What's the landlord’s full name?"
-  },
   "representative": {
     "legend": "Are you the landlord or an agent acting on behalf of the landlord?",
     "options": {

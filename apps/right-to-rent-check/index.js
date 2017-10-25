@@ -24,7 +24,7 @@ const filterSections = require('./behaviours/confirm-filter-sections');
 const dynamicTitle = require('./behaviours/dynamic-title');
 const pdfUploader = require('./behaviours/pdf-uploader');
 const config = require('../../config');
-const customerEmailer = require('./behaviours/customer-email')(config);
+const customerEmailer = require('./behaviours/customer-email')(config.email);
 
 module.exports = {
   name: 'right-to-rent-check',

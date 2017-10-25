@@ -52,11 +52,18 @@ const getDataRows = model => {
   ].filter(Boolean);
 };
 
-module.exports = config => Emailer(Object.assign({}, config.email, {
-  recipient: model => {
-    return model.representative === 'agent' ? model['agent-email-address'] : model['landlord-email-address'];
-  },
-  subject: 'Right to rent check',
-  template: path.resolve(__dirname, '../emails/customer.html'),
-  parse: model => Object.assign(model, { data: getDataRows(model) })
-}));
+module.exports = config => {
+  if (config.transport !== 'stub' && !config.from && !config.replyTo) {
+    // eslint-disable-next-line no-console
+    console.warn('WARNING: Email `from` address must be provided. Falling back to stub email transport.');
+  }
+  return Emailer(Object.assign({}, config, {
+    transport: config.from ? config.transport : 'stub',
+    recipient: model => {
+      return model.representative === 'agent' ? model['agent-email-address'] : model['landlord-email-address'];
+    },
+    subject: 'Right to rent check',
+    template: path.resolve(__dirname, '../emails/customer.html'),
+    parse: model => Object.assign(model, { data: getDataRows(model) })
+  }));
+};

@@ -62,7 +62,7 @@ module.exports = config => {
     recipient: model => {
       return model.representative === 'agent' ? model['agent-email-address'] : model['landlord-email-address'];
     },
-    subject: 'Right to rent check',
+    subject: 'Confirmation of your Home Office right to rent check',
     template: path.resolve(__dirname, '../emails/customer.html'),
     parse: model => Object.assign(model, { data: getDataRows(model) })
   }));

@@ -7,19 +7,28 @@ module.exports = superclass => class extends superclass {
 
   process(req, res, next) {
     this.renderHTML(req, res)
-      .then(html => this.createPDF(html))
-      .then(buffer =>
-        this.uploadFile({
+      .then(html => {
+        req.log('debug', 'Creating PDF document');
+        return this.createPDF(html);
+      })
+      .then(pdfBuffer => {
+        req.log('debug', 'Created PDF document. Uploading.');
+        return this.uploadPdf({
           name: 'application_form.pdf',
-          data: buffer,
+          data: pdfBuffer,
           mimetype: 'application/pdf'
-        })
-      )
+        });
+      })
       .then(result => {
+        req.log('debug', 'Saved PDF document to S3');
         req.form.values['pdf-upload'] = result.url;
       })
-      .then(() => super.process(req, res, next), next)
-      .catch(err => next(err));
+      .then(() => {
+        super.process(req, res, next);
+      }, next)
+      .catch((err) => {
+        next(err);
+      });
   }
 
   renderHTML(req, res) {
@@ -36,7 +45,7 @@ module.exports = superclass => class extends superclass {
     });
   }
 
-  uploadFile(file) {
+  uploadPdf(file) {
     const model = new UploadModel();
     model.set(file);
     return model.save();

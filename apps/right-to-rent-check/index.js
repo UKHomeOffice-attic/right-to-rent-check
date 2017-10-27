@@ -214,7 +214,7 @@ module.exports = {
       next: '/confirm'
     },
     '/confirm': {
-      behaviours: [customerEmailer, filterSections, confirmTenants],
+      behaviours: [filterSections, confirmTenants],
       nullValue: 'pages.confirm.undefined',
       sections: {
         'key-details': [{
@@ -298,7 +298,7 @@ module.exports = {
       next: '/declaration'
     },
     '/declaration': {
-      behaviours: [getDeclarer, pdfUploader, 'complete'],
+      behaviours: [customerEmailer, getDeclarer, pdfUploader, 'complete'],
       next: '/confirmation'
     },
     '/confirmation': {},

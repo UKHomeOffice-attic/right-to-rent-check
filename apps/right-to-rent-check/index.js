@@ -4,7 +4,6 @@ const moment = require('moment');
 
 const _ = require('lodash');
 const AddressLookup = require('hof-behaviour-address-lookup');
-const backlinkAddress = require('./behaviours/backlink-address');
 const checkPilotPostcodeAndDate = require('./behaviours/tenancy-start-postcode-check');
 const ageRestriction = require('./behaviours/age-restriction');
 const getLivingStatus = require('./behaviours/get-living-status');
@@ -58,13 +57,13 @@ module.exports = {
     },
     '/check-not-needed-location': {},
     '/rental-property-address': {
-      behaviours: [AddressLookup({
+      behaviours: AddressLookup({
         required: true,
         addressKey: 'rental-property-address',
         apiSettings: {
           hostname: config.postcode.hostname
         }
-      })],
+      }),
       next: '/person-in-property'
     },
     '/person-in-property': {

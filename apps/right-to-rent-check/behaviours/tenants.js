@@ -4,7 +4,7 @@ const _ = require('lodash');
 const uuid = require('uuid/v4');
 const moment = require('moment');
 
-const DOB_FORMAT = 'DD-MM-YYYY';
+const config = require('../../../config');
 
 // Find the step that includes the field
 const findStep = (steps, field) =>
@@ -145,11 +145,7 @@ module.exports = fields => {
       const locals = super.locals(req, res);
       locals.tenants = _.cloneDeep(req.sessionModel.get('tenants'));
       locals.tenants.forEach(tenant => {
-        tenant['tenant-dob'] = moment(tenant['tenant-dob'], [
-          'YYYY-MM-DD',
-          'DD-MM-YYYY'
-        ])
-        .format(DOB_FORMAT);
+        tenant['tenant-dob'] = moment(tenant['tenant-dob']).format(config.dateFormat);
       });
       if (locals.tenants.length) {
         locals.hasTenants = true;

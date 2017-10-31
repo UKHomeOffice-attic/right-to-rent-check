@@ -1,0 +1,64 @@
+{
+  "customer": {
+    "subject": "Confirmation of your Home Office right to rent check",
+    "fields": {
+      "submitted": {
+        "label": "Date and time of submission"
+      },
+      "rental-property-address": {
+        "label": "Rental property address"
+      },
+      "current-property-address": {
+        "label": "Current property address"
+      },
+      "tenant-name": {
+        "label": "Tenant's name"
+      },
+      "tenant-dob": {
+        "label": "Date of birth"
+      },
+      "tenant-country": {
+        "label": "Country of nationality"
+      },
+      "tenant-reference-number": {
+        "label": "Home Office reference number"
+      },
+      "tenant-passport-number": {
+        "label": "Passport number"
+      },
+      "tenant-brp-number": {
+        "label": "Biometric residence permit number"
+      },
+      "tenant-recorded-delivery-number": {
+        "label": "Recorded delivery number"
+      },
+      "agent-company": {
+        "label": "Company name"
+      },
+      "agent-name": {
+        "label": "Name"
+      },
+      "agent-email-address": {
+        "label": "Email"
+      },
+      "agent-phone-number": {
+        "label": "Phone number"
+      },
+      "agent-address": {
+        "label": "Address"
+      },
+      "landlord-name": {
+        "label": "Name"
+      },
+      "landlord-email-address": {
+        "label": "Email"
+      },
+      "landlord-phone-number": {
+        "label": "Phone number"
+      },
+      "landlord-address": {
+        "label": "Address"
+      }
+    }
+  }
+}

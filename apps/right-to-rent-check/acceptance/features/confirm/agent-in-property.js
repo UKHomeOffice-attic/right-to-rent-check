@@ -35,7 +35,7 @@ Scenario('When the page loads at /confirm then I should see the start date', (
 Scenario('When the page loads at /confirm then I should not see their current address', (
   I
 ) => {
-  I.dontSeeElement('tr[data-id=\'current-property-address\']');
+  I.dontSeeElement('tr[data-id=\'tenant-current-address\']');
 });
 
 Scenario('When the page loads at /confirm then I should not see if they live in the UK', (

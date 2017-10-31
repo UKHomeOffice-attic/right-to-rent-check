@@ -13,7 +13,7 @@ Before((
     'rental-property-location': 'england',
     'living-status': 'no',
     'tenant-in-uk': 'yes',
-    'current-property-address': 'ABC 222',
+    'tenant-current-address': 'ABC 222',
     'representative': 'landlord',
     'landlord-name': 'Johnny',
     'landlord-company': 'Johnny Corp',
@@ -25,7 +25,7 @@ Before((
 Scenario('When the page at /confirm loads then I should see their current address', (
   I
 ) => {
-  I.see('ABC 222', 'tr[data-id=\'current-property-address\']');
+  I.see('ABC 222', 'tr[data-id=\'tenant-current-address\']');
 });
 
 Scenario('When the page at /confirm loads then I should see if they live in the UK', (

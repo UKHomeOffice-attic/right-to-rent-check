@@ -51,7 +51,7 @@
   "person-in-property": {
     "intro": "You can add more people later if you need to."
   },
-  "current-property-address": {
+  "tenant-current-address": {
     "header": "What is their current address?"
   },
   "tenant-details": {
@@ -147,7 +147,7 @@
       "tenant-in-uk": {
         "label": "Person(s) living in UK"
       },
-      "current-property-address": {
+      "tenant-current-address": {
         "label": "Current address"
       },
       "tenancy-start": {

@@ -8,7 +8,7 @@
       "rental-property-address": {
         "label": "Rental property address"
       },
-      "current-property-address": {
+      "tenant-current-address": {
         "label": "Current property address"
       },
       "tenant-name": {

@@ -2,20 +2,20 @@
 
 const steps = require('../../');
 
-Feature('current property address step');
+Feature('Given I am on /tenant-current-address');
 
 Before((
   I,
-  currentPropertyAddressPage
+  tenantCurrentAddressPage
 ) => {
-  I.visitPage(currentPropertyAddressPage, steps);
+  I.visitPage(tenantCurrentAddressPage, steps);
 });
 
 Scenario('When I submit a valid address Then I am taken to the check confirmed page', (
   I,
-  currentPropertyAddressPage,
+  tenantCurrentAddressPage,
   checkConfirmedPage
 ) => {
-  currentPropertyAddressPage.completeAddress();
+  tenantCurrentAddressPage.completeAddress();
   I.seeInCurrentUrl(checkConfirmedPage.url);
 });

@@ -13,7 +13,7 @@ Before((
     'rental-property-location': 'england',
     'living-status': 'no',
     'tenant-in-uk': 'yes',
-    'current-property-address-postcode': 'CR0 2EU',
+    'tenant-current-address-postcode': 'CR0 2EU',
     'representative': 'agent',
     'agent-email-address': 'emma.ogrady@gmail.com'
   });
@@ -22,7 +22,7 @@ Before((
 Scenario('When the page at /confirm loads then I should see the tenants current address', (
   I
 ) => {
-  I.see('CR0 2EU', 'tr[data-id=\'current-property-address\']');
+  I.see('CR0 2EU', 'tr[data-id=\'tenant-current-address\']');
 });
 
 Scenario('When the page at /confirm loads then I should see the tenant lives in the UK', (

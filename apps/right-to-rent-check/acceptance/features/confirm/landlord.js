@@ -23,7 +23,7 @@ Before((
     'rental-property-address': 'abc 111',
     'living-status': 'no',
     'tenant-in-uk': 'yes',
-    'current-property-address': 'abc 222',
+    'tenant-current-address': 'abc 222',
     'tenant-add-another': add(2),
     'representative': 'landlord',
     'landlord-name': 'Johnny',
@@ -79,7 +79,7 @@ Scenario('When the Key Details load then they should not be edittable', (
   I.dontSee('Change', 'tr[data-id=\'rental-property-address\']');
   I.dontSee('Change', 'tr[data-id=\'living-status\']');
   I.dontSee('Change', 'tr[data-id=\'tenant-in-uk\']');
-  I.dontSee('Change', 'tr[data-id=\'current-property-address\']');
+  I.dontSee('Change', 'tr[data-id=\'tenant-current-address\']');
 });
 
 Scenario('When I click Continue then I am taken to /declaration', (

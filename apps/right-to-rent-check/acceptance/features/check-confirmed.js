@@ -77,8 +77,8 @@ Scenario('When the user is not living in the property then the following data is
     'rental-property-address-select': '49 Sydenham Road, Croydon, CR0 2EU',
     'living-status': 'no',
     'tenant-in-uk': 'yes',
-    'current-property-address-postcode': 'CR0 2EU',
-    'current-property-address-select': '49 Sydenham Road, Croydon, CR0 2EU',
+    'tenant-current-address-postcode': 'CR0 2EU',
+    'tenant-current-address-select': '49 Sydenham Road, Croydon, CR0 2EU',
   });
   I.seeNumberOfElements('#checkAnswersTable tr', 6);
   I.see('Does the person have documents No', '#checkAnswersTable tr:nth-child(1)');

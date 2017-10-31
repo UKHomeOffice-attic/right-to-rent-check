@@ -23,7 +23,7 @@ Before((
     'rental-property-address': 'CR0 2EU',
     'living-status': 'no',
     'tenant-in-uk': 'yes',
-    'current-property-address': 'CR0 2EU',
+    'tenant-current-address': 'CR0 2EU',
     'tenant-add-another': add(2),
     'representative': 'agent',
     'agent-company': 'abc corp',
@@ -82,7 +82,7 @@ Scenario('When /confirm loads then I should see the Key Details', (
   I.see('CR0 2EU', 'tr[data-id=\'rental-property-address\']');
   I.see('No', 'tr[data-id=\'living-status\']');
   I.see('Yes', 'tr[data-id=\'tenant-in-uk\']');
-  I.see('CR0 2EU', 'tr[data-id=\'current-property-address\']');
+  I.see('CR0 2EU', 'tr[data-id=\'tenant-current-address\']');
 });
 
 Scenario('When the Key Details load then they should not be edittable', (
@@ -94,7 +94,7 @@ Scenario('When the Key Details load then they should not be edittable', (
   I.dontSee('Change', 'tr[data-id=\'rental-property-address\']');
   I.dontSee('Change', 'tr[data-id=\'living-status\']');
   I.dontSee('Change', 'tr[data-id=\'tenant-in-uk\']');
-  I.dontSee('Change', 'tr[data-id=\'current-property-address\']');
+  I.dontSee('Change', 'tr[data-id=\'tenant-current-address\']');
 });
 
 Scenario('When I click Continue then I am taken to /declaration', (

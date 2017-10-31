@@ -31,7 +31,7 @@ Before((
     'agent-email-address': 'abc@abc-corp.com',
     'agent-phone-number': '12345',
     'agent-address': 'CR0 2EU',
-    'landlord-name-agent': 'Johnny',
+    'landlord-name': 'Johnny',
     'landlord-address-postcode': 'CR0 2EU'
   });
 });
@@ -69,7 +69,7 @@ Scenario('When /confirm loads then I should see the Landlord Details', (
 ) => {
   I.seeInCurrentUrl('/confirm');
   I.seeNumberOfElements('table[data-section=\'landlord-details\']', 1);
-  I.see('Johnny', 'tr[data-id=\'landlord-name-agent\']');
+  I.see('Johnny', 'tr[data-id=\'landlord-name\']');
   I.see('CR0 2EU', 'tr[data-id=\'landlord-address\']');
 });
 

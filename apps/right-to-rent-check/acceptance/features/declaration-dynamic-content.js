@@ -60,7 +60,7 @@ Scenario('When I select agent and go through the agent part of the form Then I s
   I.submitForm();
 
   I.seeInCurrentUrl('landlord-name');
-  I.fillField('#landlord-name-agent', 'Bruce Wayne');
+  I.fillField('#landlord-name', 'Bruce Wayne');
   I.submitForm();
   I.seeInCurrentUrl('landlord-address');
   I.fillField('#landlord-address-postcode', config.postcode.stub.postcode);

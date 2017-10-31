@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "hof": "^13.0.0",
-    "hof-behaviour-address-lookup": "^2.1.1",
+    "hof-behaviour-address-lookup": "^2.2.0",
     "hof-behaviour-summary-page": "^3.0.0",
     "hof-build": "^1.4.0",
     "hof-component-date": "^1.4.0",

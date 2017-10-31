@@ -29,7 +29,7 @@ module.exports = {
     tenantDetailsPage: pagesPath('tenant-details.js'),
     tenantAdditionalDetailsPage: pagesPath('tenant-additional-details.js'),
     requestAnotherTenantPage: pagesPath('request-another-tenant.js'),
-    propertyAddressPage: pagesPath('property-address.js'),
+    rentalPropertyAddressPage: pagesPath('rental-property-address.js'),
     landlordAgentPage: pagesPath('landlord-agent.js'),
     landlordAddressPage: pagesPath('landlord-address.js'),
     landlordDetailsPage: pagesPath('landlord-details.js'),

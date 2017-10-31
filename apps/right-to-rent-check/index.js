@@ -1,9 +1,10 @@
 'use strict';
 
 const moment = require('moment');
-
 const _ = require('lodash');
+
 const AddressLookup = require('hof-behaviour-address-lookup');
+
 const checkPilotPostcodeAndDate = require('./behaviours/tenancy-start-postcode-check');
 const ageRestriction = require('./behaviours/age-restriction');
 const getLivingStatus = require('./behaviours/get-living-status');
@@ -23,6 +24,7 @@ const filterSections = require('./behaviours/confirm-filter-sections');
 const dynamicTitle = require('./behaviours/dynamic-title');
 const pdfUploader = require('./behaviours/pdf-uploader');
 const config = require('../../config');
+const customerEmailer = require('./behaviours/customer-email')(config.email);
 
 module.exports = {
   name: 'right-to-rent-check',
@@ -194,7 +196,7 @@ module.exports = {
     },
     '/landlord-name': {
       fields: [
-        'landlord-name-agent'
+        'landlord-name'
       ],
       next: '/landlord-address'
     },
@@ -284,7 +286,6 @@ module.exports = {
         ],
         'landlord-details': [
           'landlord-name',
-          'landlord-name-agent',
           'landlord-company',
           'landlord-email-address',
           'landlord-phone-number',
@@ -297,7 +298,7 @@ module.exports = {
       next: '/declaration'
     },
     '/declaration': {
-      behaviours: [getDeclarer, pdfUploader, 'complete'],
+      behaviours: [customerEmailer, getDeclarer, pdfUploader, 'complete'],
       next: '/confirmation'
     },
     '/confirmation': {},

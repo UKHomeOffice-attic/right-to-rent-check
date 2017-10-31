@@ -150,11 +150,6 @@ module.exports = {
     mixin: 'input-text',
     validate: 'required'
   },
-  'landlord-name-agent': {
-    mixin: 'input-text',
-    validate: 'required',
-    labelClassName: 'visuallyhidden'
-  },
   'representative': {
     mixin: 'radio-group',
     validate: 'required',

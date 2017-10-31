@@ -1,0 +1,52 @@
+<h1>Your request for a Home Office right to rent check has been sent</h1>
+
+<p>Thank you for requesting a Home Office right to rent check for:</p>
+
+<ul>
+  {{#tenants}}
+  <li>{{tenant-name}}</li>
+  {{/tenants}}
+</ul>
+
+<p>We will carry out this check and email you within 2 working days with a unique reference number. Our decision will be based on the details you've submitted (shown below). Please keep this email as proof of your request.</p>
+
+<p>If any of these details are wrong, or you have received this email in error, call us on 0300 069 9799. Please do not call us to check up on your application as we will not be able to process it any faster.</p>
+
+<p>View the <a href="https://www.gov.uk/check-tenant-right-to-rent-documents">right to rent</a> guidance.</p>
+
+<h2>Your confirmation details</h2>
+
+{{#data}}
+  {{#title}}
+    <h3>{{title}}</h3>
+  {{/title}}
+  <table width="100%" cellspacing="0" cellpadding="0" rules="none">
+    {{#table}}
+      {{#linebreak}}
+      <tr>
+        <td colspan="2" style="border-bottom:1px solid #333;"></td>
+      </tr>
+      {{/linebreak}}
+      {{#value}}
+      <tr>
+        <td width="40%" style="padding: 15px 0;border-bottom:1px solid #ccc;">{{label}}</td>
+        <td width="60%" style="padding: 15px 0;border-bottom:1px solid #ccc;">{{value}}</td>
+      </tr>
+      {{/value}}
+    {{/table}}
+  </table>
+{{/data}}
+
+<div style="background:#ccc;padding: 0 20px 10px;border-top:5px solid #912B88;margin-top:20px;">
+  <h4>Further queries</h4>
+
+  <p>If you have any further queries about right to rent, contact the landlord’s helpline. Please note, we can’t discuss individual applications.</p>
+  <h4>Landlord's helpline</h4>
+  <p>
+    0300 069 9799<br/>
+    Monday to Thursday 9am to 4:45pm<br/>
+    Friday 9am to 4:30pm
+  </p>
+</div>
+
+<p>If you have any concerns regarding the validity of this or any emails received from Home Office go to our <a href="">Online Security pages</a></p>

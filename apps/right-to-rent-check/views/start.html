@@ -12,7 +12,14 @@
       </div>
       </details>
     </div>
-    {{#markdown}}start-final{{/markdown}}
-    {{#input-submit}}start-now{{/input-submit}}
+    <div class="notice">
+      <i class="icon icon-important">
+        <span class="visually-hidden">Warning</span>
+      </i>
+      <strong class="bold-small">
+        {{#t}}pages.start.notice{{/t}}
+      </strong>
+    </div>
+    {{#input-submit}}start-check{{/input-submit}}
   {{/page-content}}
 {{/partials-page}}

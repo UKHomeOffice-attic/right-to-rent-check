@@ -9,11 +9,11 @@ module.exports = {
     I = require('so-acceptance/steps')();
   },
 
-  url: 'current-property-address',
+  url: 'tenant-current-address',
 
   elements: {
     manualEntry: 'a[href="?step=manual"]',
-    address: '#current-property-address'
+    address: '#tenant-current-address'
   },
 
   content: {

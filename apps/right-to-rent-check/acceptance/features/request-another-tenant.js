@@ -69,7 +69,7 @@ Scenario('When I select yes and submit the form Then all fields are empty on /te
   I.seeInField('#tenant-country', '');
 });
 
-Scenario('When I select no and submit the form Then I am taken to /landlord-agent', (
+Scenario('When I select no and submit the form Then I am taken to /landlord-or-agent', (
   I,
   requestAnotherTenantPage,
   landlordAgentPage

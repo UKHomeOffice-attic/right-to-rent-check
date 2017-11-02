@@ -81,7 +81,7 @@ module.exports = {
     },
     '/tenant-in-uk': {
       fields: ['tenant-in-uk'],
-      next: '/current-property-address',
+      next: '/tenant-current-address',
       forks: [{
         target: '/check-not-needed-uk',
         condition: {
@@ -103,9 +103,9 @@ module.exports = {
     '/start': {
       next: '/tenant-details'
     },
-    '/current-property-address': {
+    '/tenant-current-address': {
       behaviours: AddressLookup({
-        addressKey: 'current-property-address',
+        addressKey: 'tenant-current-address',
         apiSettings: {
           hostname: config.postcode.hostname
         }
@@ -144,7 +144,7 @@ module.exports = {
       fields: [
         'tenant-add-another',
       ],
-      next: '/landlord-agent',
+      next: '/landlord-or-agent',
       forks: [{
         target: '/tenant-details',
         condition: {
@@ -153,7 +153,7 @@ module.exports = {
         }
       }]
     },
-    '/landlord-agent': {
+    '/landlord-or-agent': {
       fields: [
         'representative'
       ],
@@ -233,7 +233,7 @@ module.exports = {
             field: 'tenant-in-uk',
             edit: false
           }, {
-            field: 'current-property-address',
+            field: 'tenant-current-address',
             edit: false
           }, {
             field: 'tenancy-start',

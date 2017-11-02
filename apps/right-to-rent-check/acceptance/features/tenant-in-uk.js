@@ -24,13 +24,13 @@ Scenario('When I submit an empty form then I see an error for each field', (
   I.seeErrors('#tenant-in-uk');
 });
 
-Scenario('When I select Yes And submit the form Then I am taken to /current-property-address page', (
+Scenario('When I select Yes And submit the form Then I am taken to /tenant-current-address page', (
   I,
-  currentPropertyAddressPage
+  tenantCurrentAddressPage
 ) => {
   I.click('#tenant-in-uk-yes');
   I.submitForm();
-  I.seeInCurrentUrl(currentPropertyAddressPage.url);
+  I.seeInCurrentUrl(tenantCurrentAddressPage.url);
 });
 
 Scenario('When I select No And submit the form Then I am taken to the /check-not-needed-uk page', (

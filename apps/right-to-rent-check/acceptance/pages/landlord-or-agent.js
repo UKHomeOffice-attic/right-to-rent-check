@@ -3,7 +3,7 @@
 module.exports = {
   _init() {},
 
-  url: 'landlord-agent',
+  url: 'landlord-or-agent',
   fields: {
     landlord: '#representative-landlord',
     agent: '#representative-agent'

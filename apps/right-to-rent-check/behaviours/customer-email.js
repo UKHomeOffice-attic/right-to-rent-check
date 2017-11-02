@@ -14,7 +14,7 @@ const getDataRows = (model, translate) => {
       table: [
         { label: label('submitted'), value: moment().format('DD-MM-YYYY, hh:mma') },
         { label: label('rental-property-address'), value: model['rental-property-address'] },
-        { label: label('current-property-address'), value: model['current-property-address'] }
+        { label: label('tenant-current-address'), value: model['tenant-current-address'] }
       ]
     },
     {

@@ -39,7 +39,7 @@ describe('behaviours/rental-questions', () => {
       'rental-property-address': '1 New Street, Town, ABC 123',
       'tenant-in-uk': 'yes',
       'tenancy-start': '2017-7-7',
-      'current-property-address': '1 Old Street, Ville, DEF 456'
+      'tenant-current-address': '1 Old Street, Ville, DEF 456'
     };
 
     let Behaviour;

@@ -3,7 +3,7 @@
 const steps = require('../../');
 const config = require('../../../../config');
 
-Feature('Given I am on /landlord-agent');
+Feature('Given I am on /landlord-or-agent');
 
 Before((
   I,
@@ -15,7 +15,7 @@ Before((
 Scenario('When I select landlord and go through the landlord part of the form Then I see the landlord content on /declaration', (
   I
 ) => {
-  I.seeInCurrentUrl('landlord-agent');
+  I.seeInCurrentUrl('landlord-or-agent');
   I.click('#representative-landlord');
   I.submitForm();
   I.seeInCurrentUrl('/landlord-details');
@@ -42,7 +42,7 @@ Scenario('When I select landlord and go through the landlord part of the form Th
 Scenario('When I select agent and go through the agent part of the form Then I see the agent content on /declaration', (
   I
 ) => {
-  I.seeInCurrentUrl('landlord-agent');
+  I.seeInCurrentUrl('landlord-or-agent');
   I.click('#representative-agent');
   I.submitForm();
   I.seeInCurrentUrl('/agent-details');

@@ -40,6 +40,7 @@ module.exports = {
   email: {
     from: process.env.FROM_ADDRESS || '',
     transport: process.env.EMAIL_TRANSPORT || 'ses',
+    caseworker: process.env.CASEWORKER_EMAIL || '',
     transportOptions: {
       accessKeyId: process.env.HOF_SES_USER || process.env.AWS_USER || '',
       secretAccessKey: process.env.HOF_SES_PASSWORD || process.env.AWS_PASSWORD || ''

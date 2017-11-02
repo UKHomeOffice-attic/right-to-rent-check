@@ -63,7 +63,8 @@
     "header": "What are the tenant’s details?"
   },
   "tenant-additional-details": {
-    "header": "What additional information can you provide for {{values.tenant-name}}?"
+    "header": "What additional information, if any, do you have for {{values.tenant-name}}?",
+    "info": "If you don’t have any of these, click continue."
   },
   "request-another-tenant": {
     "header": "{{livingStatusHeader}}",

@@ -29,7 +29,7 @@ Before((
 Scenario('When the page loads at /confirm then I should see the start date', (
   I
 ) => {
-  I.see('2017-01-01', 'tr[data-id=\'tenancy-start\']');
+  I.see('01-01-2017', 'tr[data-id=\'tenancy-start\']');
 });
 
 Scenario('When the page loads at /confirm then I should not see their current address', (

@@ -237,6 +237,7 @@ module.exports = {
             edit: false
           }, {
             field: 'tenancy-start',
+            parse: d => moment(d).format(config.dateFormat),
             edit: false
           }
         ],
@@ -247,7 +248,7 @@ module.exports = {
               'tenant-name',
               {
                 field: 'tenant-dob',
-                parse: d => moment(d).format('DD-MM-YYYY')
+                parse: d => moment(d).format(config.dateFormat)
               },
               'tenant-country',
               'tenant-reference-number',

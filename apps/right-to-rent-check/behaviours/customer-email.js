@@ -4,6 +4,8 @@ const Emailer = require('hof-behaviour-emailer');
 const path = require('path');
 const moment = require('moment');
 
+const config = require('../../../config');
+
 const obfuscate = str => str.replace(/./g, '*');
 
 const getDataRows = (model, translate) => {
@@ -12,7 +14,7 @@ const getDataRows = (model, translate) => {
   return [
     {
       table: [
-        { label: label('submitted'), value: moment().format('DD-MM-YYYY, hh:mma') },
+        { label: label('submitted'), value: moment().format(config.dateTimeFormat) },
         { label: label('rental-property-address'), value: model['rental-property-address'] },
         { label: label('tenant-current-address'), value: model['tenant-current-address'] }
       ]
@@ -22,7 +24,7 @@ const getDataRows = (model, translate) => {
       table: model.tenants.reduce((fields, tenant, i) => fields.concat([
         { linebreak: i > 0 },
         { label: label('tenant-name'), value: tenant['tenant-name'] },
-        { label: label('tenant-dob'), value: moment(tenant['tenant-dob']).format('DD-MM-YYYY') },
+        { label: label('tenant-dob'), value: moment(tenant['tenant-dob']).format(config.dateFormat) },
         { label: label('tenant-country'), value: tenant['tenant-country'] },
         { label: label('tenant-reference-number'), value: obfuscate(tenant['tenant-reference-number']) },
         { label: label('tenant-passport-number'), value: obfuscate(tenant['tenant-passport-number']) },
@@ -53,13 +55,13 @@ const getDataRows = (model, translate) => {
   ].filter(Boolean);
 };
 
-module.exports = config => {
-  if (config.transport !== 'stub' && !config.from && !config.replyTo) {
+module.exports = settings => {
+  if (settings.transport !== 'stub' && !settings.from && !settings.replyTo) {
     // eslint-disable-next-line no-console
     console.warn('WARNING: Email `from` address must be provided. Falling back to stub email transport.');
   }
-  return Emailer(Object.assign({}, config, {
-    transport: config.from ? config.transport : 'stub',
+  return Emailer(Object.assign({}, settings, {
+    transport: settings.from ? settings.transport : 'stub',
     recipient: model => {
       return model.representative === 'agent' ? model['agent-email-address'] : model['landlord-email-address'];
     },

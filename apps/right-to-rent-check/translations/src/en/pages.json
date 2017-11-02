@@ -46,7 +46,8 @@
     "link": "Something’s wrong, start again"
   },
   "start": {
-    "custom-header": "Request a Home Office right to rent check"
+    "custom-header": "Request a Home Office right to rent check",
+    "notice": "You must tell the tenant you will be sharing their details with the Home Office for a right to rent check."
   },
   "person-in-property": {
     "intro": "You can add more people later if you need to."

@@ -24,7 +24,7 @@
     "hof-form-controller": "^5.1.0",
     "hof-frontend-toolkit": "^2.1.0",
     "hof-model": "^3.1.2",
-    "hof-theme-govuk": "^4.0.0",
+    "hof-theme-govuk": "^4.1.0",
     "homeoffice-countries": "^0.1.0",
     "is-pdf": "^1.0.0",
     "jquery": "^3.1.1",

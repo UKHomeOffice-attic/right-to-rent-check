@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "hof": "^13.0.0",
-    "hof-behaviour-emailer": "^2.2.0",
     "hof-behaviour-address-lookup": "^2.2.0",
+    "hof-behaviour-emailer": "^2.2.0",
     "hof-behaviour-summary-page": "^3.0.0",
     "hof-build": "^1.5.0",
     "hof-component-date": "^1.4.0",
@@ -25,7 +25,7 @@
     "hof-frontend-toolkit": "^2.1.0",
     "hof-model": "^3.1.2",
     "hof-theme-govuk": "^4.1.0",
-    "homeoffice-countries": "^0.1.0",
+    "hof-util-countries": "^1.0.0",
     "is-pdf": "^1.0.0",
     "jquery": "^3.1.1",
     "lodash": "^4.17.4",

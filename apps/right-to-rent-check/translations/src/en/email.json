@@ -1,4 +1,7 @@
 {
+  "caseworker": {
+    "subject": "You have a new request for a Home Office Right to Rent check"
+  },
   "customer": {
     "subject": "Confirmation of your Home Office right to rent check",
     "fields": {

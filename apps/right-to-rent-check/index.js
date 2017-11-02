@@ -25,6 +25,7 @@ const dynamicTitle = require('./behaviours/dynamic-title');
 const pdfUploader = require('./behaviours/pdf-uploader');
 const config = require('../../config');
 const customerEmailer = require('./behaviours/customer-email')(config.email);
+const caseworkerEmailer = require('./behaviours/caseworker-email')(config.email);
 
 module.exports = {
   name: 'right-to-rent-check',
@@ -299,7 +300,7 @@ module.exports = {
       next: '/declaration'
     },
     '/declaration': {
-      behaviours: [customerEmailer, getDeclarer, pdfUploader, 'complete'],
+      behaviours: [caseworkerEmailer, customerEmailer, getDeclarer, pdfUploader, 'complete'],
       next: '/confirmation'
     },
     '/confirmation': {},

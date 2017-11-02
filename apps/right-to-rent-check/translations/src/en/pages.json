@@ -176,14 +176,14 @@
     "agent": "you are an agent acting on behalf of the landlord",
     "email-paragraph": "When you've submitted this request, we'll send a copy of the information you’ve provided to {{declarerEmail}}."
   },
-  "privacy-policy": {
-    "header": "Placeholder page"
-  },
   "complete": {
     "header": "Placeholder page"
   },
   "confirmation": {
     "alert": "Your request has been sent",
     "custom-header": "Thank you for your request"
+  },
+  "privacy-policy": {
+    "header": "Privacy policy"
   }
 }

@@ -23,7 +23,7 @@ Before((
     'rental-property-address': 'CR0 2EU',
     'living-status': 'no',
     'tenant-in-uk': 'yes',
-    'tenant-current-address': 'CR0 2EU',
+    'tenant-current-address-postcode': 'CR0 2EU',
     'tenant-add-another': add(2),
     'representative': 'agent',
     'agent-company': 'abc corp',

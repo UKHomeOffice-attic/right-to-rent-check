@@ -52,6 +52,7 @@ pipeline:
     image: docker:1.11
     environment:
       - DOCKER_HOST=tcp://127.0.0.1:2375
+      - CASEWORKER_EMAIL=test@example.com
     commands:
       - docker run -e NODE_ENV=ci -e DISABLE_CSP=true -e EMAIL_TRANSPORT=stub -d --net host app-${DRONE_COMMIT_SHA}
       - docker run --rm --net host acceptance-${DRONE_COMMIT_SHA}
@@ -62,8 +63,9 @@ pipeline:
     image: docker:1.11
     environment:
       - DOCKER_HOST=tcp://127.0.0.1:2375
+      - CASEWORKER_EMAIL=test@example.com
     commands:
-      - docker run -e NODE_ENV=ci -e DISABLE_CSP=true -d --net host app-${DRONE_COMMIT_SHA}
+      - docker run -e NODE_ENV=ci -e DISABLE_CSP=true -e EMAIL_TRANSPORT=stub -d --net host app-${DRONE_COMMIT_SHA}
       - docker run --rm --net host acceptance-${DRONE_COMMIT_SHA}
     when:
       branch: master

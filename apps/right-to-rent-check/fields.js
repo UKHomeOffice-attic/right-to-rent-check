@@ -61,6 +61,7 @@ module.exports = {
   'tenant-country': {
     mixin: 'select',
     validate: 'required',
+    className: ['typeahead', 'js-hidden'],
     options: require('hof-util-countries')()
   },
   'tenant-dob': dateComponent('tenant-dob', {

@@ -61,7 +61,10 @@
     "hint": "For example, 12 3 1980"
   },
   "tenant-country": {
-    "label": "Country of nationality"
+    "label": "Country of nationality",
+    "options": {
+      "null": "Select..."
+    }
   },
   "tenant-additional-details": {
     "legend": "Additional details",

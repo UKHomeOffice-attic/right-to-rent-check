@@ -303,7 +303,7 @@ module.exports = {
       next: '/declaration'
     },
     '/declaration': {
-      behaviours: [caseworkerEmailer, customerEmailer, getDeclarer, summarySections, pdfUploader],
+      behaviours: [caseworkerEmailer, customerEmailer, getDeclarer, pdfUploader],
       nullValue: 'pages.confirm.undefined',
       sections: SummaryConfig,
       next: '/confirmation'

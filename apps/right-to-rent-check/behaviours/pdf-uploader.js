@@ -1,12 +1,16 @@
 'use strict';
 
-const PDFModel = require('../models/pdf');
-const UploadModel = require('../models/upload');
-
 const fs = require('fs');
 const path = require('path');
 
-module.exports = superclass => class extends superclass {
+const mix = require('mixwith').mix;
+
+const PDFModel = require('../models/pdf');
+const UploadModel = require('../models/upload');
+
+const summaryData = require('./summary-sections');
+
+module.exports = superclass => class extends mix(superclass).with(summaryData) {
 
   process(req, res, next) {
     this.renderHTML(req, res)

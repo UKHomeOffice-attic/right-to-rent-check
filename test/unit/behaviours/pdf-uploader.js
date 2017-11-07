@@ -1,5 +1,7 @@
 'use strict';
 
+const fs = require('fs');
+
 const Behaviour = require('../../../apps/right-to-rent-check/behaviours/pdf-uploader');
 const PDFModel = require('../../../apps/right-to-rent-check/models/pdf');
 const UploadModel = require('../../../apps/right-to-rent-check/models/upload');
@@ -33,6 +35,9 @@ describe('apps/behaviours/pdf-uploader', () => {
     let req = {
       log: () => {},
       form: {
+        options: {
+          sections: []
+        },
         values: {}
       }
     };
@@ -42,16 +47,18 @@ describe('apps/behaviours/pdf-uploader', () => {
     };
 
     beforeEach(() => {
+      sinon.stub(fs, 'readFile').yieldsAsync(null, 'body { color: red; }');
       sinon.stub(PDFModel.prototype, 'set');
       sinon.stub(PDFModel.prototype, 'save').resolves(pdf);
       sinon.stub(UploadModel.prototype, 'set');
       sinon.stub(UploadModel.prototype, 'save').resolves(uploadResult);
       sinon.stub(Base.prototype, 'process').yields();
       Mixed = Behaviour(Base);
-      instance = new Mixed(Base);
+      instance = new Mixed();
     });
 
     afterEach(() => {
+      fs.readFile.restore();
       PDFModel.prototype.set.restore();
       PDFModel.prototype.save.restore();
       UploadModel.prototype.set.restore();

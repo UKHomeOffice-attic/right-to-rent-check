@@ -37,13 +37,20 @@
     <main id="content" class="main" role="main">
       <h1>{{title}}</h1>
       {{#rows}}
-        {{#hasMultipleFields}}
-          {{> partials-multiple-fields-summary-table}}
-        {{/hasMultipleFields}}
-        {{^hasMultipleFields}}
-          {{> partials-summary-table}}
-        {{/hasMultipleFields}}
-      {{/rows}}
+      <h3>{{section.label}}</h3>
+      <table data-section="{{section.id}}" class="table-details">
+        {{#group}}
+        <tbody{{#name}} data-group="{{name}}"{{/name}}>
+          {{#fields}}
+            <tr data-id="{{field}}">
+              <td data-label="{{label}}">{{label}}</td>
+              <td data-value="{{value}}">{{value}}</td>
+            </tr>
+          {{/fields}}
+        </tbody>
+        {{/group}}
+      </table>
+    {{/rows}}
     </main>
   {{/main}}
 {{/govuk-template}}

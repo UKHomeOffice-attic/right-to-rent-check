@@ -20,7 +20,7 @@ Before((
     'agent-name': 'abc',
     'agent-email-address': 'abc@abc-corp.com',
     'agent-phone-number': '12345',
-    'agent-address': 'CR0 2EU',
+    'agent-address-postcode': 'CR0 2EU',
     'landlord-address-postcode': 'CR0 2EU'
   });
 });

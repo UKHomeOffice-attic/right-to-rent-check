@@ -20,7 +20,7 @@ Before((
   I.completeToStep('/confirm', {
     'documents-check': 'no',
     'rental-property-location': 'england',
-    'rental-property-address': 'CR0 2EU',
+    'rental-property-address-postcode': 'CR0 2EU',
     'living-status': 'no',
     'tenant-in-uk': 'yes',
     'tenant-current-address-postcode': 'CR0 2EU',

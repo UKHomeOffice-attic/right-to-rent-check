@@ -11,7 +11,7 @@ const add = (n) => {
   }
 };
 
-Feature('Given from /confirm I click to edit tenant-name and click the back link');
+Feature('Given from /confirm I click to edit tenant-name');
 
 Before((
   I
@@ -36,13 +36,13 @@ Before((
   });
   I.click('#tenant-name-change');
   I.seeInCurrentUrl('tenant-details/edit#tenant-name');
-  I.click('#step a');
-  I.seeInCurrentUrl('request-another-tenant/edit');
 });
 
 Scenario('When I continue to /confirm without adding another tenant then I see the same tenants', (
   I
 ) => {
+  I.click('#step a');
+  I.seeInCurrentUrl('request-another-tenant/edit');
   I.checkOption('#tenant-add-another-no');
   I.click('input[type=\'submit\']');
   I.seeInCurrentUrl('/confirm');
@@ -55,4 +55,13 @@ Scenario('When I continue to /confirm without adding another tenant then I see t
   I.seeNumberOfElements('tr[data-id=\'tenant-passport-number\']', 2);
   I.seeNumberOfElements('tr[data-id=\'tenant-brp-number\']', 2);
   I.seeNumberOfElements('tr[data-id=\'tenant-recorded-delivery-number\']', 2);
+});
+
+Scenario('When I edit a tenant name and continue the new name appears on the confirm page', (
+  I
+) => {
+  I.fillField('#tenant-name', 'Edited Tenant Name');
+  I.click('input[type=\'submit\']');
+  I.seeInCurrentUrl('/confirm');
+  I.see('Edited Tenant Name', 'tr[data-id=\'tenant-name\']');
 });

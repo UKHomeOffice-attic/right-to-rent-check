@@ -1,9 +1,16 @@
 'use strict';
 
+const fs = require('fs');
+const path = require('path');
+
+const mix = require('mixwith').mix;
+
 const PDFModel = require('../models/pdf');
 const UploadModel = require('../models/upload');
 
-module.exports = superclass => class extends superclass {
+const summaryData = require('./summary-sections');
+
+module.exports = superclass => class extends mix(superclass).with(summaryData) {
 
   process(req, res, next) {
     this.renderHTML(req, res)
@@ -32,17 +39,21 @@ module.exports = superclass => class extends superclass {
   }
 
   renderHTML(req, res) {
-    return new Promise((resolve, reject) => {
-      const locals = Object.assign({}, this.locals(req, res), {
-        title: 'Right to Rent Application'
+    return this.readCss()
+      .then(css => {
+        return new Promise((resolve, reject) => {
+          const locals = Object.assign({}, this.locals(req, res), {
+            title: 'Right to Rent Application',
+            css
+          });
+          res.render('pdf.html', locals, (err, html) => {
+            if (err) {
+              return reject(err);
+            }
+            resolve(html);
+          });
+        });
       });
-      res.render('pdf.html', locals, (err, html) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve(html);
-      });
-    });
   }
 
   uploadPdf(file) {
@@ -55,6 +66,14 @@ module.exports = superclass => class extends superclass {
     const model = new PDFModel();
     model.set({template});
     return model.save();
+  }
+
+  readCss() {
+    return new Promise((resolve, reject) => {
+      fs.readFile(path.resolve(__dirname, '../../../public/css/app.css'), (err, data) => {
+        return err ? reject(err) : resolve(data);
+      });
+    });
   }
 
 };

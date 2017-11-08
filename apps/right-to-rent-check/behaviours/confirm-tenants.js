@@ -8,6 +8,12 @@ const findStep = (steps, field) => {
   });
 };
 
+const getChildFields = metaData => {
+  return metaData.children
+    .concat(metaData.uuid)
+    .map(f => typeof f === 'string' ? f : f.field);
+};
+
 module.exports = superclass => class extends superclass {
 
   getValues(req, res, callback) {
@@ -22,32 +28,27 @@ module.exports = superclass => class extends superclass {
         });
       });
 
-      let collection;
-      let metaData;
-      let model;
-
       // an edit button has been clicked
       if (req.params.action === 'edit') {
-
         // redirect to the page the query field is on
-        values.redirectTo = findStep(req.form.options.steps, req.query.field);
-        values.redirectTo += `/edit#${req.query.field}`;
+        const step = findStep(req.form.options.steps, req.query.field);
+        values.redirectTo = `${step}/edit#${req.query.field}`;
 
         // if an id is set, this is a collection
         if (req.params.id) {
 
-          metaData = _.find(sectionData, section =>
+          const metaData = _.find(sectionData, section =>
             _.find(req.sessionModel.get(section.field), field =>
               field[section.uuid] === req.params.id
             )
           );
 
-          collection = req.sessionModel.get(metaData.field);
+          const collection = req.sessionModel.get(metaData.field);
 
-          model = _.find(collection, {[`${metaData.uuid}`]: req.params.id});
+          const model = _.find(collection, {[`${metaData.uuid}`]: req.params.id});
 
           // remove the tenant from the values and additional details list
-          values = _.omit(values, metaData.children.concat(metaData.uuid));
+          values = _.omit(values, getChildFields(metaData));
 
           if (model) {
             // add the new model to the values
@@ -66,23 +67,23 @@ module.exports = superclass => class extends superclass {
             });
           }
         }
+        req.sessionModel.set(values);
       } else {
-        metaData = _.find(sectionData, section => values[section.uuid]);
+        const metaData = _.find(sectionData, section => values[section.uuid]);
         if (metaData) {
-          collection = req.sessionModel.get((metaData || {}).field);
-          values = _.omit(values, 'redirectTo');
-          model = _.pick(values, metaData.children.concat(metaData.uuid));
+          const collection = req.sessionModel.get((metaData || {}).field);
+          const fields = getChildFields(metaData);
 
+          const model = _.pick(values, fields);
           // update the tenants
           if (_.isEmpty(model) === false) {
             collection.splice(_.findIndex(collection, {
               [`${metaData.uuid}`]: values[metaData.uuid]
             }), 1, model);
           }
-          values[metaData.field] = collection;
+          req.sessionModel.set(metaData.field, collection);
         }
       }
-      req.sessionModel.set(values);
       callback(err);
     });
   }

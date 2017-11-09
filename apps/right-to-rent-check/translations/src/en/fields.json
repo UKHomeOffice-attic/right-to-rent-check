@@ -112,12 +112,11 @@
     "summary": "Name"
   },
   "agent-company": {
-    "label": "Company name",
+    "label": "Company name (optional)",
     "summary": "Company name"
   },
   "agent-email-address": {
     "label": "Email address",
-    "hint": "We will use this to let you know the outcome of the check",
     "summary": "Email address"
   },
   "agent-phone-number": {

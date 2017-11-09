@@ -8,13 +8,14 @@
   "rental-property-location": {
     "required": "Select an address"
   },
-  "property-address-postcode": {
-    "required": "Enter a postcode"
+  "rental-property-address-postcode": {
+    "required": "Enter a postcode",
+    "postcode": "Enter a valid postcode"
   },
-  "property-address": {
+  "rental-property-address": {
     "required": "Enter an address"
   },
-  "property-address-select": {
+  "rental-property-address-select": {
     "required": "Select an address"
   },
   "living-status": {
@@ -26,7 +27,8 @@
     "before": "Date cannot be in the future"
   },
   "current-address-postcode": {
-    "required": "Enter a postcode"
+    "required": "Enter a postcode",
+    "postcode": "Enter a valid postcode"
   },
   "current-address-select": {
     "required": "Select an address"

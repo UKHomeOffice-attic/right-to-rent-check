@@ -164,3 +164,7 @@ ul {
   margin-top: 0.5em;
   margin-bottom: 2em;
 }
+
+input[name*="postcode"] {
+  @extend .form-control-1-4;
+}

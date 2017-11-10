@@ -125,7 +125,7 @@ module.exports = fields => {
 
     saveValues(req, res, callback) {
       super.saveValues(req, res, (err) => {
-        req.sessionModel.unset(fields.concat('tenant-uuid', 'redirectTo'));
+        req.sessionModel.unset(fields.concat('tenant-uuid', 'tenant-additional-details', 'redirectTo'));
         callback(err);
       });
     }

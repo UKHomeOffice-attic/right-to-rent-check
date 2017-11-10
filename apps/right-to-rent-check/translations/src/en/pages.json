@@ -4,7 +4,8 @@
     "intro": "Answer up to 6 questions to make sure you can use this service."
   },
   "documents-check": {
-    "intro": "If the person has documents showing whether they can live in the UK or not, you need to do the check yourself."
+    "header": "Does the person have documents you can check?",
+    "intro": "If the tenant can show you a document proving they can live in the UK, you need to do the check yourself."
   },
   "documents-check-yourself": {
     "header": "You need to do the right to rent check yourself",

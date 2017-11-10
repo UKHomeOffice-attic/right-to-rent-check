@@ -18,40 +18,44 @@ describe('behaviours/confirm-tenants', () => {
   let controller;
 
   const sections = {
-    'foo': [{
-      field: 'foo-name',
+    'landlord': [{
+      field: 'landlord-name',
       edit: false
     }, {
-      field: 'foo-email',
+      field: 'landlord-email',
       edit: false
     }],
-    'baz-details': [
+    'tenant-details': [
       {
-        field: 'baz',
+        field: 'tenants',
         children: [
           'name',
-          'dob',
+          { field: 'dob', parse: date => date },
           'country'
         ],
-        uuid: 'baz-uuid',
-        lists: [{
-          id: 'additional-details',
-          fields: [{
-            name: 'reference-number',
-            id: 'ref-number'
-          },
-            'passport-number',
-            'brp-number',
+        uuid: 'tenant-uuid',
+        lists: [
           {
-            name: 'recorded-delivery-number',
-            id: 'delivery-number'
-          }]
-        }]
+            id: 'additional-details',
+            fields: [
+              {
+                name: 'reference-number',
+                id: 'ref-number'
+              },
+              'passport-number',
+              'brp-number',
+              {
+                name: 'recorded-delivery-number',
+                id: 'delivery-number'
+              }
+            ]
+          }
+        ]
       }
     ],
-    'bar': [
-      'bar-name',
-      'bar-dob'
+    'other-details': [
+      'other-name',
+      { field: 'other-dob', parse: date => date }
     ]
   };
 
@@ -59,8 +63,8 @@ describe('behaviours/confirm-tenants', () => {
     steps: {
       '/step-a': {
         fields: [
-          'foo-name',
-          'foo-email'
+          'landlord-name',
+          'landlord-email'
         ]
       },
       '/step-b': {
@@ -72,8 +76,8 @@ describe('behaviours/confirm-tenants', () => {
       },
       '/step-c': {
         fields: [
-          'bar-name',
-          'bar-dob'
+          'other-name',
+          'other-dob'
         ]
       },
       '/confirm': {
@@ -85,15 +89,15 @@ describe('behaviours/confirm-tenants', () => {
 
   beforeEach(() => {
     get = sinon.stub();
-    get.withArgs('baz').returns([{
+    get.withArgs('tenants').returns([{
       'name': 'john',
       'dob': '1980-01-01',
       'country': 'Qatar'
     }]);
-    get.withArgs('foo-name').returns('linda');
-    get.withArgs('foo-email').returns('linda@test.com');
-    get.withArgs('bar-name').returns('denis');
-    get.withArgs('bar-dob').returns('1980-01-01');
+    get.withArgs('landlord-name').returns('linda');
+    get.withArgs('landlord-email').returns('linda@test.com');
+    get.withArgs('other-name').returns('denis');
+    get.withArgs('other-dob').returns('1980-01-01');
   });
 
   it('exports a function', () => {
@@ -170,26 +174,26 @@ describe('behaviours/confirm-tenants', () => {
   describe('getValues()', () => {
 
     const values = {
-      name: 'baz a',
+      name: 'tenant a edited',
       dob: '1980-01-01',
-      country: 'uk',
-      'baz-uuid': '1234567890',
+      country: 'fr',
+      'tenant-uuid': '1234567890',
       'reference-number': 'abc123',
       'recorded-delivery-number': '123xyz',
       'passport-number': '11111111'
     };
 
     beforeEach(() => {
-      get.withArgs('baz').returns([{
-        name: 'baz a',
+      get.withArgs('tenants').returns([{
+        name: 'tenant a',
         dob: '1970-01-01',
         country: 'uk',
-        'baz-uuid': '1234567890'
+        'tenant-uuid': '1234567890'
       }, {
-        name: 'baz b',
+        name: 'tenant b',
         dob: '1999-01-01',
         country: 'uk',
-        'baz-uuid': '0987654321'
+        'tenant-uuid': '0987654321'
       }]);
       res = reqres.res();
       req = reqres.req({
@@ -212,11 +216,11 @@ describe('behaviours/confirm-tenants', () => {
 
       it('a redirectTo path property is set on values', (done) => {
         req.params.action = 'edit';
-        req.query.field = 'bar-name';
+        req.query.field = 'other-name';
         controller.getValues(req, res, (err) => {
           expect(err).to.not.exist;
           expect(req.sessionModel.set.args[0][0]).to.include({
-            redirectTo: '/step-c/edit#bar-name'
+            redirectTo: '/step-c/edit#other-name'
           });
           done();
         });
@@ -225,13 +229,13 @@ describe('behaviours/confirm-tenants', () => {
       it('a model is merged with the values if the params id matches a model\'s id', (done) => {
         req.params.action = 'edit';
         req.params.id = '1234567890';
-        req.query.field = 'bar-name';
+        req.query.field = 'other-name';
         controller.getValues(req, res, (err) => {
           expect(err).to.not.exist;
           expect(req.sessionModel.set.args[0][0]).to.include({
-            name: 'baz a',
+            name: 'tenant a',
             dob: '1970-01-01',
-            'baz-uuid': '1234567890'
+            'tenant-uuid': '1234567890'
           });
           done();
         });
@@ -240,7 +244,7 @@ describe('behaviours/confirm-tenants', () => {
       it('creates a list for each collection with checkboxes', (done) => {
         req.params.action = 'edit';
         req.params.id = '1234567890';
-        req.query.field = 'bar-name';
+        req.query.field = 'other-name';
         controller.getValues(req, res, (err) => {
           expect(err).to.not.exist;
           expect(req.sessionModel.set.args[0][0]['additional-details']).to.deep.equal([
@@ -256,29 +260,22 @@ describe('behaviours/confirm-tenants', () => {
 
     describe('when loading', () => {
 
-      it('the collections are updated with the appropriate values', (done) => {
+      it('the collections are updated with the values extended from the top-level model', (done) => {
         controller.getValues(req, res, (err) => {
           expect(err).to.not.exist;
-          expect(req.sessionModel.set).to.have.been.calledWith({
-            name: 'baz a',
-            dob: '1980-01-01',
-            country: 'uk',
-            'baz-uuid': '1234567890',
-            'recorded-delivery-number': '123xyz',
-            'reference-number': 'abc123',
-            'passport-number': '11111111',
-            baz: [{
-              name: 'baz a',
+          expect(req.sessionModel.set).to.have.been.calledWith('tenants', [
+            {
+              name: 'tenant a edited',
               dob: '1980-01-01',
-              country: 'uk',
-              'baz-uuid': '1234567890'
+              country: 'fr',
+              'tenant-uuid': '1234567890'
             }, {
-              name: 'baz b',
+              name: 'tenant b',
               dob: '1999-01-01',
               country: 'uk',
-             'baz-uuid': '0987654321'
-            }]
-          });
+             'tenant-uuid': '0987654321'
+            }
+          ]);
           done();
         });
       });

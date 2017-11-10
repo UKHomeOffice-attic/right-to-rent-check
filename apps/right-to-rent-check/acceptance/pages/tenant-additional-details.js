@@ -12,7 +12,7 @@ module.exports = {
     I = require('so-acceptance/steps')();
   },
 
-  url: 'tenant-additional-details',
+  url: '/tenant-additional-details',
 
   fields: {
     'reference-number': '#tenant-additional-details-reference-number',

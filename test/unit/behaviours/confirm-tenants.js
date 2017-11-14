@@ -80,6 +80,11 @@ describe('behaviours/confirm-tenants', () => {
           'other-dob'
         ]
       },
+      '/step-d': {
+        fields: [
+          'other-name'
+        ]
+      },
       '/confirm': {
         sections: sections
       }
@@ -98,6 +103,7 @@ describe('behaviours/confirm-tenants', () => {
     get.withArgs('landlord-email').returns('linda@test.com');
     get.withArgs('other-name').returns('denis');
     get.withArgs('other-dob').returns('1980-01-01');
+    get.withArgs('steps').returns(['/step-a', '/step-b', '/step-c']);
   });
 
   it('exports a function', () => {
@@ -221,6 +227,19 @@ describe('behaviours/confirm-tenants', () => {
           expect(err).to.not.exist;
           expect(req.sessionModel.set.args[0][0]).to.include({
             redirectTo: '/step-c/edit#other-name'
+          });
+          done();
+        });
+      });
+
+      it('redirectTo is set to step the user has visited if it appears on more than one step', (done) => {
+        get.withArgs('steps').returns(['/step-a', '/step-b', '/step-d']);
+        req.params.action = 'edit';
+        req.query.field = 'other-name';
+        controller.getValues(req, res, (err) => {
+          expect(err).to.not.exist;
+          expect(req.sessionModel.set.args[0][0]).to.include({
+            redirectTo: '/step-d/edit#other-name'
           });
           done();
         });

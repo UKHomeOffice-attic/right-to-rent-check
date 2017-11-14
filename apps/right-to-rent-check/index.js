@@ -179,6 +179,9 @@ module.exports = {
       fields: ['tenancy-start'],
       next: '/check-confirmed'
     },
+    '/check-not-needed-date': {
+      backLink: 'tenancy-start-date'
+    },
     '/check-confirmed': {
       next: '/start',
       behaviours: [rentalQuestions]
@@ -309,9 +312,6 @@ module.exports = {
       next: '/confirmation'
     },
     '/confirmation': {},
-    '/check-not-needed-date': {
-      next: '/start'
-    },
     '/privacy-policy': {
     },
   }

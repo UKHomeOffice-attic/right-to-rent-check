@@ -1,6 +1,6 @@
 {
   "documents-check": {
-    "legend": "Does the person have documents?",
+    "legend": "Does the person have documents you can check?",
     "options": {
       "yes": {
         "label": "Yes"

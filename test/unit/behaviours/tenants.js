@@ -170,8 +170,9 @@ describe('behaviours/tenants', () => {
     it('unsets all fields and the tenant-uuid from the session', (done) => {
       controller.saveValues(req, res, (err) => {
         expect(err).to.not.exist;
+        const expectedUnset = fields.concat('tenant-uuid', 'tenant-additional-details', 'redirectTo');
         expect(sessionModel.unset)
-          .to.have.been.calledWithExactly(fields.concat('tenant-uuid', 'redirectTo'));
+          .to.have.been.calledWith(sinon.match.array.contains(expectedUnset));
         done();
       });
     });

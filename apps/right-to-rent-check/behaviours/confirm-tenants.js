@@ -2,9 +2,9 @@
 
 const _ = require('lodash');
 
-const findStep = (steps, field) => {
-  return _.findKey(steps, step => {
-    return step.fields && step.fields.indexOf(field) !== -1;
+const findStep = (steps, completed, field) => {
+  return _.findKey(steps, (step, route) => {
+    return step.fields && step.fields.indexOf(field) !== -1 && completed.indexOf(route) !== -1;
   });
 };
 
@@ -31,7 +31,7 @@ module.exports = superclass => class extends superclass {
       // an edit button has been clicked
       if (req.params.action === 'edit') {
         // redirect to the page the query field is on
-        const step = findStep(req.form.options.steps, req.query.field);
+        const step = findStep(req.form.options.steps, req.sessionModel.get('steps'), req.query.field);
         values.redirectTo = `${step}/edit#${req.query.field}`;
 
         // if an id is set, this is a collection

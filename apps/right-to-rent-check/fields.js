@@ -138,8 +138,7 @@ module.exports = {
     ]
   },
   'agent-company': {
-    mixin: 'input-text',
-    validate: 'required'
+    mixin: 'input-text'
   },
   'agent-name': {
     mixin: 'input-text',

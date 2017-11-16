@@ -6,7 +6,7 @@
     "required": "Select an option"
   },
   "rental-property-location": {
-    "required": "Select an address"
+    "required": "Select a location"
   },
   "rental-property-address-postcode": {
     "required": "Enter a postcode",

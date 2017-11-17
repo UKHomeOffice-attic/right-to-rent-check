@@ -43,8 +43,17 @@ module.exports = superclass => class extends mix(superclass).with(summaryData) {
       .then(css => {
         return new Promise((resolve, reject) => {
           const locals = Object.assign({}, this.locals(req, res), {
-            title: 'Right to Rent Application',
+            title: 'Request for a Home Office right to rent check has been received',
+            values: req.sessionModel.toJSON(),
             css
+          });
+          locals.rows = locals.rows.filter(row => {
+            if (req.sessionModel.get('representative') === 'landlord') {
+              return !row.section.id.match(/^agent/);
+            } else if (req.sessionModel.get('representative') === 'agent') {
+              return !row.section.id.match(/^landlord/);
+            }
+            return true;
           });
           res.render('pdf.html', locals, (err, html) => {
             if (err) {

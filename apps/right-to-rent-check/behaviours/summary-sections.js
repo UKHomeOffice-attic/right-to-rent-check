@@ -21,6 +21,16 @@ const isTruthy = (model, field) => {
 
 module.exports = Base => class extends mix(Base).with(Behaviour) {
 
+  configure(req, res, next) {
+    super.configure(req, res, err => {
+      if (err) {
+        return next(err);
+      }
+      req.form.options.translationKey = req.form.options.translationKey || 'confirm';
+      next();
+    });
+  }
+
   parseSections(req) {
     const settings = req.form.options;
     const sections = this.getSectionSettings(settings);
@@ -30,7 +40,7 @@ module.exports = Base => class extends mix(Base).with(Behaviour) {
         return {
           section: {
             label: req.translate([
-              `pages.confirm.sections.${section}.header`,
+              `pages.${settings.translationKey}.sections.${section}.header`,
               `pages.${section}.header`
             ]),
             id: section
@@ -84,7 +94,7 @@ module.exports = Base => class extends mix(Base).with(Behaviour) {
     if (typeof key === 'string') {
       const data = {
         label: req.translate([
-          `pages.confirm.fields.${key}.label`,
+          `pages.${settings.translationKey}.fields.${key}.label`,
           `fields.${key}.summary`,
           `fields.${key}.label`,
           `fields.${key}.legend`

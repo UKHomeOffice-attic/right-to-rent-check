@@ -48,6 +48,7 @@ const getDataRows = (model, translate) => {
         { label: label('landlord-name'), value: model['landlord-name'] },
         !isAgent && { label: label('landlord-email-address'), value: model['landlord-email-address'] },
         !isAgent && { label: label('landlord-phone-number'), value: model['landlord-phone-number'] },
+        !isAgent && { label: label('landlord-company'), value: model['landlord-company'] },
         { label: label('landlord-address'), value: model['landlord-address'] }
       ].filter(Boolean)
     },

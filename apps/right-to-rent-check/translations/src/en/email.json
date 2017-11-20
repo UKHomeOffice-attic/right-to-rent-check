@@ -53,6 +53,9 @@
       "landlord-name": {
         "label": "Name"
       },
+      "landlord-company": {
+        "label": "Company name"
+      },
       "landlord-email-address": {
         "label": "Email"
       },

@@ -14,12 +14,19 @@
       html {
         background: white;
       }
-
-      table {
-        width: 100%;
+      h1 {
+        font-size: 30px;
+        margin-top: 20px;
       }
-      table td:nth-child(1) {
-        width: 33%;
+      img {
+        width: 240px;
+      }
+      table.table-details {
+        margin-bottom: 0;
+        border-top: 1px solid #bbb;
+      }
+      table.table-details:first-of-type {
+        border-top: none;
       }
       table td:nth-child(2) {
         white-space: pre;
@@ -31,26 +38,30 @@
         padding: 10px 0;
         border-bottom: 1px #ccc solid;
       }
+      #content {
+      padding-bottom: 0;
+    }
     </style>
   {{/head}}
   {{$main}}
     <main id="content" class="main" role="main">
+      <img src="{{ho-logo}}" />
       <h1>{{title}}</h1>
       <h2>Tenant in property: {{values.living-status}}</h2>
       {{#rows}}
-      <table data-section="{{section.id}}" class="table-details">
         {{#group}}
-        <tbody{{#name}} data-group="{{name}}"{{/name}}>
-          {{#fields}}
-            <tr data-id="{{field}}">
-              <td data-label="{{label}}">{{label}}</td>
-              <td data-value="{{value}}">{{value}}</td>
-            </tr>
-          {{/fields}}
-        </tbody>
+          <table data-section="{{section.id}}" class="table-details">
+            <tbody{{#name}} data-group="{{name}}"{{/name}}>
+              {{#fields}}
+                <tr data-id="{{field}}">
+                  <td data-label="{{label}}">{{label}}</td>
+                  <td data-value="{{value}}">{{value}}</td>
+                </tr>
+              {{/fields}}
+            </tbody>
+          </table>
         {{/group}}
-      </table>
-    {{/rows}}
+      {{/rows}}
     </main>
   {{/main}}
 {{/govuk-template}}

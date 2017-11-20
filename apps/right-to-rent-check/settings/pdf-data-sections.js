@@ -17,7 +17,6 @@ module.exports = {
     'rental-property-address'
   ],
   'tenant-details': [
-    'tenant-current-address',
     {
       field: 'tenants',
       children: [
@@ -32,7 +31,8 @@ module.exports = {
         'tenant-brp-number',
         'tenant-recorded-delivery-number'
       ]
-    }
+    },
+    'tenant-current-address'
   ],
   'agent-contact': [
     'agent-phone-number',

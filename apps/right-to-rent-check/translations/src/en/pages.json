@@ -167,6 +167,9 @@
       },
       "landlord-address": {
         "label": "Address"
+      },
+      "landlord-company": {
+        "label": "Company name"
       }
     },
     "undefined": "Not provided"

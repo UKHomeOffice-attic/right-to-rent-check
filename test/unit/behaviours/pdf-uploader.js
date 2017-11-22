@@ -2,6 +2,8 @@
 
 const fs = require('fs');
 
+const reqres = require('hof-util-reqres');
+
 const Behaviour = require('../../../apps/right-to-rent-check/behaviours/pdf-uploader');
 const PDFModel = require('../../../apps/right-to-rent-check/models/pdf');
 const UploadModel = require('../../../apps/right-to-rent-check/models/upload');
@@ -32,7 +34,7 @@ describe('apps/behaviours/pdf-uploader', () => {
 
     let Mixed;
     let instance;
-    let req = {
+    let req = reqres.req({
       log: () => {},
       form: {
         options: {
@@ -40,7 +42,7 @@ describe('apps/behaviours/pdf-uploader', () => {
         },
         values: {}
       }
-    };
+    });
     let html = '<html></html>';
     let res = {
       render: sinon.stub().yields(null, html)

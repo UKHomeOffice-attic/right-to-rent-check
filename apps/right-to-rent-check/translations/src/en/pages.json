@@ -171,6 +171,67 @@
     },
     "undefined": "Not provided"
   },
+  "pdf": {
+    "fields": {
+      "landlord-company": {
+        "label": "Landlord company"
+      },
+      "landlord-name": {
+        "label": "Landlord full name"
+      },
+      "landlord-email-address": {
+        "label": "Landlord email"
+      },
+      "rental-property-address": {
+        "label": "Rental property address"
+      },
+      "agent-company": {
+        "label": "Agent company"
+      },
+      "agent-name": {
+        "label": "Agent full name"
+      },
+      "agent-email-address": {
+        "label": "Agent email"
+      },
+      "tenant-name": {
+        "label": "Tenant's full name"
+      },
+      "tenant-country": {
+        "label": "Tenant's nationality"
+      },
+      "tenant-dob": {
+        "label": "Tenant's date of birth"
+      },
+      "tenant-current-address": {
+        "label": "Tenant's current address"
+      },
+      "tenant-reference-number": {
+        "label": "Tenant's Home Office reference number"
+      },
+      "tenant-brp-number": {
+        "label": "Tenant's BRP number"
+      },
+      "tenant-passport-number": {
+        "label": "Tenant's passport number"
+      },
+      "tenant-recorded-delivery-number": {
+        "label": "Tenant's recorded delivery number"
+      },
+      "agent-phone-number": {
+        "label": "Agent phone number"
+      },
+      "agent-address": {
+        "label": "Agent address"
+      },
+      "landlord-phone-number": {
+        "label": "Landlord phone number"
+      },
+      "landlord-address": {
+        "label": "Landlord address"
+      }
+    }
+  },
   "declaration": {
     "header": "Declaration",
     "initial-paragraph": "By submitting this request:",

@@ -6,12 +6,16 @@ const behaviour = require('../../../apps/right-to-rent-check/behaviours/summary-
 describe('behaviours/summary-sections', () => {
 
   class Base {
+    configure(req, res, next) {
+      next();
+    }
     render() {}
     getValues() {}
     emit() {}
   }
 
   let req;
+  let res;
   let get;
   let Behaviour;
   let controller;
@@ -112,7 +116,7 @@ describe('behaviours/summary-sections', () => {
 
   describe('parseSections()', () => {
 
-    beforeEach(() => {
+    beforeEach(done => {
 
       const translate = sinon.stub();
 
@@ -192,6 +196,7 @@ describe('behaviours/summary-sections', () => {
       });
       Behaviour = behaviour(Base);
       controller = new Behaviour();
+      controller.configure(req, res, done);
     });
 
     it('returns a section groups and fields for each section', () => {

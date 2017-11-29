@@ -15,7 +15,7 @@
     "postinstall": "npm run build"
   },
   "dependencies": {
-    "hof": "^13.0.1",
+    "hof": "^13.1.1",
     "hof-behaviour-address-lookup": "^2.2.1",
     "hof-behaviour-emailer": "^2.2.0",
     "hof-behaviour-summary-page": "^3.0.0",

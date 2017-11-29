@@ -31,6 +31,10 @@ module.exports = {
   name: 'right-to-rent-check',
   params: '/:action?/:id?',
   behaviours: [require('./behaviours/filter-fields')],
+  pages: {
+    '/privacy-policy': 'privacy-policy',
+    '/cookies': 'cookies'
+  },
   steps: {
     '/eligibility-check': {
       next: '/documents-check'

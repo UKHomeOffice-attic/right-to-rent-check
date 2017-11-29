@@ -1,19 +1,21 @@
+# Privacy Policy
+
 This privacy policy relates to the Home Office right to rent service for landlords and agents.
 
 ## Information we ask for
 
-When you use this service we'll ask you for your: 
+When you use this service we'll ask you for your:
 
-* full name 
-* contact details, including phone number, postal address and email address 
+* full name
+* contact details, including phone number, postal address and email address
 * rental property address
 * rental company name (if applicable)
 
-We will also ask for information about your tenant including: 
+We will also ask for information about your tenant including:
 
-* name 
-* date of birth 
-* country of nationality 
+* name
+* date of birth
+* country of nationality
 * details of documents relating to immigration status, such as passport or biometric residence permit (optional)
 
 This information will be securely held in line with our [cookie policy](./cookies) so that you can progress through and complete your application. Your information will be stored by the government for future reference.

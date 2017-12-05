@@ -228,7 +228,7 @@ module.exports = {
       next: '/declaration'
     },
     '/declaration': {
-      behaviours: [caseworkerEmailer, customerEmailer, getDeclarer, pdfUploader],
+      behaviours: [caseworkerEmailer, customerEmailer, getDeclarer, pdfUploader, 'complete'],
       translationKey: 'pdf',
       sections: require('./settings/pdf-data-sections'),
       next: '/confirmation'

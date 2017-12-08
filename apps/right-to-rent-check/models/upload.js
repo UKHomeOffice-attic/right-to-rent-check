@@ -28,11 +28,6 @@ module.exports = class UploadModel extends Model {
         }
         resolve(data);
       });
-    }).then(data => {
-      return this.auth().then(bearer => {
-        data.url = (data.url.replace('/file', '/vault')) + '&token=' + bearer.bearer;
-        return data;
-      });
     });
   }
 

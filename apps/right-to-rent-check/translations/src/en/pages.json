@@ -198,28 +198,28 @@
         "label": "Agent email"
       },
       "tenant-name": {
-        "label": "Tenant's full name"
+        "label": "Tenant full name"
       },
       "tenant-country": {
-        "label": "Tenant's nationality"
+        "label": "Tenant nationality"
       },
       "tenant-dob": {
-        "label": "Tenant's date of birth"
+        "label": "Tenant date of birth"
       },
       "tenant-current-address": {
-        "label": "Tenant's current address"
+        "label": "Tenant current address"
       },
       "tenant-reference-number": {
-        "label": "Tenant's Home Office reference number"
+        "label": "Tenant Home Office reference number"
       },
       "tenant-brp-number": {
-        "label": "Tenant's BRP number"
+        "label": "Tenant BRP number"
       },
       "tenant-passport-number": {
-        "label": "Tenant's passport number"
+        "label": "Tenant passport number"
       },
       "tenant-recorded-delivery-number": {
-        "label": "Tenant's recorded delivery number"
+        "label": "Tenant recorded delivery no"
       },
       "agent-phone-number": {
         "label": "Agent phone number"

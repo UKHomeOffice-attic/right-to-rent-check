@@ -1,4 +1,4 @@
-## Cookies
+# <div class='heading-large'> Cookies </div>
 
 This service puts small files (known as ‘cookies’) onto your computer in order to:
 

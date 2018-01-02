@@ -1,4 +1,4 @@
-# Privacy Policy
+# <div class='heading-large'> Privacy Policy </div>
 
 This privacy policy relates to the Home Office right to rent service for landlords and agents.
 

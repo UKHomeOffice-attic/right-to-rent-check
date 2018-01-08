@@ -101,6 +101,16 @@ pipeline:
     when:
       event: tag
 
+  trigger_deploy_to_rent-check_prod:
+    image: quay.io/ukhomeofficedigital/drone-trigger:latest
+    drone_server: https://drone.digital.homeoffice.gov.uk
+    repo: UKHomeOffice/kube-rent-check
+    deploy_to: rent-check
+    params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=rent-check
+    when:
+      event: deployment
+      environment: production
+
 services:
   redis:
     image: redis

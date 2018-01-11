@@ -71,7 +71,7 @@ pipeline:
   image_to_quay:
     image: docker:17.09.1
     secrets:
-    - DOCKER_PASSWORD
+      - DOCKER_PASSWORD
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
@@ -84,8 +84,9 @@ pipeline:
 
   trigger_deploy_to_rent-check_dev:
     image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
+    secrets:
+      - DRONE_TOKEN
     drone_server: https://drone.acp.homeoffice.gov.uk
-    drone_token: $${DRONE_TOKEN}
     repo: UKHomeOffice/kube-right-to-rent
     branch: master
     deploy_to: rent-check-dev
@@ -96,8 +97,9 @@ pipeline:
 
   trigger_deploy_to_rent-check_preprod:
     image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
+    secrets:
+      - DRONE_TOKEN
     drone_server: https://drone.acp.homeoffice.gov.uk
-    drone_token: $${DRONE_TOKEN}
     repo: UKHomeOffice/kube-right-to-rent
     branch: master
     deploy_to: rent-check-preprod
@@ -107,8 +109,9 @@ pipeline:
 
   trigger_deploy_to_rent-check_prod:
     image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0
+    secrets:
+      - DRONE_TOKEN
     drone_server: https://drone.acp.homeoffice.gov.uk
-    drone_token: $${DRONE_TOKEN}
     repo: UKHomeOffice/kube-rent-check
     branch: master
     deploy_to: rent-check

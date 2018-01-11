@@ -71,7 +71,7 @@ pipeline:
   image_to_quay:
     image: docker:17.09.1
     secrets:
-    - docker_password
+    - DOCKER_PASSWORD
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:

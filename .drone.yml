@@ -53,8 +53,8 @@ pipeline:
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
-      - docker run -e NODE_ENV=ci -e DISABLE_CSP=true -e EMAIL_TRANSPORT=stub -e CASEWORKER_EMAIL=test@example.com -d app-$${DRONE_COMMIT_SHA}
-      - docker run -e CASEWORKER_EMAIL=test@example.com --rm acceptance-$${DRONE_COMMIT_SHA}
+      - docker run -e NODE_ENV=ci -e DISABLE_CSP=true -e EMAIL_TRANSPORT=stub -e CASEWORKER_EMAIL=test@example.com -d --userns host --net host app-$${DRONE_COMMIT_SHA}
+      - docker run -e CASEWORKER_EMAIL=test@example.com --rm --userns host --net host acceptance-$${DRONE_COMMIT_SHA}
     when:
       event: pull_request
 
@@ -63,8 +63,8 @@ pipeline:
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
-      - docker run -e NODE_ENV=ci -e DISABLE_CSP=true -e EMAIL_TRANSPORT=stub -e CASEWORKER_EMAIL=test@example.com -d app-$${DRONE_COMMIT_SHA}
-      - docker run -e CASEWORKER_EMAIL=test@example.com --rm acceptance-$${DRONE_COMMIT_SHA}
+      - docker run -e NODE_ENV=ci -e DISABLE_CSP=true -e EMAIL_TRANSPORT=stub -e CASEWORKER_EMAIL=test@example.com -d --userns host --net host app-$${DRONE_COMMIT_SHA}
+      - docker run -e CASEWORKER_EMAIL=test@example.com --rm --userns host --net host acceptance-$${DRONE_COMMIT_SHA}
     when:
       branch: master
 

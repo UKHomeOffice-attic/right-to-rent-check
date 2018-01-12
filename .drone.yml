@@ -115,7 +115,7 @@ pipeline:
     drone_server: https://drone.acp.homeoffice.gov.uk
     repo: UKHomeOffice/kube-rent-check
     branch: master
-    deploy_to: production
+    deploy_to: prod
     params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=rent-check
     when:
       event: deployment

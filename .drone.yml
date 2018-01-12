@@ -89,7 +89,7 @@ pipeline:
     drone_server: https://drone.acp.homeoffice.gov.uk
     repo: UKHomeOffice/kube-right-to-rent
     branch: master
-    deploy_to: rent-check-dev
+    deploy_to: dev
     params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=rent-check-dev
     when:
       branch: master
@@ -102,7 +102,7 @@ pipeline:
     drone_server: https://drone.acp.homeoffice.gov.uk
     repo: UKHomeOffice/kube-right-to-rent
     branch: master
-    deploy_to: rent-check-preprod
+    deploy_to: preprod
     params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=rent-check-preprod
     when:
       event: deployment
@@ -115,11 +115,11 @@ pipeline:
     drone_server: https://drone.acp.homeoffice.gov.uk
     repo: UKHomeOffice/kube-rent-check
     branch: master
-    deploy_to: rent-check
+    deploy_to: production
     params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=rent-check
     when:
       event: deployment
-      environment: production
+      environment: prod
 
 services:
   redis:

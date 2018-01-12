@@ -90,7 +90,7 @@ pipeline:
     repo: UKHomeOffice/kube-right-to-rent
     branch: master
     deploy_to: rent-check-dev
-    params: APP_IMAGE_TAG=$${DRONE_COMMIT_SHA},KUBE_NAMESPACE=rent-check-dev
+    params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=rent-check-dev
     when:
       branch: master
       event: push

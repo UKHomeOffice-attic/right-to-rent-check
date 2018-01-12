@@ -105,7 +105,8 @@ pipeline:
     deploy_to: rent-check-preprod
     params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=rent-check-preprod
     when:
-      event: tag
+      event: deployment
+      environment: preprod
 
   trigger_deploy_to_rent-check_prod:
     image: quay.io/ukhomeofficedigital/drone-trigger:v0.3.0

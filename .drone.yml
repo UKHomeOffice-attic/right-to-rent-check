@@ -113,7 +113,7 @@ pipeline:
     secrets:
       - DRONE_TOKEN
     drone_server: https://drone.acp.homeoffice.gov.uk
-    repo: UKHomeOffice/kube-rent-check
+    repo: UKHomeOffice/kube-right-to-rent
     branch: master
     deploy_to: prod
     params: APP_IMAGE_TAG=${DRONE_COMMIT_SHA},KUBE_NAMESPACE=rent-check

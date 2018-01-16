@@ -65,6 +65,30 @@ Scenario('When I submit an invalid country name then I see a country error', (
   I.seeErrors('#tenant-country');
 });
 
+// Stateless, under the 1954 Convention has been removed from the countries
+Scenario(`When I enter the country 'Stateless, under the 1954 Convention'
+  Then I see a country error`, (
+  I
+) => {
+  I.fillField('#tenant-country', 'Stateless, under the 1954 Convention');
+  I.submitForm();
+  I.seeErrors('#tenant-country');
+});
+
+// Stateless has been added to the countries
+Scenario(`When I enter a valid form with the country 'Stateless'
+  Then I am taken to the tenant-additional-details`, (
+  I,
+  tenantDetailsPage,
+  tenantAdditionalDetailsPage
+) => {
+  I.fillField('#tenant-name', 'aaa');
+  I.fillField('#tenant-country', 'Stateless');
+  tenantDetailsPage.enterDate('valid');
+  I.submitForm();
+  I.seeInCurrentUrl(tenantAdditionalDetailsPage.url);
+});
+
 Scenario('When I submit a valid form then I am taken to the tenant-additional-details', (
   I,
   tenantDetailsPage,

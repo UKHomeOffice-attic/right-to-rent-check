@@ -1,5 +1,10 @@
 'use strict';
+const _ = require('lodash');
 const dateComponent = require('hof-component-date');
+const countries = require('hof-util-countries')();
+countries.push({value: 'Stateless', label: 'Stateless'});
+const amendedCountries = _.filter(countries, country =>
+  country.value !== 'Stateless, under the 1954 Convention');
 
 module.exports = {
   'documents-check': {
@@ -65,7 +70,7 @@ module.exports = {
     options: [{
       value: '',
       label: 'fields.tenant-country.options.null'
-    }].concat(require('hof-util-countries')())
+    }].concat(amendedCountries)
   },
   'tenant-dob': dateComponent('tenant-dob', {
     validate: ['required', 'date', 'before']

@@ -1,6 +1,9 @@
 {
   "caseworker": {
-    "subject": "You have a new request for a Home Office Right to Rent check"
+    "subject": {
+      "prefix": "Request for a Right to Rent check for ",
+      "suffix": " tenants"
+    }
   },
   "customer": {
     "subject": "Confirmation of your Home Office right to rent check",

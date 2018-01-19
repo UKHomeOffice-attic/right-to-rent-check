@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const mix = require('mixwith').mix;
+const moment = require('moment');
 
 const PDFModel = require('../models/pdf');
 const UploadModel = require('../models/upload');
@@ -42,6 +43,7 @@ module.exports = superclass => class extends mix(superclass).with(summaryData) {
 
     const locals = Object.assign({}, this.locals(req, res));
     locals.title = 'Request for a Home Office right to rent check has been received';
+    locals.dateTime = moment().format('DD MMM YYYY HH:MM:SS ZZ') + ' (GMT)';
     locals.values = req.sessionModel.toJSON();
     locals.rows = locals.rows.filter(row => {
       if (req.sessionModel.get('representative') === 'landlord') {

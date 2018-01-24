@@ -5,8 +5,11 @@ const path = require('path');
 
 const getSubjectWithTotalTenants = (model, translate) => {
   const totalTenants = model.tenants.length;
-  return translate('email.caseworker.subject.prefix') +
-    totalTenants + translate('email.caseworker.subject.suffix');
+  let subject = translate('email.caseworker.subject.prefix') + totalTenants;
+  if (totalTenants === 1) {
+    return subject + translate('email.caseworker.subject.singular-suffix');
+  }
+  return subject + translate('email.caseworker.subject.suffix');
 };
 
 module.exports = config => {

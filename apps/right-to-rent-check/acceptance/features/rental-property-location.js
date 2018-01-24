@@ -11,14 +11,14 @@ Before((
   I.visitPage(rentalPropertyLocationPage, steps);
 });
 
-Scenario('Then the correct fields are on the page', (
-  I
-) => {
-  I.seeElement('#rental-property-location-england');
-  I.seeElement('#rental-property-location-scotland');
-  I.seeElement('#rental-property-location-wales');
-  I.seeElement('#rental-property-location-ireland');
-});
+// Scenario('Then the correct fields are on the page', (
+//   I
+// ) => {
+//   I.seeElement('#rental-property-location-england');
+//   I.seeElement('#rental-property-location-scotland');
+//   I.seeElement('#rental-property-location-wales');
+//   I.seeElement('#rental-property-location-ireland');
+// });
 
 Scenario('When do not check an option and I submit the form then I see an error', (
   I

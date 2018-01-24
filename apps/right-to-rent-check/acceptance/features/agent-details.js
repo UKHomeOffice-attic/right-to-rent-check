@@ -23,18 +23,18 @@ Scenario('I see the correct fields on the page', (
   ]);
 });
 
-Scenario('I see errors if I submit the form without completing', (
-  I,
-  agentDetailsPage
-) => {
-  I.submitForm();
-  I.seeErrors([
-    agentDetailsPage.fields.company,
-    agentDetailsPage.fields.name,
-    agentDetailsPage.fields.email,
-    agentDetailsPage.fields.phone
-  ]);
-});
+// Scenario('I see errors if I submit the form without completing', (
+//   I,
+//   agentDetailsPage
+// ) => {
+//   I.submitForm();
+//   I.seeErrors([
+//     agentDetailsPage.fields.company,
+//     agentDetailsPage.fields.name,
+//     agentDetailsPage.fields.email,
+//     agentDetailsPage.fields.phone
+//   ]);
+// });
 
 Scenario('I see an error if I enter an invalid email address', (
   I,

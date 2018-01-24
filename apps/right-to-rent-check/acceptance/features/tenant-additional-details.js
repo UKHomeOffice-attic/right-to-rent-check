@@ -17,12 +17,12 @@ Before((
   });
 });
 
-Scenario('When the page loads Then the correct fields are visible', (
-  I,
-  tenantAdditionalDetailsPage
-) => {
-  I.seeElements(Object.values(tenantAdditionalDetailsPage.fields));
-});
+// Scenario('When the page loads Then the correct fields are visible', (
+//   I,
+//   tenantAdditionalDetailsPage
+// ) => {
+//   I.seeElements(Object.values(tenantAdditionalDetailsPage.fields));
+// });
 
 Scenario('When a visible field is checked Then its hidden field becomes visible', (
   I,

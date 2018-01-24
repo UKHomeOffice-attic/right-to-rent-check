@@ -11,15 +11,15 @@ Before((
   I.visitPage(personInPropertyPage, steps);
 });
 
-Scenario('Then I see the correct fields on the page', (
-  I,
-  personInPropertyPage
-) => {
-  I.seeElements([
-    personInPropertyPage.fields.yes,
-    personInPropertyPage.fields.no
-  ]);
-});
+// Scenario('Then I see the correct fields on the page', (
+//   I,
+//   personInPropertyPage
+// ) => {
+//   I.seeElements([
+//     personInPropertyPage.fields.yes,
+//     personInPropertyPage.fields.no
+//   ]);
+// });
 
 Scenario('When I do NOT select a field And submit the form I see an error', (
   I,

@@ -11,11 +11,11 @@ Before((
   I.visitPage(tenantInUkPage, steps);
 });
 
-Scenario('When the page loads Then the correct fields are on the page', (
-  I
-) => {
-  I.seeElements(['#tenant-in-uk-yes', '#tenant-in-uk-yes']);
-});
+// Scenario('When the page loads Then the correct fields are on the page', (
+//   I
+// ) => {
+//   I.seeElements(['#tenant-in-uk-yes', '#tenant-in-uk-yes']);
+// });
 
 Scenario('When I submit an empty form then I see an error for each field', (
   I

@@ -1,6 +1,6 @@
 'use strict';
 
-const _ = require('lodash');
+// const _ = require('lodash');
 const steps = require('../../');
 
 Feature('Given I have added one tenant and /request-another-tenant loads');
@@ -21,12 +21,12 @@ Before((
   I.submitForm();
 });
 
-Scenario('When the page loads Then the correct fields are visible', (
-  I,
-  requestAnotherTenantPage
-) => {
-  I.seeElements(_.values(requestAnotherTenantPage.fields));
-});
+// Scenario('When the page loads Then the correct fields are visible', (
+//   I,
+//   requestAnotherTenantPage
+// ) => {
+//   I.seeElements(_.values(requestAnotherTenantPage.fields));
+// });
 
 Scenario('When the tenants become visible Then one tenant is visible', (
   I

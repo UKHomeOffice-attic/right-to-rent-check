@@ -2,6 +2,7 @@
   "caseworker": {
     "subject": {
       "prefix": "Request for a Right to Rent check for ",
+      "singular-suffix": " tenant",
       "suffix": " tenants"
     }
   },

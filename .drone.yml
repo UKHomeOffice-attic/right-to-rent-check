@@ -134,21 +134,22 @@ pipeline:
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
+      - docker build -f Dockerfile-acceptance -t acceptance-$${DRONE_COMMIT_SHA} .
       - docker run -d --userns host --net host --name=selenium-$${DRONE_COMMIT_SHA} selenium/standalone-chrome
-      - sleep 8
+      - sleep 10
       - docker run -e EMAIL_TRANSPORT=stub -e CASEWORKER_EMAIL=test@example.com -e TEST_URL=https://www.$${DRONE_DEPLOY_TO}.right-to-rent-check.homeoffice.gov.uk --rm --userns host --net host acceptance-$${DRONE_COMMIT_SHA}
       - docker rm -vf "selenium-$${DRONE_COMMIT_SHA}"
     when:
       event: deployment
-      environment: [dev, preprod]
 
   smoke_test:
     image: docker:17.09.1
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
+      - docker build -f Dockerfile-acceptance -t acceptance-$${DRONE_COMMIT_SHA} .
       - docker run -d --userns host --net host --name=selenium-$${DRONE_COMMIT_SHA} selenium/standalone-chrome
-      - sleep 8
+      - sleep 10
       - docker run -e EMAIL_TRANSPORT=stub -e CASEWORKER_EMAIL=test@example.com -e TEST_URL=https://www.right-to-rent-check.homeoffice.gov.uk --rm --userns host --net host acceptance-$${DRONE_COMMIT_SHA}
       - docker rm -vf "selenium-$${DRONE_COMMIT_SHA}"
     when:

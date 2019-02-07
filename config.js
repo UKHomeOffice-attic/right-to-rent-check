@@ -11,7 +11,7 @@ module.exports = {
     mock: '/api/postcode-test',
     hostname: env !== 'production' ?
       `http://${localhost()}/api/postcode-test` :
-      'https://postcodeinfo.service.justice.gov.uk',
+      process.env.POSTCODE_HOST,
     stub: {
       postcode: 'CR0 2EU',
       address: '49 Sydenham Road, Croydon, CR0 2EU'

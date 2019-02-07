@@ -16,6 +16,7 @@
     "postinstall": "npm run build"
   },
   "dependencies": {
+    "debug": "^3.1.0",
     "hof": "^13.2.2",
     "hof-behaviour-address-lookup": "^2.2.1",
     "hof-behaviour-emailer": "^2.2.0",
@@ -38,7 +39,6 @@
   "devDependencies": {
     "chai": "^4.1.0",
     "chai-as-promised": "^7.1.1",
-    "debug": "^3.1.0",
     "eslint": "^3.14.0",
     "eslint-config-homeoffice": "^2.1.0",
     "express": "^4.15.2",

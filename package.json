@@ -12,8 +12,9 @@
     "test:acceptance:local": "funkie --driver chromedriver npm run test:acceptance",
     "lint:acceptance": "eslint --no-ignore -c ./node_modules/so-acceptance/.eslintrc ./apps/*/acceptance/**/*.js",
     "build": "hof-build",
-    "prepublish": "npm run build",
-    "postinstall": "npm run build"
+    "prepublish": "npm run snyk-protect && npm run build",
+    "postinstall": "npm run build",
+    "snyk-protect": "snyk protect"
   },
   "dependencies": {
     "debug": "^3.1.0",
@@ -29,12 +30,13 @@
     "hof-theme-govuk": "^4.1.0",
     "hof-util-countries": "^1.0.0",
     "is-pdf": "^1.0.0",
-    "jquery": "^3.1.1",
+    "jquery": "^3.5.0",
     "lodash": "^4.17.4",
     "mixwith": "^0.1.1",
     "moment": "^2.19.1",
     "typeahead-aria": "^1.0.4",
-    "uuid": "^3.1.0"
+    "uuid": "^3.1.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "chai": "^4.1.0",
@@ -67,5 +69,6 @@
     "url": "https://github.com/UKHomeOffice/right-to-rent-check/issues"
   },
   "homepage": "https://github.com/UKHomeOffice/right-to-rent-check#readme",
-  "description": "Right to Rent Check form service"
+  "description": "Right to Rent Check form service",
+  "snyk": true
 }

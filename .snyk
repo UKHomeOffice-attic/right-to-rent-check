@@ -1,0 +1,50 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.14.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof-form-controller > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof-model > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof-behaviour-address-lookup > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof-behaviour-summary-page > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof-component-date > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof-form-controller > hof-behaviour-hooks > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof-form-controller > hof-behaviour-session > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof > hof-form-wizard > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof > hof-middleware > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof > hof-middleware-markdown > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof-theme-govuk > hof-template-partials > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof-behaviour-address-lookup > hof-model > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof-build > hof-transpiler > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof > hof-form-wizard > hof-form-controller > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof > hof-form-wizard > hof-model > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof > hof-theme-govuk > hof-template-partials > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof > hof-form-wizard > hof-form-controller > hof-behaviour-hooks > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof > hof-form-wizard > hof-form-controller > hof-behaviour-session > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof-build > npm-sass > node-sass > sass-graph > lodash:
+        patched: '2020-05-01T01:07:31.444Z'
+    - hof-build > npm-sass > node-sass > gaze > globule > lodash:
+        patched: '2020-05-01T01:07:31.444Z'

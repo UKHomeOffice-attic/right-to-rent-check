@@ -21,7 +21,7 @@
     "hof-behaviour-address-lookup": "^2.2.1",
     "hof-behaviour-emailer": "^2.2.0",
     "hof-behaviour-summary-page": "^3.0.0",
-    "hof-build": "^1.6.0",
+    "hof-build": "^4.0.1",
     "hof-component-date": "^1.4.0",
     "hof-form-controller": "^5.1.0",
     "hof-frontend-toolkit": "^2.1.0",
